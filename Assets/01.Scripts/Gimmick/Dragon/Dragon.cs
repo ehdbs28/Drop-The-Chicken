@@ -25,6 +25,8 @@ public class Dragon : PoolableMono
 
     private void DragonMove()
     {
+        if (GameManager.Instance.Stop) return;
+
         transform.position = transform.position + Vector3.up * _speed * Time.fixedDeltaTime;
     }
 

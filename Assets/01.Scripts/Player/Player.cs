@@ -9,7 +9,13 @@ public class Player : MonoBehaviour, IDamageable
 
     [SerializeField] private float _feverSpeed = 10f;
 
+    [SerializeField] private Material _paintWhite;
+    [SerializeField] private Material _defaultMat;
+
+    [SerializeField] private Transform _fallPos;
+
     public bool IsPlay {get; set;}
+    private bool _isDie;
     private bool _isFast;
     public bool IsFast {get => _isFast; set{
         _isFast = value;
@@ -55,6 +61,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private void FixedUpdate() {
         if(!IsPlay) return;
+        if (GameManager.Instance.Stop) return;
 
         PlayerFall();
         PlayerMove();
@@ -79,8 +86,10 @@ public class Player : MonoBehaviour, IDamageable
     }
     public void OnDamage()
     {
-        if (_isUnbeatable) return;
-        GameManager.Instance.UpdateState(GameState.RESULT);
+        if (_isUnbeatable || _isDie) return;
+
+        StartCoroutine("Die");
+        
     }
 
     private void FeverStart()
@@ -91,7 +100,7 @@ public class Player : MonoBehaviour, IDamageable
     }
     public void GetFeverObj(FeverTxt txt)
     {
-        if(IsFever) return;
+        if(IsFever || _isDie) return;
 
         if(txt == FeverTxt.F && !F)
         {
@@ -125,19 +134,65 @@ public class Player : MonoBehaviour, IDamageable
         E2 = false;
         R = false;
     }
-
-    IEnumerator DoFever()
-    {
-        _animator.SetTrigger("Fever");
-        _isFever = true;
-        _isUnbeatable = true;
-        yield return new WaitForSeconds(5f);
-        ResetFever();
-    }
-
     private void OnTriggerEnter2D(Collider2D obj)
     {
         if(_isUnbeatable)
             Debug.Log(obj.name);
     }
+
+    IEnumerator DoFever()
+    {
+        _animator.SetTrigger("Fever");
+        float saveSpd = _fallingSpeed;
+        _fallingSpeed = _feverSpeed;
+        _isFever = true;
+        _isUnbeatable = true;
+        yield return new WaitForSeconds(5f);
+        _fallingSpeed = saveSpd;
+        ResetFever();
+    }
+    IEnumerator Die()
+    {
+        _isDie = true;
+        _animator.SetTrigger("Die");
+        _spriteRenderer.material = _paintWhite;
+        GameManager.Instance.Stop = true;
+        yield return new WaitForSeconds(0.3f);
+        _spriteRenderer.material = _defaultMat;
+
+        
+        float m_Speed = 1;
+        float m_HeightArc = 5;
+        Vector3 m_StartPosition = transform.position;
+
+        while (true)
+        {
+            float x0 = m_StartPosition.x;
+            float x1 = _fallPos.position.x;
+            float distance = x1 - x0;
+            float nextX = Mathf.MoveTowards(transform.position.x, x1, m_Speed * Time.fixedDeltaTime);
+            float baseY = Mathf.Lerp(m_StartPosition.y, _fallPos.position.y, (nextX - x0) / distance);
+            float arc = m_HeightArc * (nextX - x0) * (nextX - x1) / (-0.25f * distance * distance);
+            Vector3 nextPosition = new Vector3(nextX, baseY + arc, transform.position.z);
+
+            transform.rotation = LookAt2D(nextPosition - transform.position);
+            transform.position = nextPosition;
+
+
+            if (nextPosition == _fallPos.position)
+                break;
+
+            yield return new WaitForFixedUpdate();
+        }
+        yield return new WaitForSeconds(1.5f);
+        GameManager.Instance.Stop = false;
+        GameManager.Instance.UpdateState(GameState.RESULT);
+    }
+    Quaternion LookAt2D(Vector2 forward)
+    {
+        return Quaternion.Euler(0, 0, Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg);
+    }
+
+
+
 }
