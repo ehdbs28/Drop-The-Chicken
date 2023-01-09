@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] private float _fallingSpeed = 1f;
     [SerializeField] private float _moveSpeed = 3f;
@@ -37,5 +37,10 @@ public class Player : MonoBehaviour
 
     private void PlayerFall(){
         _rigid.velocity = new Vector2(_rigid.velocity.x, -_fallingSpeed);
+    }
+
+    public void OnDamage()
+    {
+        GameManager.Instance.UpdateState(GameState.RESULT);
     }
 }
