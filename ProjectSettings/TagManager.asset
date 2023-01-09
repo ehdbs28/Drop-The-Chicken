@@ -44,3 +44,9 @@ TagManager:
   - name: Player
     uniqueID: 1602316231
     locked: 0
+  - name: Gimmick
+    uniqueID: 512757841
+    locked: 0
+  - name: Effect
+    uniqueID: 2682672973
+    locked: 0
