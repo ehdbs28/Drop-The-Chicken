@@ -1,7 +1,16 @@
 fileFormatVersion: 2
-guid: 2e484ecd5a996a54e9f6351c4fd9eb33
+guid: b0d9ffa6fc7171f458c4e6ca228e3b81
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -4111758983008909965
+    second: DragonParts-Sheet_0
+  - first:
+      213: 7782376007901528931
+    second: DragonParts-Sheet_1
+  - first:
+      213: 5845533068176757813
+    second: DragonParts-Sheet_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -101,7 +110,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: DragonParts-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 88
+        width: 34
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3758bbf6df810f6c0800000000000000
+      internalID: -4111758983008909965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragonParts-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 60
+        width: 26
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3634e731fbd800c60800000000000000
+      internalID: 7782376007901528931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragonParts-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 2
+        width: 34
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5349973ca518f1150800000000000000
+      internalID: 5845533068176757813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
