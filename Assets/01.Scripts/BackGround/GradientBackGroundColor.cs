@@ -22,6 +22,7 @@ public class GradientBackGroundColor : MonoBehaviour, IManager
 
     private void Init(){
         _cam = Camera.main;
+
         StartCoroutine(ColorGradient());
     }
 
