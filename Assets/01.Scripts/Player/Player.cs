@@ -36,10 +36,6 @@ public class Player : MonoBehaviour, IDamageable
         _fastParticle = transform.Find("FastParticle").GetComponentsInChildren<ParticleSystem>();
     }
 
-    private void Update() {
-
-    }
-
     private void FixedUpdate() {
         if(!IsPlay) return;
 
