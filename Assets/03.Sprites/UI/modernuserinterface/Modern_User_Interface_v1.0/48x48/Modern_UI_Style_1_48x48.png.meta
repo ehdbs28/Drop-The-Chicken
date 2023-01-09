@@ -2489,6 +2489,9 @@ TextureImporter:
   - first:
       213: 7958747969378817877
     second: Modern_UI_Style_1_48x48_828
+  - first:
+      213: -3390495106001999212
+    second: Modern_UI_Style_1_48x48_829
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -2985,7 +2988,7 @@ TextureImporter:
         serializedVersion: 2
         x: 1632
         y: 1295
-        width: 434
+        width: 234
         height: 289
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -19998,7 +20001,7 @@ TextureImporter:
         width: 71
         height: 47
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 6, y: 6, z: 5, w: 8}
       outline: []
       physicsShape: []
@@ -20006,6 +20009,27 @@ TextureImporter:
       bones: []
       spriteID: 5579fa36c17237e60800000000000000
       internalID: 7958747969378817877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_UI_Style_1_48x48_829
+      rect:
+        serializedVersion: 2
+        x: 1871
+        y: 1489
+        width: 50
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49aec0a2aaa82f0d0800000000000000
+      internalID: -3390495106001999212
       vertices: []
       indices: 
       edges: []
