@@ -5,7 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] private float _fallingSpeed = 1f;
-    [SerializeField] private float _moveSpeed = 3f;
+    [SerializeField] private float _moveSpeed = 4.5f;
+
+    public bool IsPlay {get; set;}
 
     private Rigidbody2D _rigid;
     private SpriteRenderer _spriteRenderer;
@@ -20,6 +22,8 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     private void FixedUpdate() {
+        if(!IsPlay) return;
+
         PlayerFall();
         PlayerMove();
     }
