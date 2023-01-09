@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GradientBackGroundColor : MonoBehaviour
+public class GradientBackGroundColor : MonoBehaviour, IManager
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _waitTime;
@@ -11,11 +11,17 @@ public class GradientBackGroundColor : MonoBehaviour
 
     private Camera _cam;
 
-    private void Awake() {
-        _cam = GetComponent<Camera>();
+    public void UpdateState(GameState state)
+    {
+        switch(state){
+            case GameState.INGAME:
+                Init();
+                break;
+        }
     }
 
-    private void Start() {
+    private void Init(){
+        _cam = Camera.main;
         StartCoroutine(ColorGradient());
     }
 
