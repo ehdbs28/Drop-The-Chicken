@@ -13,6 +13,14 @@ public enum FeverTxt
 public class FeverObj : PoolableMono
 {
     [SerializeField] private FeverTxt _feverTxt;
+    private Canvas _canvas;
+    private ParticleSystem _eatEffect;
+
+    private void Awake()
+    {
+        _canvas = GetComponentInChildren<Canvas>();
+        _eatEffect = GetComponentInChildren<ParticleSystem>();
+    }
 
     private void OnTriggerEnter2D(Collider2D obj)
     {
@@ -21,12 +29,21 @@ public class FeverObj : PoolableMono
             Player player = obj.GetComponent<Player>();
 
             player.GetFeverObj(_feverTxt);
-            PoolManager.Instance.Push(this);
+            StartCoroutine("DeleteObj");
         }
+    }
+
+    IEnumerator DeleteObj()
+    {
+        _eatEffect.Play();
+        _canvas.gameObject.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        _eatEffect.Stop();
+        PoolManager.Instance.Push(this);
     }
 
     public override void Reset()
     {
-        
+        _canvas.gameObject.SetActive(true);
     }
 }
