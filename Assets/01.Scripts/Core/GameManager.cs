@@ -25,8 +25,9 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start() {
-        _managers.Add(GetComponent<GradientBackGroundColor>());
+        _managers.Add(new UIManager());
         _managers.Add(new PlayerManager());
+        _managers.Add(GetComponent<GradientBackGroundColor>());
 
         UpdateState(GameState.INIT);
     }
