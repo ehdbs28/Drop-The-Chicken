@@ -5,7 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] private float _fallingSpeed = 1f;
+    public float FallingSpeed
+    {
+        get { return _fallingSpeed; }
+        set { _fallingSpeed = value; }
+    }
     [SerializeField] private float _moveSpeed = 4.5f;
+    
 
     [SerializeField] private float _feverSpeed = 10f;
 
@@ -57,16 +63,23 @@ public class Player : MonoBehaviour, IDamageable
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
         _fastParticle = transform.Find("FastParticle").GetComponentsInChildren<ParticleSystem>();
+        
     }
 
     private void FixedUpdate() {
         if(!IsPlay) return;
-        if (GameManager.Instance.Stop) return;
+        if (GameManager.Instance.Stop)
+        {
+            _rigid.velocity = Vector3.zero;
+            return;
+        };
 
         PlayerFall();
         PlayerMove();
         FeverStart();
     }
+
+    
 
     private void PlayerMove(){
         float input = Input.GetAxisRaw("Horizontal");
@@ -167,7 +180,7 @@ public class Player : MonoBehaviour, IDamageable
         float m_Speed = 0.5f;
         float m_HeightArc = 5;
         Vector3 m_StartPosition = transform.position;
-        _fallPos.position = new Vector3(0, transform.position.y - 8, 0);
+        _fallPos.position = new Vector3(transform.position.x + 2, transform.position.y - 8, 0);
 
         while (true)
         {
@@ -179,7 +192,7 @@ public class Player : MonoBehaviour, IDamageable
             float arc = m_HeightArc * (nextX - x0) * (nextX - x1) / (-0.25f * distance * distance);
             Vector3 nextPosition = new Vector3(nextX, baseY + arc, transform.position.z);
 
-            transform.rotation = LookAt2D(nextPosition - transform.position);
+            //transform.rotation = LookAt2D(nextPosition - transform.position);
             transform.position = nextPosition;
 
 

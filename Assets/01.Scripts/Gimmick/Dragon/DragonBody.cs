@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class DragonBody : MonoBehaviour
 {
-    private float _dragonBodyTerm = 0.35f;
+    private float _dragonBodyTerm = 0.15f;
     private float _shakeValue = 0.05f;
 
     [SerializeField]

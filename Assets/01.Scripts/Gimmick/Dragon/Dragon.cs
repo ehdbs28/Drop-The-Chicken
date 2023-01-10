@@ -10,6 +10,8 @@ public class Dragon : PoolableMono
 
     private float _speed = 20f;
 
+    private float _delay = 2f;
+    private bool _move = false;
 
     private void Awake()
     {
@@ -25,7 +27,8 @@ public class Dragon : PoolableMono
 
     private void DragonMove()
     {
-        if (GameManager.Instance.Stop) return;
+        if (GameManager.Instance.Stop || !_move) return;
+        
 
         transform.position = transform.position + Vector3.up * _speed * Time.fixedDeltaTime;
     }
@@ -38,11 +41,19 @@ public class Dragon : PoolableMono
             _dragonBodys[i].ShakeBody();
         }
     }
+
+    IEnumerator DragonSetting()
+    {
+        SetDragonBody();
+        _move = false;
+        yield return new WaitForSeconds(_delay);
+        _move = true;
+    }
     
 
     public override void Reset()
     {
         //
-        SetDragonBody();
+        StartCoroutine("DragonSetting");
     }
 }

@@ -10,14 +10,10 @@ public class StormZone : PoolableMono
     private Rigidbody2D _playerRigid;
     private const string PLAYER_TAG = "Player";
 
+    private bool _isRight = false;
+
     private void Awake() {
         _stormParticles = GetComponentsInChildren<ParticleSystem>();
-    }
-
-    private void Start() {
-        foreach(var particle in _stormParticles){
-            particle.Play();
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -39,8 +35,21 @@ public class StormZone : PoolableMono
         }
     }
 
+    public void SetDirection(bool isRight)
+    {
+        _isRight = isRight;
+        transform.localScale = isRight ? new Vector3(14, -6, 1) : new Vector3(14, 6, 1);
+        _stormForce = isRight ? -30f : 30f;
+        foreach (var particle in _stormParticles)
+        {
+            particle.Play();
+        }
+    }
+
     public override void Reset()
     {
         //
+        
+
     }
 }

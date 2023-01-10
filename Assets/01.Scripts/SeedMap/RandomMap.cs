@@ -14,14 +14,10 @@ public class SummonObj
 
 public class RandomMap : MonoBehaviour
 {
-    private int _dragonRandomRange = 0;
-    private int _pigeonRandomRange = 1;
-    private int _branchRandomgRange = 2;
-    private int _cloudRandomRange = 2;
     private float _stormZonePer = 0.1f; // 10퍼센트
 
     [SerializeField]
-    private GameObject storm;
+    private StormZone storm;
     private bool onStorm;
 
     [SerializeField]
@@ -50,9 +46,16 @@ public class RandomMap : MonoBehaviour
 
             seeds[i].SummonCount = Random.Range(0, seeds[i].CountRandomRange + 1);
         }
+        SetStormZone();
         SettingMap();
     }
+    private void SetStormZone()
+    {
+        onStorm = (Random.Range(0.0f, 1.0f) <= _stormZonePer);
+        storm.gameObject.SetActive(onStorm);
+        storm.SetDirection((Random.Range(0.0f, 1.0f) <= 0.5f));
 
+    }
     // seed대로 맵을 생성합니다.
     private void SettingMap()
     {
@@ -65,7 +68,6 @@ public class RandomMap : MonoBehaviour
             }
         }
     }
-
     private void SummonObject(SummonObj obj)
     {
         Vector2 summonPos = Vector2.zero;
@@ -89,7 +91,6 @@ public class RandomMap : MonoBehaviour
         PoolableMono summonObject = PoolManager.Instance.Pop(obj.summonObj.name);
         summonObject.transform.position = summonPos;
     }
-
     private void OnTriggerExit2D(Collider2D obj)
     {
         if (obj.CompareTag("Player"))
