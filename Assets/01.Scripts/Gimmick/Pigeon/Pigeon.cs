@@ -20,6 +20,8 @@ public class Pigeon : PoolableMono
 
     private void PigeonMove()
     {
+        if (GameManager.Instance.Stop) return;
+
         transform.position = transform.position + transform.right * speed * Time.fixedDeltaTime;
         bool checkMin = transform.position.x <= minX && moveCheck;
         bool checkMax = transform.position.x >= maxX && !moveCheck;

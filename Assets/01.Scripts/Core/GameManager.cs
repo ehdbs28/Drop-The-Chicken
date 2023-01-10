@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = null;
 
+    public bool Stop = false;
+
     [SerializeField] private List<PoolableMono> _poolingList;
 
     public GameState State {get; private set;}
