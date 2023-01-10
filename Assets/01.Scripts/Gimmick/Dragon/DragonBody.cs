@@ -45,14 +45,4 @@ public class DragonBody : MonoBehaviour
             yield return new WaitForSeconds(0.06f);
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D obj)
-    {
-        if (obj.CompareTag("Player"))
-        {
-            Player player = obj.GetComponent<Player>();
-
-            player.OnDamage();
-        }
-    }
 }

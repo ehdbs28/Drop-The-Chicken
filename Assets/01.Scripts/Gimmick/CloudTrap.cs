@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloudTrap : MonoBehaviour
+public class CloudTrap : PoolableMono
 {
     private ParticleSystem[] _cloudParticle;
+
+    public override void Reset()
+    {
+        //
+    }
 
     private void Awake() {
         _cloudParticle = GetComponentsInChildren<ParticleSystem>();

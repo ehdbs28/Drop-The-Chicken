@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5091987351467206169}
   m_Layer: 0
   m_Name: DragonTail
-  m_TagString: Untagged
+  m_TagString: DamageAbleObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,9 +70,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingLayerID: 512757841
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 5845533068176757813, guid: b0d9ffa6fc7171f458c4e6ca228e3b81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 5091987351594024005}
   m_Layer: 0
   m_Name: DragonHead
-  m_TagString: Untagged
+  m_TagString: DamageAbleObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,9 +193,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 512757841
+  m_SortingLayer: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: -4111758983008909965, guid: b0d9ffa6fc7171f458c4e6ca228e3b81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 5091987352142802465}
   m_Layer: 0
   m_Name: Dragon
-  m_TagString: Untagged
+  m_TagString: DamageAbleObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -425,6 +425,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (30)
@@ -486,6 +494,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -549,6 +565,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (16)
@@ -610,6 +634,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -673,6 +705,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (12)
@@ -734,6 +774,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -797,6 +845,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (40)
@@ -858,6 +914,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -921,6 +985,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (2)
@@ -982,6 +1054,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -1045,6 +1125,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (4)
@@ -1106,6 +1194,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -1169,6 +1265,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (27)
@@ -1230,6 +1334,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -1293,6 +1405,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (39)
@@ -1354,6 +1474,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -1417,6 +1545,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (41)
@@ -1478,6 +1614,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -1541,6 +1685,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (23)
@@ -1602,6 +1754,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -1665,6 +1825,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (17)
@@ -1726,6 +1894,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -1789,6 +1965,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (31)
@@ -1850,6 +2034,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -1913,6 +2105,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (43)
@@ -1974,6 +2174,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -2037,6 +2245,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (8)
@@ -2098,6 +2314,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -2161,6 +2385,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (19)
@@ -2222,6 +2454,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -2285,6 +2525,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (38)
@@ -2346,6 +2594,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -2409,6 +2665,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (18)
@@ -2470,6 +2734,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -2533,6 +2805,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (10)
@@ -2594,6 +2874,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -2657,6 +2945,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (20)
@@ -2718,6 +3014,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -2781,6 +3085,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (3)
@@ -2842,6 +3154,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -2905,6 +3225,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (26)
@@ -2966,6 +3294,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -3029,6 +3365,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (6)
@@ -3090,6 +3434,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -3215,6 +3567,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (37)
@@ -3276,6 +3636,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -3339,6 +3707,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (47)
@@ -3400,6 +3776,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
@@ -3463,6 +3847,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
+      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (28)
@@ -3524,6 +3916,14 @@ PrefabInstance:
     - target: {fileID: 560838040272282832, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 512757841
       objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name

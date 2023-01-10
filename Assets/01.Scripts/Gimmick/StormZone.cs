@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StormZone : MonoBehaviour
+public class StormZone : PoolableMono
 {
     [SerializeField] private float _stormForce;
     private ParticleSystem[] _stormParticles;
@@ -37,5 +37,10 @@ public class StormZone : MonoBehaviour
         if(other.CompareTag(PLAYER_TAG)){
             _playerRigid = null;
         }
+    }
+
+    public override void Reset()
+    {
+        //
     }
 }

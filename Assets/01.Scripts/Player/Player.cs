@@ -138,8 +138,11 @@ public class Player : MonoBehaviour, IDamageable
     {
         if(_isUnbeatable)
             Debug.Log(obj.name);
-    }
 
+        if (!_isDie && obj.CompareTag("DamageAbleObj"))
+            OnDamage();
+    }
+    
     IEnumerator DoFever()
     {
         _animator.SetTrigger("Fever");
@@ -161,9 +164,10 @@ public class Player : MonoBehaviour, IDamageable
         _spriteRenderer.material = _defaultMat;
 
         
-        float m_Speed = 1;
+        float m_Speed = 0.5f;
         float m_HeightArc = 5;
         Vector3 m_StartPosition = transform.position;
+        _fallPos.position = new Vector3(0, transform.position.y - 8, 0);
 
         while (true)
         {
