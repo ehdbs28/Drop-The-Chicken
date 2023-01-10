@@ -16,7 +16,7 @@ public class StandbyScreen : UIScreen
         });
 
         tapToSetting.onClick.AddListener(() => {
-
+            GameManager.Instance.GetManager<ESCManager>().IsOpenSetting = true;
         });
 
         tapToExit.onClick.AddListener(() => {
