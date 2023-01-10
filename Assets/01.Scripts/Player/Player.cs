@@ -16,7 +16,10 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private Transform _fallPos;
 
     public bool IsPlay {get; set;}
-    private bool _isDie;
+    public bool IsDie{
+        get => GameManager.Instance.Stop;
+        set => GameManager.Instance.Stop = value;
+    }
     private bool _isFast;
     public bool IsFast {get => _isFast; set{
         _isFast = value;
@@ -64,7 +67,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private void FixedUpdate() {
         if(!IsPlay) return;
-        if (GameManager.Instance.Stop) return;
+        if (IsDie) return;
 
         PlayerFall();
         PlayerMove();
@@ -89,7 +92,7 @@ public class Player : MonoBehaviour, IDamageable
     }
     public void OnDamage()
     {
-        if (_isUnbeatable || _isDie) return;
+        if (_isUnbeatable || IsDie) return;
 
         StartCoroutine("Die");
         
@@ -104,7 +107,7 @@ public class Player : MonoBehaviour, IDamageable
     }
     public void GetFeverObj(FeverTxt txt)
     {
-        if(IsFever || _isDie) return;
+        if(IsFever || IsDie) return;
 
         if(txt == FeverTxt.F && !Fevers[0])
         {
@@ -155,10 +158,9 @@ public class Player : MonoBehaviour, IDamageable
     }
     IEnumerator Die()
     {
-        _isDie = true;
+        IsDie = true;
         _animator.SetTrigger("Die");
         _spriteRenderer.material = _paintWhite;
-        GameManager.Instance.Stop = true;
         yield return new WaitForSeconds(0.3f);
         _spriteRenderer.material = _defaultMat;
 

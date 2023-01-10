@@ -18,7 +18,8 @@ public class PlayerManager : IManager
                 Init();
                 break;
             case GameState.INGAME:
-                _player.IsPlay = true;    
+                _player.IsPlay = true; 
+                GameManager.Instance.GetManager<CameraManager>().CamSizeSubscribe(PlayerMoveLimit);
                 break;
         }
     }
@@ -27,10 +28,14 @@ public class PlayerManager : IManager
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
         playerFeverStream = Observable.EveryUpdate().Where(condition => GameManager.Instance.State == GameState.INGAME).Select(list => _player.Fevers);
-        playerPosStream = Observable.EveryUpdate().Where(condition => GameManager.Instance.State == GameState.INGAME).Select(position => _player.transform.position);
+        playerPosStream = Observable.EveryUpdate().Where(condition => GameManager.Instance.State == GameState.INGAME && !_player.IsDie).Select(position => _player.transform.position);
         
         _player.IsPlay = false;
         _player.Fevers = Enumerable.Repeat(false, 5).ToList();
+    }
+
+    private void PlayerMoveLimit(float camSize){
+        _player.transform.position = new Vector3(Mathf.Clamp(_player.transform.position.x, -camSize + .2f, camSize - .2f), _player.transform.position.y);
     }
 
     public void PlayerFeverSubscribe(Action<List<bool>> action){
