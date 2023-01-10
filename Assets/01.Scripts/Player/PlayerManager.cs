@@ -11,6 +11,10 @@ public class PlayerManager : IManager
     private IObservable<Vector3> playerPosStream;
     private IObservable<List<bool>> playerFeverStream;
 
+    float _minSpeed = 2f;
+    float _maxSpeed = 7f;
+    float _maxSpeedScore = 700;
+
     public void UpdateState(GameState state)
     {
         switch(state){
@@ -20,6 +24,7 @@ public class PlayerManager : IManager
             case GameState.INGAME:
                 _player.IsPlay = true; 
                 GameManager.Instance.GetManager<CameraManager>().CamSizeSubscribe(PlayerMoveLimit);
+                GameManager.Instance.GetManager<ScoreManager>().ScoreSubscribe(ScoreSetSpeed);
                 break;
         }
     }
@@ -40,6 +45,17 @@ public class PlayerManager : IManager
 
     public void PlayerFeverSubscribe(Action<List<bool>> action){
         playerFeverStream.Subscribe(action).AddTo(GameManager.Instance);
+    }
+
+    private void ScoreSetSpeed(int score)
+    {
+        if (score == 0)
+        {
+            _player.FallingSpeed = _minSpeed;
+            return;
+        }
+    
+        _player.FallingSpeed = Mathf.Lerp(_minSpeed, _maxSpeed, score / _maxSpeedScore);
     }
 
     public void PlayerPosSubscribe(Action<Vector3> action){

@@ -2,12 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BranchTrap : MonoBehaviour
+public class BranchTrap : PoolableMono
 {
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Player")){
-            IDamageable damageable = other.GetComponent<IDamageable>();
-            damageable?.OnDamage();
-        }
+    [SerializeField]
+    private List<Sprite> branchSprites = new List<Sprite>();
+    [SerializeField]
+    private SpriteRenderer _spriteRenderer;
+
+    private void ResetBranch()
+    {
+        _spriteRenderer.sprite = branchSprites[(int)Random.Range(0, branchSprites.Count)];
+    }
+
+    public override void Reset()
+    {
+        //
+        ResetBranch();
     }
 }

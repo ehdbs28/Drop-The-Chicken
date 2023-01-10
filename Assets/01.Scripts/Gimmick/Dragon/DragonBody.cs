@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class DragonBody : MonoBehaviour
 {
-    private float _dragonBodyTerm = 0.35f;
+    private float _dragonBodyTerm = 0.15f;
     private float _shakeValue = 0.05f;
 
     [SerializeField]
@@ -43,16 +43,6 @@ public class DragonBody : MonoBehaviour
             yield return new WaitForSeconds(0.11f);
             transform.DOMoveX(defaultX, 0.05f);
             yield return new WaitForSeconds(0.06f);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D obj)
-    {
-        if (obj.CompareTag("Player"))
-        {
-            Player player = obj.GetComponent<Player>();
-
-            player.OnDamage();
         }
     }
 }

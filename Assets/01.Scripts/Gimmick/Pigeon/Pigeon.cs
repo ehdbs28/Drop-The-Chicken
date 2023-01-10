@@ -38,15 +38,6 @@ public class Pigeon : PoolableMono
         moveCheck = (moveCheck) ? false : true;
     }
 
-    private void OnTriggerEnter2D(Collider2D obj)
-    {
-        if (obj.CompareTag("Player"))
-        {
-            Player player = obj.GetComponent<Player>();
-
-            player.OnDamage();
-        }
-    }
 
     public override void Reset()
     {

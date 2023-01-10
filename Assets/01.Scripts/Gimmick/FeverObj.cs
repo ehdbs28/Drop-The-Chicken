@@ -13,6 +13,7 @@ public enum FeverTxt
 public class FeverObj : PoolableMono
 {
     [SerializeField] private FeverTxt _feverTxt;
+    private bool _isDelete;
     private Canvas _canvas;
     private ParticleSystem _eatEffect;
 
@@ -35,15 +36,21 @@ public class FeverObj : PoolableMono
 
     IEnumerator DeleteObj()
     {
-        _eatEffect.Play();
-        _canvas.gameObject.SetActive(false);
-        yield return new WaitForSeconds(1f);
-        _eatEffect.Stop();
-        PoolManager.Instance.Push(this);
+        if (!_isDelete)
+        {
+            _isDelete = true;
+            _eatEffect.Play();
+            _canvas.gameObject.SetActive(false);
+            yield return new WaitForSeconds(1f);
+            _eatEffect.Stop();
+            PoolManager.Instance.Push(this);
+        }
+        
     }
 
     public override void Reset()
     {
         _canvas.gameObject.SetActive(true);
+        _isDelete = false;
     }
 }
