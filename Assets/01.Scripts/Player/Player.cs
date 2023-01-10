@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Player : MonoBehaviour, IDamageable
 {
@@ -36,11 +37,13 @@ public class Player : MonoBehaviour, IDamageable
     private bool _isFever = false;
     public bool IsFever => _isFever;
 
-    private bool F;
-    private bool E;
-    private bool V;
-    private bool E2;
-    private bool R;
+    // public bool F;
+    // public bool E;
+    // public bool V;
+    // public bool E2;
+    // public bool R;
+
+    public List<bool> Fevers;
 
     private bool _isUnbeatable = false;
     #endregion
@@ -94,7 +97,8 @@ public class Player : MonoBehaviour, IDamageable
 
     private void FeverStart()
     {
-        bool fever = F && E && V && E2 && R;
+        bool fever = (from value in Fevers where value == false select value).Count() == 0; 
+
         if(!_isFever && fever)
             StartCoroutine("DoFever");
     }
@@ -102,25 +106,25 @@ public class Player : MonoBehaviour, IDamageable
     {
         if(IsFever || _isDie) return;
 
-        if(txt == FeverTxt.F && !F)
+        if(txt == FeverTxt.F && !Fevers[0])
         {
-            F = true;
+            Fevers[0] = true;
         }
-        else if(txt == FeverTxt.E && !E)
+        else if(txt == FeverTxt.E && !Fevers[1])
         {
-            E = true;
+            Fevers[1] = true;
         }
-        else if(txt == FeverTxt.V && !V)
+        else if(txt == FeverTxt.V && !Fevers[2])
         {
-            V = true;
+            Fevers[2] = true;
         }
-        else if(txt == FeverTxt.E && !E2)
+        else if(txt == FeverTxt.E && !Fevers[3])
         {
-            E2 = true;
+            Fevers[3] = true;
         }
-        else if(txt == FeverTxt.R && !R)
+        else if(txt == FeverTxt.R && !Fevers[4])
         {
-            R = true;
+            Fevers[4] = true;
         }
     }
     private void ResetFever()
@@ -128,11 +132,9 @@ public class Player : MonoBehaviour, IDamageable
         _isFever = false;
         _isUnbeatable = false;
 
-        F = false;
-        E = false;
-        V = false;
-        E2 = false;
-        R = false;
+        for(int i = 0; i < Fevers.Count; i++){
+            Fevers[i] = false;
+        }
     }
     private void OnTriggerEnter2D(Collider2D obj)
     {
