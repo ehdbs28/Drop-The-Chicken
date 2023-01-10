@@ -960,6 +960,7 @@ MonoBehaviour:
   state: 2
   canvasGroup: {fileID: 164325512}
   tapToSetting: {fileID: 1225182962}
+  scoreText: {fileID: 1765644468}
 --- !u!1 &190891491
 GameObject:
   m_ObjectHideFlags: 0
