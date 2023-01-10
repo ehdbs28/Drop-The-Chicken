@@ -10,7 +10,7 @@ public class InGameScreen : UIScreen
     public override void Init()
     {
         tapToSetting.onClick.AddListener(() => {
-            
+            GameManager.Instance.GetManager<ESCManager>().IsOpenSetting = true;
         });
 
         base.Init();

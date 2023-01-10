@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UniRx;
 using UnityEngine;
 
 public class UIManager : IManager
 {   
     private List<UIScreen> uIScreens = new List<UIScreen>();
+
+    private IObservable<bool> _inputESCKeyStream;
     
     public UIManager(){
         uIScreens.Add(GameObject.Find("Standby Screen").GetComponent<UIScreen>());
@@ -18,6 +22,7 @@ public class UIManager : IManager
     {
         switch(state){
             case GameState.INIT:
+                Init();
                 CloseAllScreen();
                 InitAllScreen();
                 break;
@@ -25,6 +30,10 @@ public class UIManager : IManager
                 ActiveScreen(state);
                 break;
         }
+    }
+
+    public void Init(){
+        _inputESCKeyStream = Observable.EveryUpdate().Select(input => Input.GetKeyDown(KeyCode.Escape));
     }
 
     private void ActiveScreen(GameState state){
@@ -45,5 +54,9 @@ public class UIManager : IManager
         foreach(var screen in uIScreens){
             screen.Init();
         }
+    }
+
+    public void ESCSubscribe(Action<bool> action){
+        _inputESCKeyStream.Subscribe(action).AddTo(GameManager.Instance);
     }
 }

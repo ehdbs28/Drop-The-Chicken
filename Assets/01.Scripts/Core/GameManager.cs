@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,12 @@ public class GameManager : MonoBehaviour
     public GameState State {get; private set;}
     private readonly List<IManager> _managers = new List<IManager>();
 
+    public bool GameStop {
+        set {
+            Time.timeScale = value ? 0 : 1;
+        }
+    }
+
     private void Awake() {
         if(Instance == null)
             Instance = this;
@@ -25,6 +32,8 @@ public class GameManager : MonoBehaviour
     private void Start() {
         _managers.Add(new UIManager());
         _managers.Add(new PlayerManager());
+        _managers.Add(new ESCManager());
+        _managers.Add(GetComponent<AudioManager>());
         _managers.Add(GetComponent<GradientBackGroundColor>());
 
         UpdateState(GameState.INIT);
@@ -42,7 +51,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public T GetGameComponent<T>() where T : class, IManager{
+    public T GetManager<T>() where T : class, IManager{
         var value = default(T);
 
         foreach(var manager in _managers.OfType<T>()){
