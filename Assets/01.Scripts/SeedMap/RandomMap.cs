@@ -42,7 +42,6 @@ public class RandomMap : MonoBehaviour
 
     public void ResetMap()
     {
-        gameObject.SetActive(true);
         ResetDifficult();
         ResetObject();
         ResetSeeds();
@@ -50,7 +49,6 @@ public class RandomMap : MonoBehaviour
 
     public void ClearMap(){
         ResetObject();
-        gameObject.SetActive(false);
     }
     
     private void AddMap()

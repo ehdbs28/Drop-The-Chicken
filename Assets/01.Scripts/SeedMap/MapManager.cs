@@ -34,8 +34,8 @@ public class MapManager : IManager
     {
         for(int i = 0; i < maps.Length; i++)
         {
-            maps[i].ResetMap();
             maps[i].transform.position = new Vector2(0, -5f + (i * -10));
+            maps[i].ResetMap();
         }
         
     }

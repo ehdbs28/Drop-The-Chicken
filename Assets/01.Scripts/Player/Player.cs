@@ -12,6 +12,8 @@ public class Player : MonoBehaviour, IDamageable
         get { return _fallingSpeed; }
         set { _fallingSpeed = value; }
     }
+    [SerializeField] private float _fastSpeed;
+
     [SerializeField] private float _moveSpeed = 4.5f;
     [SerializeField] private float _feverSpeed = 10f;
 
@@ -29,15 +31,21 @@ public class Player : MonoBehaviour, IDamageable
     public bool IsFast {get => _isFast; set{
         _isFast = value;
 
-        if(value){
+        if(_isFast){
+            fastStack++;
+            _fastSpeed = _fallingSpeed + (1f * fastStack);
+
             foreach(ParticleSystem particle in _fastParticle)
                 particle.Play();
 
-            Invoke("SlowDown", 3f);
+            StopCoroutine("SlowDown");
+            StartCoroutine("SlowDown");
         }
         else{
             foreach(ParticleSystem particle in _fastParticle)
                 particle.Stop();
+
+            fastStack = 0;
         }
     }}
 
@@ -50,6 +58,8 @@ public class Player : MonoBehaviour, IDamageable
 
     public List<bool> Fevers;
     #endregion
+
+    private int fastStack = 0;
 
     private Animator _animator;
     private Rigidbody2D _rigid;
@@ -90,11 +100,12 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     private void PlayerFall(){
-        _rigid.velocity = new Vector2(_rigid.velocity.x, -((_isFast) ? _fallingSpeed * 1.5f : _fallingSpeed));
+        _rigid.velocity = new Vector2(_rigid.velocity.x, -((_isFast) ? _fastSpeed: _fallingSpeed));
     }
 
-    private void SlowDown(){
-        _isFast = false;
+    private IEnumerator SlowDown(){
+        yield return new WaitForSeconds(3f);
+        IsFast = false;
     }
 
     public void OnDamage()
@@ -105,13 +116,11 @@ public class Player : MonoBehaviour, IDamageable
     public void ResetPlayer()
     {
         transform.position = new Vector2(0, 4.35f);
+        IsFast = false;
         StopCoroutine("Die");
         for (int i = 0; i < Fevers.Count; i++)
         {
             Fevers[i] = false;
-        }
-        foreach(ParticleSystem particle  in _fastParticle){
-            particle.Stop();
         }
     }
 
@@ -174,10 +183,7 @@ public class Player : MonoBehaviour, IDamageable
 
     IEnumerator Die()
     {
-        foreach(ParticleSystem particle  in _fastParticle){
-            particle.Stop();
-        }
-
+        IsFast = false;
         IsDie = true;
         _animator.SetBool("Die", true);
         _spriteRenderer.material = _paintWhite;
