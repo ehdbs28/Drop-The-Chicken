@@ -9696,7 +9696,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9744,7 +9744,7 @@ MonoBehaviour:
   _moveSpeed: 3
   _feverSpeed: 15
   _paintWhite: {fileID: 2100000, guid: 273432fcd670ade468b79eefa594ec65, type: 2}
-  _defaultMat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  _defaultMat: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   _fallPos: {fileID: 0}
   Fevers: 0000000000
 --- !u!50 &3205498697566871734

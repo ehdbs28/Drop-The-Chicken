@@ -18,6 +18,7 @@ public class MapManager : IManager
                 Init();
                 break;
             case GameState.INGAME:
+                GameManager.Instance.GetManager<ScoreManager>().ScoreSubscribe(ScoreDifficult);
                 ResetMap();
                 break;
         }
@@ -28,10 +29,18 @@ public class MapManager : IManager
     }
     private void ResetMap()
     {
-        maps[0].transform.position = new Vector2(0, -5f);
-        maps[0].ResetMap();
-
-        maps[1].transform.position = new Vector2(0, -15f);
-        maps[1].ResetMap();
+        for(int i = 0; i < maps.Length; i++)
+        {
+            maps[i].transform.position = new Vector2(0, -5f + (i * -10));
+            maps[i].ResetMap();
+        }
+        
+    }
+    private void ScoreDifficult(int score)
+    {
+        foreach (RandomMap map in maps)
+        {
+            map.DifficultUp(score);
+        }
     }
 }
