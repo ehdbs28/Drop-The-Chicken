@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class SettingScreen : UIScreen
 {
@@ -28,10 +29,16 @@ public class SettingScreen : UIScreen
 
     [SerializeField] private TextMeshProUGUI settingTitle;
 
+    [SerializeField] private RectTransform screenPanel;
+
     public override void Init()
     {
         tapToBack.onClick.AddListener(() => {
-            GameManager.Instance.GetManager<ESCManager>().IsOpenSetting = false;
+            screenPanel.DOAnchorPosY(1980f, 1f).SetEase(Ease.InOutBack).SetUpdate(true)
+            .OnComplete(() => {
+                GameManager.Instance.GetManager<ESCManager>().IsOpenSetting = false;
+                screenPanel.DOKill();
+            });
         });
 
         tapToSoundPanel.onClick.AddListener(() => {
@@ -69,6 +76,15 @@ public class SettingScreen : UIScreen
         });
 
         base.Init();
+    }
+
+    public override void UpdateScreenState(bool open)
+    {
+        base.UpdateScreenState(open);
+
+        if(open){
+            screenPanel.DOAnchorPosY(0f, 1f).SetEase(Ease.OutBack).SetUpdate(true).OnComplete(() => screenPanel.DOKill());
+        }
     }
 
     private void PanelChange(string title){

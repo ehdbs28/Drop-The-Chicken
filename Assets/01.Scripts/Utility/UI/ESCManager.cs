@@ -7,7 +7,11 @@ public class ESCManager : IManager
 {
     private UIScreen _settingScreen;
     private bool _isOpenSetting = false;
-    public bool IsOpenSetting { get => _isOpenSetting; set => _isOpenSetting = value; }
+    public bool IsOpenSetting { get => _isOpenSetting; set {
+        _isOpenSetting = value;
+        _settingScreen.UpdateScreenState(_isOpenSetting);
+        GameManager.Instance.GameStop = _isOpenSetting;
+    }}
 
     public void UpdateState(GameState state)
     {
@@ -21,14 +25,5 @@ public class ESCManager : IManager
     public void Init(){
         _settingScreen = GameObject.Find("Setting Screen").GetComponent<UIScreen>();
         _settingScreen.Init();
-        GameManager.Instance.GetManager<UIManager>().ESCSubscribe(ESCKeyInputEvent);
-    }
-
-    private void ESCKeyInputEvent(bool press){
-        if(press)
-            _isOpenSetting = !_isOpenSetting;
-
-        GameManager.Instance.GameStop = _isOpenSetting;
-        _settingScreen.UpdateScreenState(_isOpenSetting);
     }
 }
