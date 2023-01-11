@@ -10,7 +10,7 @@ public class Dragon : PoolableMono
     [SerializeField] private Transform _dragonBodyParent;
     private DragonBody[] _dragonBodys;
 
-    private float _speed = 20f;
+    private float _speed = 30f;
 
     private float _delay = 1.5f;
     private bool _move = false;
