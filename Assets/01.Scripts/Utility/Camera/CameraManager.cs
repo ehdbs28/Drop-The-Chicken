@@ -11,6 +11,8 @@ public class CameraManager : IManager
     private Vector2 camLimit; 
     private Vector2 camOffset;
 
+    private Vector3 defaultCamPos;
+
     private IObservable<float> cameraSizeStream;
 
     public void UpdateState(GameState state)
@@ -19,13 +21,22 @@ public class CameraManager : IManager
             case GameState.INIT:
                 Init();
                 break;
+            case GameState.INGAME:
+                ResetCam();
+                break;
         }
+    }
+
+    private void ResetCam()
+    {
+        mainCam.transform.position = defaultCamPos;
     }
 
     private void Init(){
         mainCam = Camera.main;
         camLimit = new Vector2(-0.2f, 0.2f);
         camOffset = new Vector2(0, -1.5f);
+        defaultCamPos = new Vector3(0, 0, -10f);
 
         cameraSizeStream = Observable.EveryUpdate().Where(condition => GameManager.Instance.State == GameState.INGAME).Select(size => mainCam.orthographicSize * mainCam.aspect);
 

@@ -13,7 +13,7 @@ public class PlayerManager : IManager
 
     float _minSpeed = 2f;
     float _maxSpeed = 7f;
-    float _maxSpeedScore = 700;
+    float _maxSpeedScore = 500;
 
     public void UpdateState(GameState state)
     {
@@ -23,6 +23,8 @@ public class PlayerManager : IManager
                 break;
             case GameState.INGAME:
                 _player.IsPlay = true; 
+                _player.ResetPlayer();
+                GameManager.Instance.Stop = false;
                 GameManager.Instance.GetManager<CameraManager>().CamSizeSubscribe(PlayerMoveLimit);
                 GameManager.Instance.GetManager<ScoreManager>().ScoreSubscribe(ScoreSetSpeed);
                 break;
@@ -39,6 +41,8 @@ public class PlayerManager : IManager
         _player.Fevers = Enumerable.Repeat(false, 5).ToList();
     }
 
+    
+
     private void PlayerMoveLimit(float camSize){
         _player.transform.position = new Vector3(Mathf.Clamp(_player.transform.position.x, -camSize + .2f, camSize - .2f), _player.transform.position.y);
     }
@@ -49,6 +53,8 @@ public class PlayerManager : IManager
 
     private void ScoreSetSpeed(int score)
     {
+        if (_player.IsFever) return;
+
         if (score == 0)
         {
             _player.FallingSpeed = _minSpeed;

@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Linq.Expressions;
 
 public class DragonBody : MonoBehaviour
 {
-    private float _dragonBodyTerm = 0.15f;
+    private float _dragonBodyTerm = 0.35f;
     private float _shakeValue = 0.05f;
 
     [SerializeField]
@@ -21,10 +22,10 @@ public class DragonBody : MonoBehaviour
         }
     }
 
-    public void SetBody(int idx)
+    public void SetBody(int idx, Vector3 defaultPos)
     {
-        Sprite.sortingOrder = -(idx + 1);
-        transform.position = transform.position + Vector3.down * idx * _dragonBodyTerm;
+        Sprite.sortingOrder = -(idx+5);
+        transform.position = defaultPos + Vector3.down * idx * _dragonBodyTerm;
     }
     public void ShakeBody()
     {

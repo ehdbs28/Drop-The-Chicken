@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour, IDamageable
 {
@@ -12,8 +13,6 @@ public class Player : MonoBehaviour, IDamageable
         set { _fallingSpeed = value; }
     }
     [SerializeField] private float _moveSpeed = 4.5f;
-    
-
     [SerializeField] private float _feverSpeed = 10f;
 
     [SerializeField] private Material _paintWhite;
@@ -85,8 +84,6 @@ public class Player : MonoBehaviour, IDamageable
         FeverStart();
     }
 
-    
-
     private void PlayerMove(){
         float input = Input.GetAxisRaw("Horizontal");
 
@@ -109,6 +106,12 @@ public class Player : MonoBehaviour, IDamageable
 
         StartCoroutine("Die");
         
+    }
+    public void ResetPlayer()
+    {
+        transform.position = Vector2.zero;
+        StopCoroutine("Die");
+
     }
 
     private void FeverStart()
@@ -164,10 +167,10 @@ public class Player : MonoBehaviour, IDamageable
     IEnumerator DoFever()
     {
         _animator.SetTrigger("Fever");
-        float saveSpd = _fallingSpeed;
-        _fallingSpeed = _feverSpeed;
         _isFever = true;
         _isUnbeatable = true;
+        float saveSpd = _fallingSpeed;
+        _fallingSpeed = _feverSpeed;
         yield return new WaitForSeconds(5f);
         _fallingSpeed = saveSpd;
         ResetFever();
@@ -175,18 +178,21 @@ public class Player : MonoBehaviour, IDamageable
     IEnumerator Die()
     {
         IsDie = true;
-        _animator.SetTrigger("Die");
+        _animator.SetBool("Die", true);
         _spriteRenderer.material = _paintWhite;
         yield return new WaitForSeconds(0.3f);
         _spriteRenderer.material = _defaultMat;
 
         
-        float m_Speed = 0.5f;
         float m_HeightArc = 5;
         Vector3 m_StartPosition = transform.position;
-        _fallPos.position = new Vector3(transform.position.x + 2, transform.position.y - 8, 0);
+        float x = (transform.position.x > 0) ? -2f : 2f;
+        float m_Speed = Mathf.Abs(transform.position.x - x);
+        _fallPos.position = new Vector3(x, transform.position.y - 8, 0);
 
-        while (true)
+        Vector3 nextPosition = Vector3.zero;
+
+        while (!((int)nextPosition.y == (int)_fallPos.position.y))
         {
             float x0 = m_StartPosition.x;
             float x1 = _fallPos.position.x;
@@ -194,19 +200,15 @@ public class Player : MonoBehaviour, IDamageable
             float nextX = Mathf.MoveTowards(transform.position.x, x1, m_Speed * Time.fixedDeltaTime);
             float baseY = Mathf.Lerp(m_StartPosition.y, _fallPos.position.y, (nextX - x0) / distance);
             float arc = m_HeightArc * (nextX - x0) * (nextX - x1) / (-0.25f * distance * distance);
-            Vector3 nextPosition = new Vector3(nextX, baseY + arc, transform.position.z);
+            nextPosition = new Vector3(nextX, baseY + arc, transform.position.z);
 
             //transform.rotation = LookAt2D(nextPosition - transform.position);
             transform.position = nextPosition;
 
-
-            if (nextPosition == _fallPos.position)
-                break;
-
             yield return new WaitForFixedUpdate();
         }
         yield return new WaitForSeconds(1.5f);
-        GameManager.Instance.Stop = false;
+        _animator.SetBool("Die", false);
         GameManager.Instance.UpdateState(GameState.RESULT);
     }
     Quaternion LookAt2D(Vector2 forward)
