@@ -14,7 +14,7 @@ public class SummonObj
 
 public class RandomMap : MonoBehaviour
 {
-    private float _stormZonePer = 0.1f; // 10ÆÛ¼¾Æ®
+    private float _stormZonePer = 0.1f; // 10ï¿½Û¼ï¿½Æ®
 
     [SerializeField]
     private StormZone storm;
@@ -105,7 +105,7 @@ public class RandomMap : MonoBehaviour
         storm.SetDirection((Random.Range(0.0f, 1.0f) <= 0.5f));
 
     }
-    // seed´ë·Î ¸ÊÀ» »ý¼ºÇÕ´Ï´Ù.
+    // seedï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
     private void SettingMap()
     {
         for (int i = 0; i < seeds.Length; i++)
@@ -155,7 +155,6 @@ public class RandomMap : MonoBehaviour
     {
         if (obj.CompareTag("Player"))
         {
-            Debug.Log("°¨ÁøµÊ");
             AddMap();
         }
     }
