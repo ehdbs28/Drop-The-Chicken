@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using System;
 
 public class Pigeon : PoolableMono
 {
-    [SerializeField] private float speed; // 이동속도
+    [SerializeField] private float minSpeed; // 이동속도
+    [SerializeField] private float maxSpeed;
+    private float speed;
 
     [SerializeField] private float maxX;
     [SerializeField] private float minX;
@@ -42,5 +41,6 @@ public class Pigeon : PoolableMono
     public override void Reset()
     {
         //
+        speed = Random.Range(minSpeed, maxSpeed);
     }
 }

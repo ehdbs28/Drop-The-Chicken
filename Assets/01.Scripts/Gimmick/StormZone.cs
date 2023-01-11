@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StormZone : PoolableMono
+public class StormZone : MonoBehaviour
 {
     [SerializeField] private float _stormForce;
+    private float _force;
     private ParticleSystem[] _stormParticles;
 
     private Rigidbody2D _playerRigid;
@@ -17,6 +18,8 @@ public class StormZone : PoolableMono
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+        if (GameManager.Instance.Stop) return;
+
         if(other.CompareTag(PLAYER_TAG)){
             Player player = other.GetComponent<Player>();
             _playerRigid ??= player.GetComponent<Rigidbody2D>();
@@ -24,12 +27,13 @@ public class StormZone : PoolableMono
     }
 
     private void OnTriggerStay2D(Collider2D other) {
-        if(_playerRigid == null) return;
+        if(_playerRigid == null || GameManager.Instance.Stop) return;
 
-        _playerRigid.AddForce(Vector2.left * _stormForce);
+        _playerRigid.AddForce(Vector2.left * _force);
     }
 
     private void OnTriggerExit2D(Collider2D other) {
+
         if(other.CompareTag(PLAYER_TAG)){
             _playerRigid = null;
         }
@@ -39,17 +43,10 @@ public class StormZone : PoolableMono
     {
         _isRight = isRight;
         transform.localScale = isRight ? new Vector3(14, -6, 1) : new Vector3(14, 6, 1);
-        _stormForce = isRight ? -30f : 30f;
+        _force = isRight ? -_stormForce : _stormForce;
         foreach (var particle in _stormParticles)
         {
             particle.Play();
         }
-    }
-
-    public override void Reset()
-    {
-        //
-        
-
     }
 }

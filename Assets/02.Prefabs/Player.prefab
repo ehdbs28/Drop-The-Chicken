@@ -9742,10 +9742,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fallingSpeed: 1
   _moveSpeed: 3
-  _feverSpeed: 10
+  _feverSpeed: 15
   _paintWhite: {fileID: 2100000, guid: 273432fcd670ade468b79eefa594ec65, type: 2}
   _defaultMat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   _fallPos: {fileID: 0}
+  Fevers: 0000000000
 --- !u!50 &3205498697566871734
 Rigidbody2D:
   serializedVersion: 4

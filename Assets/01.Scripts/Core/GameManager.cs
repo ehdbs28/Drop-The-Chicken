@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     private void Start() {
         _managers.Add(new DataManager());
+        _managers.Add(new MapManager());
         _managers.Add(new PlayerManager());
         _managers.Add(new ScoreManager());
         _managers.Add(new UIManager());

@@ -171,6 +171,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storm: {fileID: 4848336905948445988}
+  feverObjs:
+  - {fileID: 6340823245214835180, guid: b1ac5e53d5a9d624c86e2396967a4c79, type: 3}
+  - {fileID: 2877731395017043301, guid: 3b4203df18b7ab84f8394804fccf1e60, type: 3}
+  - {fileID: 4401399754166258164, guid: a04bbf8dd40773a42b7ccb07854c4f40, type: 3}
+  - {fileID: 4794425671314607494, guid: 03dddf932961f7548b7032660e4a246a, type: 3}
+  - {fileID: 4955467220591733872, guid: 5ecd927c1d5033847991d6990a22c2af, type: 3}
   seeds:
   - summonObj: {fileID: 5091987352142802465, guid: 2ec93560c93eaaa4586fb26abe42ab25, type: 3}
     minPos: {fileID: 8437501578421435805}
@@ -713,7 +719,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3913846060254470343, guid: 8a830c146635d944184982dc06c701ce, type: 3}
       propertyPath: _stormForce
-      value: 30
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 6534476006298353550, guid: 8a830c146635d944184982dc06c701ce, type: 3}
       propertyPath: m_Name
