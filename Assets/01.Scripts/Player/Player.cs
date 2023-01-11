@@ -22,6 +22,8 @@ public class Player : MonoBehaviour, IDamageable
 
     [SerializeField] private Transform _fallPos;
 
+    [SerializeField] private ParticleSystem[] _feverParticles;
+
     private Vector2 _defaultPlayerPos = new Vector2(0, 4.35f);
     public Vector2 DefaultPlayerPos => _defaultPlayerPos;
 
@@ -172,12 +174,20 @@ public class Player : MonoBehaviour, IDamageable
     {
         _animator.SetBool("Fever", true);
         yield return new WaitForSeconds(0.7f);
+
+        foreach(var particle in _feverParticles)
+            particle.Play();
+
         IsFast = false;
         _isFever = true;
         _isUnbeatable = true;
         float saveSpd = _fallingSpeed;
         _fallingSpeed = _feverSpeed;
         yield return new WaitForSeconds(5f);
+
+        foreach(var particle in _feverParticles)
+            particle.Stop();
+        
         _animator.SetBool("Fever", false);
         _fallingSpeed = saveSpd;
         ResetFever();
