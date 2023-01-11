@@ -161,12 +161,13 @@ public class Player : MonoBehaviour, IDamageable
 
     IEnumerator DoFever()
     {
-        _animator.SetTrigger("Fever");
+        _animator.SetBool("Fever", true);
         _isFever = true;
         _isUnbeatable = true;
         float saveSpd = _fallingSpeed;
         _fallingSpeed = _feverSpeed;
         yield return new WaitForSeconds(5f);
+        _animator.SetBool("Fever", false);
         _fallingSpeed = saveSpd;
         ResetFever();
     }

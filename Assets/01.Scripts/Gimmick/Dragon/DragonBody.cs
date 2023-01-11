@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Linq.Expressions;
 
-public class DragonBody : MonoBehaviour, IObstacle
+public class DragonBody : MonoBehaviour, IObstacle, IBrokenObject
 {
     private float _dragonBodyTerm = 0.35f;
     private float _shakeValue = 0.05f;
@@ -59,5 +59,15 @@ public class DragonBody : MonoBehaviour, IObstacle
             transform.DOMoveX(defaultX, 0.05f);
             yield return new WaitForSeconds(0.06f);
         }
+    }
+
+    public void BrokenEvent()
+    {
+        PoolingParticle brokenParticle = PoolManager.Instance.Pop("BrokenParticleDragon") as PoolingParticle;
+
+        brokenParticle.SetPosition(transform.position);
+        brokenParticle.Play();
+
+        Destroy(this);
     }
 }

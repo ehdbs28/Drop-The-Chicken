@@ -8890,6 +8890,10 @@ MonoBehaviour:
   - {fileID: 8369048747112471278, guid: 598af0370378eb249a07683c7b1dcd8f, type: 3}
   - {fileID: 6214379567289416611, guid: 7de8bcc31f60b1841895a56627bcef50, type: 3}
   - {fileID: 7902835982426849846, guid: 5fc6d629291f8de4da0a3e116478b8ff, type: 3}
+  - {fileID: 925746714510759570, guid: 8ed8cfa1f4c06704a95dfe95e6e8e675, type: 3}
+  - {fileID: 1906976145168107325, guid: 0f293a8deeccef54e9e21099b6d09508, type: 3}
+  - {fileID: 2499843450925198016, guid: 9f708845b5586014382910bcbfd567ef, type: 3}
+  - {fileID: 646145584562338319, guid: 9a329e4a744c77645a3d9a059cce90c6, type: 3}
 --- !u!1 &1051685107
 GameObject:
   m_ObjectHideFlags: 0

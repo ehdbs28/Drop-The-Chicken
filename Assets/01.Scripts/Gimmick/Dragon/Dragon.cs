@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dragon : PoolableMono
+public class Dragon : PoolableMono, IBrokenObject
 {
     [SerializeField] private ParticleSystem _dangerParticle;
 
@@ -59,5 +59,15 @@ public class Dragon : PoolableMono
     {
         //
         StartCoroutine("DragonSetting");
+    }
+
+    public void BrokenEvent()
+    {
+        PoolingParticle brokenParticle = PoolManager.Instance.Pop("BrokenParticleDragon") as PoolingParticle;
+
+        brokenParticle.SetPosition(transform.position);
+        brokenParticle.Play();
+
+        PoolManager.Instance.Push(this);
     }
 }

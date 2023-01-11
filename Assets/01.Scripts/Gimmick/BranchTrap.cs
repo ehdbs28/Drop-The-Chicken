@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BranchTrap : PoolableMono, IObstacle
+public class BranchTrap : PoolableMono, IObstacle, IBrokenObject
 {
     [SerializeField]
     private List<Sprite> branchSprites = new List<Sprite>();
@@ -33,4 +33,13 @@ public class BranchTrap : PoolableMono, IObstacle
         ResetBranch();
     }
 
+    public void BrokenEvent()
+    {
+        PoolingParticle brokenParticle = PoolManager.Instance.Pop("BrokenParticleBranch") as PoolingParticle;
+
+        brokenParticle.SetPosition(transform.position);
+        brokenParticle.Play();
+
+        PoolManager.Instance.Push(this);
+    }
 }

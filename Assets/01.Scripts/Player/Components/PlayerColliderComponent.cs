@@ -28,9 +28,14 @@ public class PlayerColliderComponent : IPlayerComponent
         .Subscribe(col => {
             if(!col.CompareTag("Obstacle")) return;
 
-            IObstacle obstacle = col.GetComponent<IObstacle>();
-
-            obstacle?.EnterEvent(playerCol);
+            if(player.IsUnbeatable){
+                IBrokenObject brokenObject = col.GetComponent<IBrokenObject>();
+                brokenObject?.BrokenEvent();
+            }
+            else{
+                IObstacle obstacle = col.GetComponent<IObstacle>();
+                obstacle?.EnterEvent(playerCol);
+            }
         });
 
         player.OnTriggerStay2DAsObservable()

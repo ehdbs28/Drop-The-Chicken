@@ -14,6 +14,10 @@ public class PoolingParticle : PoolableMono
         StartCoroutine(PlayCoroutine());
     }
 
+    public void SetPosition(Vector3 position){
+        _particle.transform.position = position;
+    }
+
     IEnumerator PlayCoroutine(){
         _particle.Play();
 

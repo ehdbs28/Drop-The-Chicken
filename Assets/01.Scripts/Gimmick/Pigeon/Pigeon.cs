@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class Pigeon : PoolableMono, IObstacle
+public class Pigeon : PoolableMono, IObstacle, IBrokenObject
 {
     [SerializeField] private float minSpeed; // �̵��ӵ�
     [SerializeField] private float maxSpeed;
@@ -53,5 +53,15 @@ public class Pigeon : PoolableMono, IObstacle
 
     public void ExitEvent(Collider2D col)
     {
+    }
+
+    public void BrokenEvent()
+    {
+        PoolingParticle brokenParticle = PoolManager.Instance.Pop("BrokenParticlePigeon") as PoolingParticle;
+
+        brokenParticle.SetPosition(transform.position);
+        brokenParticle.Play();
+
+        PoolManager.Instance.Push(this);
     }
 }
