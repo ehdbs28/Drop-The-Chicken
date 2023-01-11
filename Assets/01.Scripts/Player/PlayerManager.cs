@@ -52,8 +52,8 @@ public class PlayerManager : IManager
         components.Add(new PlayerColliderComponent(_player));
     }
 
-    
 
+    public Vector2 GetDefaultPlayerPos => _player.DefaultPlayerPos;
     private void PlayerMoveLimit(float camSize){
         _player.transform.position = new Vector3(Mathf.Clamp(_player.transform.position.x, -camSize + .2f, camSize - .2f), _player.transform.position.y);
     }

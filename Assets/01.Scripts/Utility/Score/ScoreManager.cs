@@ -7,10 +7,12 @@ using UniRx;
 public class ScoreManager : IManager
 {
     private int _currentScore = 0;
-    private int _bestSocre {
+    private int _bestScore {
         get => GameManager.Instance.GetManager<DataManager>().User.BestScore; 
         set => GameManager.Instance.GetManager<DataManager>().User.BestScore = value;
     }
+    public bool IsCurrentScoreBest => (_bestScore <= _currentScore);
+    public int BestScore => _bestScore;
 
     private Vector3 playerStartPos = Vector3.zero;
 
@@ -36,8 +38,8 @@ public class ScoreManager : IManager
 
         _currentScore = (int)Mathf.Abs(playerStartPos.y - playerPos.y);
 
-        if(_currentScore > _bestSocre){
-            _bestSocre = _currentScore;
+        if(_currentScore > _bestScore){
+            _bestScore = _currentScore;
         }
     }
 

@@ -24,8 +24,8 @@ public class RandomMap : MonoBehaviour
     private FeverObj[] feverObjs;
     private Player _player;
 
-    private int _spawnFeverObjTime = 3;
-    private int _feverCount = 0;
+    [SerializeField]
+    private bool thirdMap;
 
     [SerializeField]
     private SummonObj[] seeds;
@@ -56,10 +56,10 @@ public class RandomMap : MonoBehaviour
 
     private void AddFever()
     {
-        if(_feverCount >= _spawnFeverObjTime)
+        if(thirdMap)
         {
-            int maxX = 3;
-            int minX = -3;
+            int maxX = 2;
+            int minX = -2;
             int X = Random.Range(minX, maxX);
 
             int maxY = 5;
@@ -72,7 +72,6 @@ public class RandomMap : MonoBehaviour
                 Y = Random.Range(minY, maxY);
                 if (!yThereIsObj.Contains((int)Y)) break;
             }
-            _feverCount = 0;
             for (int i = 0; i < _player.Fevers.Count; i++)
             {
                 if (!_player.Fevers[i])
@@ -84,7 +83,6 @@ public class RandomMap : MonoBehaviour
                 }
             }
         }
-        _feverCount++;
     }
 
     private void ResetSeeds()
@@ -157,6 +155,7 @@ public class RandomMap : MonoBehaviour
     private void ResetDifficult()
     {
         seeds[0].CountRandomRange = 0;
+        seeds[0].SummonCount = 0;
         seeds[1].CountRandomRange = 1;
         seeds[4].CountRandomRange = 2;
     }
