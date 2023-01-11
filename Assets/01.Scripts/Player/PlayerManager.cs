@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using System.Linq;
+using DG.Tweening;
 
 public class PlayerManager : IManager
 {
@@ -25,9 +26,13 @@ public class PlayerManager : IManager
                 break;
             case GameState.STANDBY:
                 _player.ResetPlayer();
+                _player.transform.position = _player.DefaultPlayerPos + Vector2.up * 3f;
+                _player.transform.DOMove(_player.DefaultPlayerPos, 1f).SetEase(Ease.InOutQuad).SetUpdate(true);
                 break;
             case GameState.INGAME:
-                _player.IsPlay = true; 
+                Observable.Timer(TimeSpan.FromSeconds(0.3f)).Subscribe(timer => {
+                    _player.IsPlay = true;
+                });
                 _player.ResetPlayer();
                 GameManager.Instance.Stop = false;
                 GameManager.Instance.GetManager<CameraManager>().CamSizeSubscribe(PlayerMoveLimit);
@@ -44,7 +49,7 @@ public class PlayerManager : IManager
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
         playerFeverStream = Observable.EveryUpdate().Where(condition => GameManager.Instance.State == GameState.INGAME).Select(list => _player.Fevers);
-        playerPosStream = Observable.EveryUpdate().Where(condition => GameManager.Instance.State == GameState.INGAME && !_player.IsDie).Select(position => _player.transform.position);
+        playerPosStream = Observable.EveryUpdate().Where(condition => GameManager.Instance.State == GameState.INGAME && !_player.IsDie && _player.IsPlay).Select(position => _player.transform.position);
         
         _player.IsPlay = false;
         _player.Fevers = Enumerable.Repeat(false, 5).ToList();

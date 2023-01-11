@@ -20,7 +20,7 @@ public class CameraManager : IManager
             case GameState.INIT:
                 Init();
                 break;
-            case GameState.INGAME:
+            case GameState.STANDBY:
                 ResetCam();
                 break;
         }

@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UniRx;
 using UnityEngine;
+using DG.Tweening;
 
 public class UIManager : IManager
 {   
     private List<UIScreen> uIScreens = new List<UIScreen>();
+    private RectTransform screenTransition;
 
     private IObservable<bool> _inputESCKeyStream;
     
@@ -16,6 +18,8 @@ public class UIManager : IManager
         uIScreens.Add(GameObject.Find("InGame Screen").GetComponent<UIScreen>());
         uIScreens.Add(GameObject.Find("Result Screen").GetComponent<UIScreen>());
         //uIScreens.Add(GameObject.Find("Setting Screen").GetComponent<UIScreen>());
+
+        screenTransition = GameObject.Find("Transition Panel").GetComponent<RectTransform>();
     }
 
     public void UpdateState(GameState state)
@@ -54,6 +58,18 @@ public class UIManager : IManager
         foreach(var screen in uIScreens){
             screen.Init();
         }
+    }
+
+    public void Transition(Action screenChange){
+        Sequence sq = DOTween.Sequence().SetUpdate(true);
+
+        sq.Append(screenTransition.DOAnchorPosY(0, 1f).SetEase(Ease.OutQuad));
+        sq.AppendInterval(0.5f);
+        sq.AppendCallback(() => screenChange?.Invoke());
+        sq.Append(screenTransition.DOAnchorPosY(1980, 1f).SetEase(Ease.OutQuad));
+        sq.OnComplete(() => {
+            sq.Kill();
+        });
     }
 
     public void ESCSubscribe(Action<bool> action){
