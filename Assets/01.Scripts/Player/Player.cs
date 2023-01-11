@@ -109,8 +109,12 @@ public class Player : MonoBehaviour, IDamageable
     }
     public void ResetPlayer()
     {
-        transform.position = Vector2.zero;
+        transform.position = new Vector2(0, 4.35f);
         StopCoroutine("Die");
+        for (int i = 0; i < Fevers.Count; i++)
+        {
+            Fevers[i] = false;
+        }
 
     }
 
