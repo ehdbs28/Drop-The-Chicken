@@ -2772,7 +2772,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3209a03b33fa34740b4fa035a5eb16cd, type: 3}
-  m_Color: {r: 1, g: 0.98457783, b: 0.7773585, a: 1}
+  m_Color: {r: 1, g: 0.98457783, b: 0.7773585, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -13686,11 +13686,10 @@ MonoBehaviour:
   _waitTime: 5
   _colorPallete:
     queue:
-    - {r: 0.32941177, g: 0.6509804, b: 0.9254902, a: 1}
-    - {r: 0.9056604, g: 0.55877537, b: 0.5728383, a: 1}
-    - {r: 1, g: 0.73283184, b: 0, a: 1}
-    - {r: 0.078431375, g: 0.05882353, b: 0.22745098, a: 1}
-    - {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
+    - {r: 0.34509805, g: 0.69803923, b: 1, a: 1}
+    - {r: 0.13725491, g: 0.21960784, b: 0.3137255, a: 1}
+    - {r: 0.7176471, g: 0.29411766, b: 0.4862745, a: 1}
+    - {r: 0.99607843, g: 1, b: 0.7137255, a: 1}
 --- !u!114 &977515868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35642,7 +35641,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.32941177, g: 0.6509804, b: 0.9254902, a: 1}
+  m_BackGroundColor: {r: 0.34509805, g: 0.69803923, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

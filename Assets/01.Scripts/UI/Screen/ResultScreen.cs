@@ -27,7 +27,7 @@ public class ResultScreen : UIScreen
         });
 
         tapToMainmenu.onClick.AddListener(() => {
-            GameManager.Instance.UpdateState(GameState.INIT);
+            GameManager.Instance.UpdateState(GameState.STANDBY);
         });
 
         base.Init();
