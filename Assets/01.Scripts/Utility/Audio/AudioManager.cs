@@ -7,6 +7,9 @@ public class AudioManager : MonoBehaviour, IManager
 {
     [SerializeField] private AudioMixer _masterMixer;
 
+    private AudioSource _bgmSource;
+    private AudioSource _sfxSource;
+
     public bool IsMuteBGM {
         get{
             _masterMixer.GetFloat("BGM", out float bgmVolume);
@@ -23,11 +26,24 @@ public class AudioManager : MonoBehaviour, IManager
 
     public void UpdateState(GameState state)
     {
+        switch(state){
+            case GameState.INIT:
+                Init();
+                break;
+        }
+    }
+
+    public void PlayBGM(AudioClip clip){
+
+    }
+
+    public void PlayOneShot(AudioClip clip){
         
     }
 
     private void Init(){
-
+        _bgmSource = transform.Find("AudioSource_BGM").GetComponent<AudioSource>();
+        _sfxSource = transform.Find("AudioSource_SFX").GetComponent<AudioSource>();
     }
 
     public void AudioMute(AudioType type, bool mute){

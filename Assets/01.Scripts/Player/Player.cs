@@ -162,12 +162,16 @@ public class Player : MonoBehaviour, IDamageable
 
     private void ResetFever()
     {
+        _animator.SetBool("Fever", false);
         _isFever = false;
         _isUnbeatable = false;
 
         for(int i = 0; i < Fevers.Count; i++){
             Fevers[i] = false;
         }
+
+        foreach(var particle in _feverParticles)
+            particle.Play();
     }
 
     IEnumerator DoFever()
