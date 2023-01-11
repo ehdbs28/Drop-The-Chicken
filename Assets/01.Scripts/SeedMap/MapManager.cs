@@ -7,7 +7,7 @@ using UnityEngine;
 public class MapManager : IManager
 {
     private RandomMap[] maps;
-
+    private Transform _maxScorePos;
 
     public void UpdateState(GameState state)
     {
@@ -20,18 +20,23 @@ public class MapManager : IManager
                 ClearMap();
                 break;
             case GameState.INGAME:
-                GameManager.Instance.GetManager<ScoreManager>().ScoreSubscribe(ScoreDifficult);
                 ResetMap();
+                GameManager.Instance.GetManager<ScoreManager>().ScoreSubscribe(ScoreDifficult);
                 break;
         }
     }
     public void Init()
     {
         maps = GameObject.Find("MapManager").GetComponentsInChildren<RandomMap>();
+        _maxScorePos = GameObject.Find("MaxScorePos").transform;
     }
     
     private void ResetMap()
     {
+        if(GameManager.Instance.GetManager<ScoreManager>().BestScore != 0)
+            _maxScorePos.position = GameManager.Instance.GetManager<PlayerManager>().GetDefaultPlayerPos +
+                (GameManager.Instance.GetManager<ScoreManager>().BestScore * Vector2.down);
+
         for(int i = 0; i < maps.Length; i++)
         {
             maps[i].transform.position = new Vector2(0, -5f + (i * -10));

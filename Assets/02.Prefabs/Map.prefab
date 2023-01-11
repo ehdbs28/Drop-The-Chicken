@@ -270,7 +270,7 @@ MonoBehaviour:
     minPos: {fileID: 8437501578173274518}
     maxPos: {fileID: 8437501578585392462}
     SummonCount: 0
-    CountRandomRange: 2
+    CountRandomRange: 1
   - summonObj: {fileID: 8369048747112471278, guid: 598af0370378eb249a07683c7b1dcd8f, type: 3}
     minPos: {fileID: 8437501579092492787}
     maxPos: {fileID: 8437501578368582699}
@@ -285,7 +285,7 @@ MonoBehaviour:
     minPos: {fileID: 8437501578886247455}
     maxPos: {fileID: 8437501577761490542}
     SummonCount: 0
-    CountRandomRange: 3
+    CountRandomRange: 2
 --- !u!61 &8437501577586435340
 BoxCollider2D:
   m_ObjectHideFlags: 0

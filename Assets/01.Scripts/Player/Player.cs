@@ -22,6 +22,9 @@ public class Player : MonoBehaviour, IDamageable
 
     [SerializeField] private Transform _fallPos;
 
+    private Vector2 _defaultPlayerPos = new Vector2(0, 4.35f);
+    public Vector2 DefaultPlayerPos => _defaultPlayerPos;
+
     public bool IsPlay {get; set;}
     public bool IsDie{
         get => GameManager.Instance.Stop;
@@ -115,7 +118,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void ResetPlayer()
     {
-        transform.position = new Vector2(0, 4.35f);
+        transform.position = _defaultPlayerPos;
         IsFast = false;
         StopCoroutine("Die");
         for (int i = 0; i < Fevers.Count; i++)
