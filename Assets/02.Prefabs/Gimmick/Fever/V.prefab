@@ -5009,7 +5009,7 @@ GameObject:
   - component: {fileID: 4401399754166258167}
   m_Layer: 0
   m_Name: V
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

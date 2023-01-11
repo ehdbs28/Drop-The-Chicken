@@ -15,6 +15,8 @@ public class PlayerManager : IManager
     float _maxSpeed = 7f;
     float _maxSpeedScore = 500;
 
+    private readonly List<IPlayerComponent> components = new List<IPlayerComponent>();
+
     public void UpdateState(GameState state)
     {
         switch(state){
@@ -29,6 +31,10 @@ public class PlayerManager : IManager
                 GameManager.Instance.GetManager<ScoreManager>().ScoreSubscribe(ScoreSetSpeed);
                 break;
         }
+
+        foreach(var component in components){
+            component.UpdateState(state);
+        }
     }
 
     public void Init(){
@@ -39,6 +45,8 @@ public class PlayerManager : IManager
         
         _player.IsPlay = false;
         _player.Fevers = Enumerable.Repeat(false, 5).ToList();
+
+        components.Add(new PlayerColliderComponent(_player));
     }
 
     

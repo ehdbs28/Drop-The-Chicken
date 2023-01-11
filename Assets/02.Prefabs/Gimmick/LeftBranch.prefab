@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8369048747112471279}
   m_Layer: 0
   m_Name: LeftBranch
-  m_TagString: DamageAbleObj
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

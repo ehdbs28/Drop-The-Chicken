@@ -45,15 +45,10 @@ public class Player : MonoBehaviour, IDamageable
     private bool _isFever = false;
     public bool IsFever => _isFever;
 
-    // public bool F;
-    // public bool E;
-    // public bool V;
-    // public bool E2;
-    // public bool R;
+    private bool _isUnbeatable = false;
+    public bool IsUnbeatable => _isUnbeatable;
 
     public List<bool> Fevers;
-
-    private bool _isUnbeatable = false;
     #endregion
 
     private Animator _animator;
@@ -68,7 +63,6 @@ public class Player : MonoBehaviour, IDamageable
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
         _fastParticle = transform.Find("FastParticle").GetComponentsInChildren<ParticleSystem>();
-        
     }
 
     private void FixedUpdate() {
@@ -94,19 +88,20 @@ public class Player : MonoBehaviour, IDamageable
 
         _rigid.velocity = new Vector2(input * _moveSpeed, _rigid.velocity.y);
     }
+
     private void PlayerFall(){
         _rigid.velocity = new Vector2(_rigid.velocity.x, -((_isFast) ? _fallingSpeed * 1.5f : _fallingSpeed));
     }
+
     private void SlowDown(){
         _isFast = false;
     }
+
     public void OnDamage()
     {
-        if (_isUnbeatable || IsDie) return;
-
         StartCoroutine("Die");
-        
     }
+
     public void ResetPlayer()
     {
         transform.position = new Vector2(0, 4.35f);
@@ -114,6 +109,9 @@ public class Player : MonoBehaviour, IDamageable
         for (int i = 0; i < Fevers.Count; i++)
         {
             Fevers[i] = false;
+        }
+        foreach(ParticleSystem particle  in _fastParticle){
+            particle.Stop();
         }
 
     }
@@ -125,6 +123,7 @@ public class Player : MonoBehaviour, IDamageable
         if(!_isFever && fever)
             StartCoroutine("DoFever");
     }
+
     public void GetFeverObj(FeverTxt txt)
     {
         if(IsFever || IsDie) return;
@@ -150,6 +149,7 @@ public class Player : MonoBehaviour, IDamageable
             Fevers[4] = true;
         }
     }
+
     private void ResetFever()
     {
         _isFever = false;
@@ -159,13 +159,14 @@ public class Player : MonoBehaviour, IDamageable
             Fevers[i] = false;
         }
     }
+
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        if(_isUnbeatable)
-            Debug.Log(obj.name);
+        // if(_isUnbeatable)
+        //     Debug.Log(obj.name);
 
-        if (!IsDie && obj.CompareTag("DamageAbleObj"))
-            OnDamage();
+        // if (!IsDie && obj.CompareTag("DamageAbleObj"))
+        //     OnDamage();
     }
     
     IEnumerator DoFever()
@@ -179,6 +180,7 @@ public class Player : MonoBehaviour, IDamageable
         _fallingSpeed = saveSpd;
         ResetFever();
     }
+
     IEnumerator Die()
     {
         IsDie = true;
@@ -211,15 +213,13 @@ public class Player : MonoBehaviour, IDamageable
 
             yield return new WaitForFixedUpdate();
         }
-        yield return new WaitForSeconds(1.5f);
+        //yield return new WaitForSeconds(1f);
         _animator.SetBool("Die", false);
         GameManager.Instance.UpdateState(GameState.RESULT);
     }
+
     Quaternion LookAt2D(Vector2 forward)
     {
         return Quaternion.Euler(0, 0, Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg);
     }
-
-
-
 }

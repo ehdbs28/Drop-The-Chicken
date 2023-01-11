@@ -10,7 +10,7 @@ public enum FeverTxt
     R,
 }
 
-public class FeverObj : PoolableMono
+public class FeverObj : PoolableMono, IObstacle
 {
     [SerializeField] private FeverTxt _feverTxt;
     private bool _isDelete;
@@ -23,15 +23,22 @@ public class FeverObj : PoolableMono
         _eatEffect = GetComponentInChildren<ParticleSystem>();
     }
 
-    private void OnTriggerEnter2D(Collider2D obj)
+    public void EnterEvent(Collider2D col)
     {
-        if (obj.CompareTag("Player"))
-        {
-            Player player = obj.GetComponent<Player>();
+        Player player = col.GetComponent<Player>();
 
-            player.GetFeverObj(_feverTxt);
-            StartCoroutine("DeleteObj");
-        }
+        player.GetFeverObj(_feverTxt);
+        StartCoroutine("DeleteObj");
+    }
+
+    public void StayEvent(Collider2D col)
+    {
+
+    }
+
+    public void ExitEvent(Collider2D col)
+    {
+        
     }
 
     IEnumerator DeleteObj()

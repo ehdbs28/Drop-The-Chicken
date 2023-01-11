@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Linq.Expressions;
 
-public class DragonBody : MonoBehaviour
+public class DragonBody : MonoBehaviour, IObstacle
 {
     private float _dragonBodyTerm = 0.35f;
     private float _shakeValue = 0.05f;
@@ -20,6 +20,20 @@ public class DragonBody : MonoBehaviour
 
             return _sprite;
         }
+    }
+
+    public void EnterEvent(Collider2D col)
+    {
+        Player player = col.GetComponent<Player>();
+        player.OnDamage();
+    }
+
+    public void StayEvent(Collider2D col)
+    {
+    }
+
+    public void ExitEvent(Collider2D col)
+    {
     }
 
     public void SetBody(int idx, Vector3 defaultPos)

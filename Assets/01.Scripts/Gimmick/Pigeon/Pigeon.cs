@@ -1,9 +1,9 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class Pigeon : PoolableMono
+public class Pigeon : PoolableMono, IObstacle
 {
-    [SerializeField] private float minSpeed; // ÀÌµ¿¼Óµµ
+    [SerializeField] private float minSpeed; // ï¿½Ìµï¿½ï¿½Óµï¿½
     [SerializeField] private float maxSpeed;
     private float speed;
 
@@ -31,8 +31,6 @@ public class Pigeon : PoolableMono
 
     private void ChangeMoveDir()
     {
-        //
-        
         transform.rotation = ( moveCheck ) ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
         moveCheck = (moveCheck) ? false : true;
     }
@@ -40,7 +38,20 @@ public class Pigeon : PoolableMono
 
     public override void Reset()
     {
-        //
         speed = Random.Range(minSpeed, maxSpeed);
+    }
+
+    public void EnterEvent(Collider2D col)
+    {
+        Player player = col.GetComponent<Player>();
+        player.OnDamage();
+    }
+
+    public void StayEvent(Collider2D col)
+    {
+    }
+
+    public void ExitEvent(Collider2D col)
+    {
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StormZone : MonoBehaviour
+public class StormZone : MonoBehaviour, IObstacle
 {
     [SerializeField] private float _stormForce;
     private float _force;
@@ -16,27 +16,23 @@ public class StormZone : MonoBehaviour
     private void Awake() {
         _stormParticles = GetComponentsInChildren<ParticleSystem>();
     }
-
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (GameManager.Instance.Stop) return;
-
-        if(other.CompareTag(PLAYER_TAG)){
-            Player player = other.GetComponent<Player>();
-            _playerRigid ??= player.GetComponent<Rigidbody2D>();
-        }
+    
+    public void EnterEvent(Collider2D col)
+    {
+        Player player = col.GetComponent<Player>();
+        _playerRigid ??= player.GetComponent<Rigidbody2D>();
     }
 
-    private void OnTriggerStay2D(Collider2D other) {
-        if(_playerRigid == null || GameManager.Instance.Stop) return;
+    public void StayEvent(Collider2D col)
+    {
+        if(_playerRigid == null) return;
 
         _playerRigid.AddForce(Vector2.left * _force);
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
-
-        if(other.CompareTag(PLAYER_TAG)){
-            _playerRigid = null;
-        }
+    public void ExitEvent(Collider2D col)
+    {
+        _playerRigid = null;
     }
 
     public void SetDirection(bool isRight)
