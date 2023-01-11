@@ -121,10 +121,7 @@ public class Player : MonoBehaviour, IDamageable
         transform.position = _defaultPlayerPos;
         IsFast = false;
         StopCoroutine("Die");
-        for (int i = 0; i < Fevers.Count; i++)
-        {
-            Fevers[i] = false;
-        }
+        ResetFever();
     }
 
     private void FeverStart()
@@ -174,6 +171,8 @@ public class Player : MonoBehaviour, IDamageable
     IEnumerator DoFever()
     {
         _animator.SetBool("Fever", true);
+        yield return new WaitForSeconds(0.7f);
+        IsFast = false;
         _isFever = true;
         _isUnbeatable = true;
         float saveSpd = _fallingSpeed;

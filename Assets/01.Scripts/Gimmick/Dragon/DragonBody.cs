@@ -68,6 +68,6 @@ public class DragonBody : MonoBehaviour, IObstacle, IBrokenObject
         brokenParticle.SetPosition(transform.position);
         brokenParticle.Play();
 
-        Destroy(this);
+        gameObject.SetActive(false);
     }
 }
