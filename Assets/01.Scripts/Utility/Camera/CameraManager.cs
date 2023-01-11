@@ -25,7 +25,7 @@ public class CameraManager : IManager
     private void Init(){
         mainCam = Camera.main;
         camLimit = new Vector2(-0.2f, 0.2f);
-        camOffset = new Vector2(0, -2.5f);
+        camOffset = new Vector2(0, -1.5f);
 
         cameraSizeStream = Observable.EveryUpdate().Where(condition => GameManager.Instance.State == GameState.INGAME).Select(size => mainCam.orthographicSize * mainCam.aspect);
 
@@ -36,11 +36,11 @@ public class CameraManager : IManager
         float x = playerPosition.x + camOffset.x;
         float y = playerPosition.y + camOffset.y;
 
-        x = Mathf.Clamp(x, camLimit.x, camLimit.y);
-
         Vector3 movePos = new Vector3(x, y, -10f);
 
-        mainCam.transform.position = Vector3.Lerp(mainCam.transform.position, movePos, Time.deltaTime);
+        mainCam.transform.position = 
+        new Vector3(Mathf.Lerp(mainCam.transform.position.x, movePos.x > 0 ? camLimit.y : camLimit.x, Time.deltaTime * 3)
+        , movePos.y, -10);
     }
 
     public void CamSizeSubscribe(Action<float> action){
