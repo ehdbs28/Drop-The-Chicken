@@ -23,6 +23,9 @@ public class PlayerManager : IManager
             case GameState.INIT:
                 Init();
                 break;
+            case GameState.STANDBY:
+                _player.ResetPlayer();
+                break;
             case GameState.INGAME:
                 _player.IsPlay = true; 
                 _player.ResetPlayer();

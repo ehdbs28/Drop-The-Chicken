@@ -113,7 +113,6 @@ public class Player : MonoBehaviour, IDamageable
         foreach(ParticleSystem particle  in _fastParticle){
             particle.Stop();
         }
-
     }
 
     private void FeverStart()
@@ -160,15 +159,6 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D obj)
-    {
-        // if(_isUnbeatable)
-        //     Debug.Log(obj.name);
-
-        // if (!IsDie && obj.CompareTag("DamageAbleObj"))
-        //     OnDamage();
-    }
-    
     IEnumerator DoFever()
     {
         _animator.SetTrigger("Fever");
@@ -183,6 +173,10 @@ public class Player : MonoBehaviour, IDamageable
 
     IEnumerator Die()
     {
+        foreach(ParticleSystem particle  in _fastParticle){
+            particle.Stop();
+        }
+
         IsDie = true;
         _animator.SetBool("Die", true);
         _spriteRenderer.material = _paintWhite;

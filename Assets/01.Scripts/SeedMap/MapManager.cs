@@ -17,6 +17,7 @@ public class MapManager : IManager
             case GameState.INIT:
                 Init();
                 break;
+            case GameState.STANDBY:
             case GameState.INGAME:
                 ResetMap();
                 break;
@@ -26,6 +27,7 @@ public class MapManager : IManager
     {
         maps = GameObject.Find("MapManager").GetComponentsInChildren<RandomMap>();
     }
+    
     private void ResetMap()
     {
         maps[0].transform.position = new Vector2(0, -5f);

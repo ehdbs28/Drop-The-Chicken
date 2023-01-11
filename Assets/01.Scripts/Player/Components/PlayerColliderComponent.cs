@@ -23,7 +23,8 @@ public class PlayerColliderComponent : IPlayerComponent
     private void Init(){
         Collider2D playerCol = player.GetComponent<Collider2D>();
 
-        player.OnTriggerEnter2DAsObservable().Where(condition => GameManager.Instance.State == GameState.INGAME && !GameManager.Instance.Stop && !player.IsDie)
+        player.OnTriggerEnter2DAsObservable()
+        .Where(condition => GameManager.Instance.State == GameState.INGAME && !GameManager.Instance.Stop && !player.IsDie)
         .Subscribe(col => {
             if(!col.CompareTag("Obstacle")) return;
 
@@ -32,7 +33,8 @@ public class PlayerColliderComponent : IPlayerComponent
             obstacle?.EnterEvent(playerCol);
         });
 
-        player.OnTriggerStay2DAsObservable().Where(condition => GameManager.Instance.State == GameState.INGAME && !GameManager.Instance.Stop && !player.IsDie)
+        player.OnTriggerStay2DAsObservable()
+        .Where(condition => GameManager.Instance.State == GameState.INGAME && !GameManager.Instance.Stop && !player.IsDie)
         .Subscribe(col => {
             if(!col.CompareTag("Obstacle")) return;
 
@@ -41,7 +43,8 @@ public class PlayerColliderComponent : IPlayerComponent
             obstacle?.StayEvent(playerCol);
         });
 
-        player.OnTriggerExit2DAsObservable().Where(condition => GameManager.Instance.State == GameState.INGAME && !GameManager.Instance.Stop && !player.IsDie)
+        player.OnTriggerExit2DAsObservable()
+        .Where(condition => GameManager.Instance.State == GameState.INGAME && !GameManager.Instance.Stop && !player.IsDie)
         .Subscribe(col => {
             if(!col.CompareTag("Obstacle")) return;
 
