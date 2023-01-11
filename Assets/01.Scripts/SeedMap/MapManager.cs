@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UniRx;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MapManager : IManager
 {
@@ -18,6 +17,8 @@ public class MapManager : IManager
                 Init();
                 break;
             case GameState.STANDBY:
+                ClearMap();
+                break;
             case GameState.INGAME:
                 GameManager.Instance.GetManager<ScoreManager>().ScoreSubscribe(ScoreDifficult);
                 ResetMap();
@@ -33,11 +34,18 @@ public class MapManager : IManager
     {
         for(int i = 0; i < maps.Length; i++)
         {
-            maps[i].transform.position = new Vector2(0, -5f + (i * -10));
             maps[i].ResetMap();
+            maps[i].transform.position = new Vector2(0, -5f + (i * -10));
         }
         
     }
+
+    private void ClearMap(){
+        foreach(RandomMap map in maps){
+            map.ClearMap();
+        }
+    }
+
     private void ScoreDifficult(int score)
     {
         foreach (RandomMap map in maps)
