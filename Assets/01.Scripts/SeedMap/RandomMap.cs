@@ -33,7 +33,7 @@ public class RandomMap : MonoBehaviour
 
     private List<PoolableMono> mapObj = new List<PoolableMono>();
 
-    private int _resetWorldMoveY = -20;
+    private int _resetWorldMoveY = -30;
 
     private void Awake()
     {
@@ -42,6 +42,7 @@ public class RandomMap : MonoBehaviour
 
     public void ResetMap()
     {
+        ResetDifficult();
         ResetObject();
         ResetSeeds();
     }
@@ -89,6 +90,7 @@ public class RandomMap : MonoBehaviour
     private void ResetSeeds()
     {
         yThereIsObj.Clear();
+        
         for (int i = 0; i < seeds.Length; i++)
         {
             if (seeds[i].CountRandomRange <= 0) continue;
@@ -98,6 +100,8 @@ public class RandomMap : MonoBehaviour
         SetStormZone();
         SettingMap();
     }
+
+
     private void SetStormZone()
     {
         onStorm = (Random.Range(0.0f, 1.0f) <= _stormZonePer);
@@ -149,6 +153,26 @@ public class RandomMap : MonoBehaviour
         summonObject.transform.position = summonPos;
 
         mapObj.Add(summonObject);
+    }
+    private void ResetDifficult()
+    {
+        seeds[0].CountRandomRange = 0;
+        seeds[1].CountRandomRange = 1;
+        seeds[4].CountRandomRange = 2;
+    }
+    public void DifficultUp(int score)
+    {
+        if (score >= 100)
+        {
+            seeds[0].CountRandomRange = 1;
+        }
+        if (score >= 200)
+        {
+            seeds[1].CountRandomRange = 2;
+            seeds[4].CountRandomRange = 3;
+        }
+      
+
     }
     
     private void OnTriggerExit2D(Collider2D obj)
