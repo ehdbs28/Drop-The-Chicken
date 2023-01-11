@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using DG.Tweening;
 
 public class InGameScreen : UIScreen
 {
@@ -25,6 +26,13 @@ public class InGameScreen : UIScreen
         });
 
         base.Init();
+    }
+
+    public override void UpdateScreenState(bool open)
+    {
+
+
+        base.UpdateScreenState(open);
     }
 
     private void UpScoreEvent(int score){
