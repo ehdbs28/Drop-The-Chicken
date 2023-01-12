@@ -8,6 +8,11 @@ public class MapManager : IManager
 {
     private RandomMap[] maps;
     private Transform _maxScorePos;
+    public Transform MaxScorePos
+    {
+        get { return _maxScorePos; }
+        set { _maxScorePos = value; }
+    }
 
     public void UpdateState(GameState state)
     {

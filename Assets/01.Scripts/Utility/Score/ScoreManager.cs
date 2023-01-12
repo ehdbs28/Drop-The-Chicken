@@ -7,6 +7,7 @@ using UniRx;
 public class ScoreManager : IManager
 {
     private int _currentScore = 0;
+    private int _plusScore = 0;
     private int _bestScore {
         get => GameManager.Instance.GetManager<DataManager>().User.BestScore; 
         set => GameManager.Instance.GetManager<DataManager>().User.BestScore = value;
@@ -24,6 +25,9 @@ public class ScoreManager : IManager
             case GameState.INIT:
                 Init();
                 break;
+            case GameState.INGAME:
+                _plusScore = 0;
+                break;
         }
     }
 
@@ -36,7 +40,7 @@ public class ScoreManager : IManager
     private void PlayerMoveEvent(Vector3 playerPos){
         if(playerStartPos == Vector3.zero) playerStartPos = playerPos;
 
-        _currentScore = (int)Mathf.Abs(playerStartPos.y - playerPos.y);
+        _currentScore = (int)Mathf.Abs(playerStartPos.y - playerPos.y) + _plusScore;
 
         if(_currentScore > _bestScore){
             _bestScore = _currentScore;
@@ -45,5 +49,11 @@ public class ScoreManager : IManager
 
     public void ScoreSubscribe(Action<int> action){
         upScoreStream.Subscribe(action);
+    }
+
+    public void PlusScore(int plus)
+    {
+        _plusScore += plus;
+        GameManager.Instance.GetManager<MapManager>().MaxScorePos.position += Vector3.up * plus;
     }
 }

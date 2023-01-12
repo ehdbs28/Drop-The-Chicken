@@ -33,6 +33,8 @@ public class PlayerColliderComponent : IPlayerComponent
                 if(brokenObject != null){
                     brokenObject?.BrokenEvent();
                     GameManager.Instance.GetManager<AudioManager>().PlayOneShot(player.PlayerObjectBrokenClip);
+                    int plusScore = (col.transform.GetComponent<DragonBody>() != null ? 1 : 10);
+                    GameManager.Instance.GetManager<ScoreManager>().PlusScore(plusScore);
                 }
             }
             else{
