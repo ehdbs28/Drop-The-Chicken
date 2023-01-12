@@ -52,8 +52,8 @@ public class AudioManager : MonoBehaviour, IManager
     }
 
     private void Init(){
-        //_bgmSource = transform.Find("AudioSource_BGM").GetComponent<AudioSource>();
-        //_sfxSource = transform.Find("AudioSource_SFX").GetComponent<AudioSource>();
+        _bgmSource = transform.Find("AudioSource_BGM").GetComponent<AudioSource>();
+        _sfxSource = transform.Find("AudioSource_SFX").GetComponent<AudioSource>();
     }
 
     public void AudioMute(AudioType type, bool mute){
