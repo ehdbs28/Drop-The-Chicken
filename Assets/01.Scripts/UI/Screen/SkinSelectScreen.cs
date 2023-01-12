@@ -16,16 +16,10 @@ public class SkinSelectScreen : UIScreen
 
     [SerializeField] private RectTransform screenPanel;
 
-    private int index = 0;
+    [SerializeField] private int index = 0;
 
     public override void Init()
     {
-        for(int i = 0; i < skins.Length; i++){
-            if(GameManager.Instance.GetManager<DataManager>().User.SkinUnlock > i){
-                skins[i].achive = true;
-            }
-        }
-
         tapToBack.onClick.AddListener(() => {
             ButtonClickSound();
             screenPanel.DOAnchorPosY(1980f, 1f).SetEase(Ease.InOutBack).SetUpdate(true)
@@ -52,6 +46,11 @@ public class SkinSelectScreen : UIScreen
 
     private void SkinSelect(int index){
         foreach(var skin in skins){
+            if(skin.achive){
+                skin.GetComponent<Image>().sprite = skin.skinImg[1];
+                skin.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = skin.skinName[1];
+            }
+
             if(skin.index == index){
                 skin.gameObject.SetActive(true);
                 if(skin.achive)
@@ -67,7 +66,10 @@ public class SkinSelectScreen : UIScreen
     {
         base.UpdateScreenState(open);
 
+
         if(open){
+            skins[1].achive = GameManager.Instance.GetManager<DataManager>().User.KingUnlock;
+            skins[2].achive = GameManager.Instance.GetManager<DataManager>().User.RobotUnlock;
             screenPanel.DOAnchorPosY(0f, 1f).SetEase(Ease.OutBack).SetUpdate(true).OnComplete(() => screenPanel.DOKill());
         }
     }

@@ -1,5 +1,6 @@
 public class UserData
 {
-    public int SkinUnlock = 0;
+    public bool KingUnlock = false;
+    public bool RobotUnlock = false;
     public int BestScore = 0;
 }

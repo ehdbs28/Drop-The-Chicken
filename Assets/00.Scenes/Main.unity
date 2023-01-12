@@ -8634,6 +8634,7 @@ MonoBehaviour:
   backIndex: {fileID: 734380080}
   frontIndex: {fileID: 912301101}
   screenPanel: {fileID: 511492450}
+  index: 0
 --- !u!1001 &512995471
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9462,6 +9463,7 @@ GameObject:
   - component: {fileID: 687881389}
   - component: {fileID: 687881390}
   - component: {fileID: 687881384}
+  - component: {fileID: 687881391}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9647,6 +9649,18 @@ MonoBehaviour:
   - {fileID: 22100000, guid: 64c02d02ae7db21488ff8906fd75fb77, type: 2}
   - {fileID: 22100000, guid: 3fcc44488e6ae1544b7f3ba9fb804eb9, type: 2}
   _playerAnimator: {fileID: 687881384}
+--- !u!114 &687881391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687881382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140d930f4ba7ab845860476685817d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &700631009
 GameObject:
   m_ObjectHideFlags: 0
@@ -12596,7 +12610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
-  achive: 0
+  achive: 1
   skinImg:
   - {fileID: 21300000, guid: fc3d95b7fa82f214ab2583fb95d30cbe, type: 3}
   - {fileID: 4518225611054890064, guid: e47b90f8a924dfa42903494022b1b0cf, type: 3}
