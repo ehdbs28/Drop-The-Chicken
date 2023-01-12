@@ -38,6 +38,7 @@ public class SettingScreen : UIScreen
             screenPanel.DOAnchorPosY(1980f, 1f).SetEase(Ease.InOutBack).SetUpdate(true)
             .OnComplete(() => {
                 GameManager.Instance.GetManager<ESCManager>().IsOpenSetting = false;
+                isOpen = false;
                 screenPanel.DOKill();
             });
         });
@@ -87,8 +88,11 @@ public class SettingScreen : UIScreen
     {
         base.UpdateScreenState(open);
 
-        if(open){
-            screenPanel.DOAnchorPosY(0f, 1f).SetEase(Ease.OutBack).SetUpdate(true).OnComplete(() => screenPanel.DOKill());
+        if(open && !isOpen){
+            screenPanel.DOAnchorPosY(0f, 1f).SetEase(Ease.OutBack).SetUpdate(true).OnComplete(() => {
+                screenPanel.DOKill();
+                isOpen = true;
+            });
         }
     }
 

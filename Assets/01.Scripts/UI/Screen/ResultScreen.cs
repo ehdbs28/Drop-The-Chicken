@@ -23,13 +23,19 @@ public class ResultScreen : UIScreen
         base.UpdateScreenState(open);
 
         if(open){
-            screenPanel.DOAnchorPosY(0f, 1f).SetEase(Ease.OutBack).SetUpdate(true).OnComplete(() => screenPanel.DOKill());
+            screenPanel.DOAnchorPosY(0f, 1f).SetEase(Ease.OutBack).SetUpdate(true).OnComplete(() => {
+                screenPanel.DOKill();
+                isOpen = true;
+            });
         }
     }
 
     public override void Init()
     {
         tapToRestart.onClick.AddListener(() => {
+            if(!isOpen) return;
+
+            isOpen = false;
             ButtonClickSound();
             screenPanel.DOAnchorPosY(1980f, 1f).SetEase(Ease.OutBack).SetUpdate(true)
             .OnComplete(() => {
@@ -39,6 +45,9 @@ public class ResultScreen : UIScreen
         });
 
         tapToMainmenu.onClick.AddListener(() => {
+            if(!isOpen) return;
+
+            isOpen = false;
             ButtonClickSound();
             Sequence sq = DOTween.Sequence().SetUpdate(true);
 

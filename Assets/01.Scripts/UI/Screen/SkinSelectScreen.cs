@@ -26,6 +26,7 @@ public class SkinSelectScreen : UIScreen
             .OnComplete(() => {
                 base.UpdateScreenState(false);
                 screenPanel.DOKill();
+                isOpen = false;
             });
         });
         backIndex.onClick.AddListener(() => {
@@ -67,10 +68,13 @@ public class SkinSelectScreen : UIScreen
         base.UpdateScreenState(open);
 
 
-        if(open){
+        if(open && !isOpen){
             skins[1].achive = GameManager.Instance.GetManager<DataManager>().User.KingUnlock;
             skins[2].achive = GameManager.Instance.GetManager<DataManager>().User.RobotUnlock;
-            screenPanel.DOAnchorPosY(0f, 1f).SetEase(Ease.OutBack).SetUpdate(true).OnComplete(() => screenPanel.DOKill());
+            screenPanel.DOAnchorPosY(0f, 1f).SetEase(Ease.OutBack).SetUpdate(true).OnComplete(() => {
+                screenPanel.DOKill();
+                isOpen = true;
+            });
         }
     }
 }
