@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5091987351467206169}
   m_Layer: 0
   m_Name: DragonTail
-  m_TagString: DamageAbleObj
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 5091987351594024005}
   m_Layer: 0
   m_Name: DragonHead
-  m_TagString: DamageAbleObj
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 5091987352142802465}
   m_Layer: 0
   m_Name: Dragon
-  m_TagString: Untagged
+  m_TagString: DamageAbleObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 5091987352372852293}
   m_Layer: 0
   m_Name: DragonBodyParent
-  m_TagString: Untagged
+  m_TagString: DamageAbleObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -750,6 +750,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364158005729314 stripped
@@ -819,6 +823,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -890,6 +898,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364158141742593 stripped
@@ -959,6 +971,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -1030,6 +1046,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364158294498886 stripped
@@ -1099,6 +1119,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -1170,6 +1194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364158280853536 stripped
@@ -1239,6 +1267,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (46)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -1310,6 +1342,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364158228463985 stripped
@@ -1379,6 +1415,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (48)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -1450,6 +1490,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364157501808981 stripped
@@ -1519,6 +1563,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (50)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -1590,6 +1638,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364157400135894 stripped
@@ -1659,6 +1711,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -1730,6 +1786,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364157631392723 stripped
@@ -1799,6 +1859,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -1870,6 +1934,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (41)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364157525051666 stripped
@@ -1939,6 +2007,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -2010,6 +2082,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364157741536961 stripped
@@ -2079,6 +2155,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -2150,6 +2230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364157893966764 stripped
@@ -2219,6 +2303,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (45)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -2290,6 +2378,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364157900254535 stripped
@@ -2359,6 +2451,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -2430,6 +2526,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (43)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364157871274205 stripped
@@ -2499,6 +2599,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -2570,6 +2674,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364157830900151 stripped
@@ -2639,6 +2747,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (49)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -2710,6 +2822,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364156967843266 stripped
@@ -2779,6 +2895,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -2850,6 +2970,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (38)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364156932820048 stripped
@@ -2919,6 +3043,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -2990,6 +3118,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364157057055087 stripped
@@ -3059,6 +3191,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -3130,6 +3266,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364157017353240 stripped
@@ -3199,6 +3339,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -3270,6 +3414,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364157368464894 stripped
@@ -3339,6 +3487,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -3410,6 +3562,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364157295947084 stripped
@@ -3479,6 +3635,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (42)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -3550,6 +3710,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364156371645003 stripped
@@ -3608,17 +3772,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 560838040272282835, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 512757841
-      objectReference: {fileID: 0}
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -3690,6 +3850,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364156536999351 stripped
@@ -3759,6 +3923,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -3892,6 +4060,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364156448981764 stripped
@@ -3961,6 +4133,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -4032,6 +4208,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (47)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364156691766504 stripped
@@ -4101,6 +4281,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
@@ -4172,6 +4356,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBody (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
 --- !u!4 &4711364156721926126 stripped
@@ -4241,6 +4429,10 @@ PrefabInstance:
     - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
       propertyPath: m_Name
       value: DragonBody (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 560838040272282845, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc40934ac4a8b1d449b5df44336e6759, type: 3}
