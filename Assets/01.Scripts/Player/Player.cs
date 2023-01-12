@@ -20,9 +20,8 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private Material _paintWhite;
     [SerializeField] private Material _defaultMat;
 
-    [SerializeField] private Transform _fallPos;
-
     [SerializeField] private ParticleSystem[] _feverParticles;
+    private Vector2 _fallPos = Vector2.zero;
 
     [Header("Audio Clip")]
     public AudioClip PlayerDieClip;
@@ -100,7 +99,6 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     public void PlayerMove(bool isRight){
-        Debug.Log(1);
         if(isRight)
             _spriteRenderer.flipX = true;
         else
@@ -230,17 +228,16 @@ public class Player : MonoBehaviour, IDamageable
         Vector3 m_StartPosition = transform.position;
         float x = (transform.position.x > 0) ? -2f : 2f;
         float m_Speed = Mathf.Abs(transform.position.x - x);
-        _fallPos.position = new Vector3(x, transform.position.y - 8, 0);
-
+        _fallPos = new Vector3(x, transform.position.y - 8, 0);
         Vector3 nextPosition = Vector3.zero;
 
-        while (!((int)nextPosition.y == (int)_fallPos.position.y))
+        while (!((int)nextPosition.y == (int)_fallPos.y))
         {
             float x0 = m_StartPosition.x;
-            float x1 = _fallPos.position.x;
+            float x1 = _fallPos.x;
             float distance = x1 - x0;
             float nextX = Mathf.MoveTowards(transform.position.x, x1, m_Speed * Time.fixedDeltaTime);
-            float baseY = Mathf.Lerp(m_StartPosition.y, _fallPos.position.y, (nextX - x0) / distance);
+            float baseY = Mathf.Lerp(m_StartPosition.y, _fallPos.y, (nextX - x0) / distance);
             float arc = m_HeightArc * (nextX - x0) * (nextX - x1) / (-0.25f * distance * distance);
             nextPosition = new Vector3(nextX, baseY + arc, transform.position.z);
 

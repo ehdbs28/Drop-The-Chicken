@@ -21,6 +21,8 @@ public class PlayerMove : MonoBehaviour
 
     private void MoveCheck()
     {
+        if (!player.IsPlay) return;
+
         float x = Input.GetAxisRaw("Horizontal");
         if(x != 0)
         {
