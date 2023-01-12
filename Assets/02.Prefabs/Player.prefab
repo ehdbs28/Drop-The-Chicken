@@ -9655,6 +9655,7 @@ GameObject:
   - component: {fileID: 3205498697566871734}
   - component: {fileID: 3205498697566871735}
   - component: {fileID: 3205498697566871732}
+  - component: {fileID: 3205498697307229827}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9741,11 +9742,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fallingSpeed: 1
+  _fastSpeed: 0
   _moveSpeed: 3
   _feverSpeed: 15
   _paintWhite: {fileID: 2100000, guid: 273432fcd670ade468b79eefa594ec65, type: 2}
   _defaultMat: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   _fallPos: {fileID: 0}
+  _feverParticles: []
   Fevers: 0000000000
 --- !u!50 &3205498697566871734
 Rigidbody2D:
@@ -9803,3 +9806,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.35
+--- !u!114 &3205498697307229827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3205498697566871733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140d930f4ba7ab845860476685817d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
