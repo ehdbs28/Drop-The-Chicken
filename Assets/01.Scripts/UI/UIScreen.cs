@@ -13,6 +13,10 @@ public class UIScreen : MonoBehaviour
         canvasGroup.blocksRaycasts = open;
     }
 
+    public void ButtonClickSound(){
+        GameManager.Instance.GetManager<UIManager>().ButtonClickSound();
+    }
+
     public virtual void Init(){
         
     }

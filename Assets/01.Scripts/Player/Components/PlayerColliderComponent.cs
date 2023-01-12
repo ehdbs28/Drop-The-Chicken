@@ -30,7 +30,10 @@ public class PlayerColliderComponent : IPlayerComponent
 
             if(player.IsUnbeatable){
                 IBrokenObject brokenObject = col.GetComponent<IBrokenObject>();
-                brokenObject?.BrokenEvent();
+                if(brokenObject != null){
+                    brokenObject?.BrokenEvent();
+                    GameManager.Instance.GetManager<AudioManager>().PlayOneShot(player.PlayerObjectBrokenClip);
+                }
             }
             else{
                 IObstacle obstacle = col.GetComponent<IObstacle>();

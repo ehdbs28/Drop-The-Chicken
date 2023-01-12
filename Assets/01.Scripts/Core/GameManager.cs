@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UniRx;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
         _managers.Add(new MapManager());
         _managers.Add(new PlayerManager());
         _managers.Add(new ScoreManager());
-        _managers.Add(new UIManager());
+        _managers.Add(GetComponent<UIManager>());
         _managers.Add(new ESCManager());
         _managers.Add(new CameraManager());
 

@@ -16,6 +16,7 @@ public class StandbyScreen : UIScreen
     public override void Init()
     {
         tapToStart.onClick.AddListener(() => {
+            ButtonClickSound();
             Sequence sq = DOTween.Sequence().SetUpdate(true);
 
             foreach(var fadeObj in fadeObjects){
@@ -34,10 +35,12 @@ public class StandbyScreen : UIScreen
         });
 
         tapToSetting.onClick.AddListener(() => {
+            ButtonClickSound();
             GameManager.Instance.GetManager<ESCManager>().IsOpenSetting = true;
         });
 
         tapToExit.onClick.AddListener(() => {
+            ButtonClickSound();
             Application.Quit();
         });
 

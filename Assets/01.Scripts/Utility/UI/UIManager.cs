@@ -6,24 +6,26 @@ using UniRx;
 using UnityEngine;
 using DG.Tweening;
 
-public class UIManager : IManager
+public class UIManager : MonoBehaviour, IManager
 {   
+    [SerializeField] private AudioClip _btnClickClip;
     private List<UIScreen> uIScreens = new List<UIScreen>();
     private RectTransform screenTransition;
     
-    public UIManager(){
-        uIScreens.Add(GameObject.Find("Standby Screen").GetComponent<UIScreen>());
-        uIScreens.Add(GameObject.Find("InGame Screen").GetComponent<UIScreen>());
-        uIScreens.Add(GameObject.Find("Result Screen").GetComponent<UIScreen>());
+    public void Init(){
+        uIScreens.Add(GameObject.Find("Canvas/Standby Screen").GetComponent<UIScreen>());
+        uIScreens.Add(GameObject.Find("Canvas/InGame Screen").GetComponent<UIScreen>());
+        uIScreens.Add(GameObject.Find("Canvas/Result Screen").GetComponent<UIScreen>());
         //uIScreens.Add(GameObject.Find("Setting Screen").GetComponent<UIScreen>());
 
-        screenTransition = GameObject.Find("Transition Panel").GetComponent<RectTransform>();
+        screenTransition = GameObject.Find("Canvas/Transition Panel").GetComponent<RectTransform>();
     }
 
     public void UpdateState(GameState state)
     {
         switch(state){
             case GameState.INIT:
+                Init();
                 CloseAllScreen();
                 InitAllScreen();
                 break;
@@ -31,6 +33,10 @@ public class UIManager : IManager
                 ActiveScreen(state);
                 break;
         }
+    }
+
+    public void ButtonClickSound(){
+        GameManager.Instance.GetManager<AudioManager>().PlayOneShot(_btnClickClip);
     }
 
     private void ActiveScreen(GameState state){

@@ -13,6 +13,7 @@ public enum FeverTxt
 public class FeverObj : PoolableMono, IObstacle
 {
     [SerializeField] private FeverTxt _feverTxt;
+    [SerializeField] private AudioClip _getObject;
     private bool _isDelete;
     private Canvas _canvas;
     private ParticleSystem _eatEffect;
@@ -25,6 +26,7 @@ public class FeverObj : PoolableMono, IObstacle
 
     public void EnterEvent(Collider2D col)
     {
+        GameManager.Instance.GetManager<AudioManager>().PlayOneShot(_getObject);
         Player player = col.GetComponent<Player>();
 
         player.GetFeverObj(_feverTxt);

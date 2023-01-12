@@ -22,6 +22,7 @@ public class InGameScreen : UIScreen
         GameManager.Instance.GetManager<PlayerManager>().PlayerFeverSubscribe(FeverTextEvent);
 
         tapToSetting.onClick.AddListener(() => {
+            ButtonClickSound();
             GameManager.Instance.GetManager<ESCManager>().IsOpenSetting = true;
         });
 

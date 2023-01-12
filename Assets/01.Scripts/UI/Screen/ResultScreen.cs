@@ -30,6 +30,7 @@ public class ResultScreen : UIScreen
     public override void Init()
     {
         tapToRestart.onClick.AddListener(() => {
+            ButtonClickSound();
             screenPanel.DOAnchorPosY(1980f, 1f).SetEase(Ease.OutBack).SetUpdate(true)
             .OnComplete(() => {
                 GameManager.Instance.UpdateState(GameState.INGAME);
@@ -38,6 +39,7 @@ public class ResultScreen : UIScreen
         });
 
         tapToMainmenu.onClick.AddListener(() => {
+            ButtonClickSound();
             Sequence sq = DOTween.Sequence().SetUpdate(true);
 
             sq.Append(screenPanel.DOAnchorPosY(1980f, 1f).SetEase(Ease.InOutBack));

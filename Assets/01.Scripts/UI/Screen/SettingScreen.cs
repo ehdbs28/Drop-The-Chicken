@@ -34,6 +34,7 @@ public class SettingScreen : UIScreen
     public override void Init()
     {
         tapToBack.onClick.AddListener(() => {
+            ButtonClickSound();
             screenPanel.DOAnchorPosY(1980f, 1f).SetEase(Ease.InOutBack).SetUpdate(true)
             .OnComplete(() => {
                 GameManager.Instance.GetManager<ESCManager>().IsOpenSetting = false;
@@ -42,14 +43,17 @@ public class SettingScreen : UIScreen
         });
 
         tapToSoundPanel.onClick.AddListener(() => {
+            ButtonClickSound();
             PanelChange("AUDIO");
         });
 
         tapToCreditPanel.onClick.AddListener(() => {
+            ButtonClickSound();
             PanelChange("CREDIT");
         });
 
         muteBGM.onClick.AddListener(() => {
+            ButtonClickSound();
             GameManager.Instance.GetManager<AudioManager>().AudioMute(AudioType.BGM, !GameManager.Instance.GetManager<AudioManager>().IsMuteBGM);
 
             if(GameManager.Instance.GetManager<AudioManager>().IsMuteBGM){
@@ -63,6 +67,7 @@ public class SettingScreen : UIScreen
         });
 
         muteSFX.onClick.AddListener(() => {
+            ButtonClickSound();
             GameManager.Instance.GetManager<AudioManager>().AudioMute(AudioType.SFX, !GameManager.Instance.GetManager<AudioManager>().IsMuteSFX);
 
             if(GameManager.Instance.GetManager<AudioManager>().IsMuteSFX){

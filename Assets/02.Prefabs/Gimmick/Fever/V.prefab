@@ -5043,6 +5043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _feverTxt: 2
+  _getObject: {fileID: 8300000, guid: 5671d5483395f4d3abb7d9d0380a5e88, type: 3}
 --- !u!58 &4401399754166258167
 CircleCollider2D:
   m_ObjectHideFlags: 0

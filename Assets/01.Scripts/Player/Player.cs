@@ -24,6 +24,13 @@ public class Player : MonoBehaviour, IDamageable
 
     [SerializeField] private ParticleSystem[] _feverParticles;
 
+    [Header("Audio Clip")]
+    public AudioClip PlayerDieClip;
+    public AudioClip PlayerFeverStartClip;
+    public AudioClip PlayerObjectBrokenClip;
+    public AudioClip PlayerFeverWind;
+    public AudioClip FeverBgm;
+
     private Vector2 _defaultPlayerPos = new Vector2(0, 4.35f);
     public Vector2 DefaultPlayerPos => _defaultPlayerPos;
 
@@ -131,7 +138,10 @@ public class Player : MonoBehaviour, IDamageable
         bool fever = (from value in Fevers where value == false select value).Count() == 0; 
 
         if(!_isFever && fever)
+        {
             StartCoroutine("DoFever");
+            return;
+        }
     }
 
     public void GetFeverObj(FeverTxt txt)
@@ -176,18 +186,24 @@ public class Player : MonoBehaviour, IDamageable
 
     IEnumerator DoFever()
     {
+        _isFever = true;
+        GameManager.Instance.GetManager<AudioManager>().PlayOneShot(PlayerFeverStartClip);
         _animator.SetBool("Fever", true);
         yield return new WaitForSeconds(0.7f);
+
+        GameManager.Instance.GetManager<AudioManager>().PlayOneShot(PlayerFeverWind);
+        GameManager.Instance.GetManager<AudioManager>().PlayBGM(FeverBgm);
 
         foreach(var particle in _feverParticles)
             particle.Play();
 
         IsFast = false;
-        _isFever = true;
         _isUnbeatable = true;
         float saveSpd = _fallingSpeed;
         _fallingSpeed = _feverSpeed;
         yield return new WaitForSeconds(5f);
+
+        GameManager.Instance.GetManager<AudioManager>().PlayBGM(GameManager.Instance.GetManager<AudioManager>()._ingameBGM);
 
         foreach(var particle in _feverParticles)
             particle.Stop();
@@ -199,6 +215,7 @@ public class Player : MonoBehaviour, IDamageable
 
     IEnumerator Die()
     {
+        GameManager.Instance.GetManager<AudioManager>().PlayOneShot(PlayerDieClip);
         IsFast = false;
         IsDie = true;
         _animator.SetBool("Die", true);

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CloudTrap : PoolableMono, IObstacle, IBrokenObject
 {
+    [SerializeField] private AudioClip _cloudClip;
     private ParticleSystem[] _cloudParticle;
 
     private void Awake() {
@@ -12,6 +13,7 @@ public class CloudTrap : PoolableMono, IObstacle, IBrokenObject
     
     public void EnterEvent(Collider2D col)
     {
+        GameManager.Instance.GetManager<AudioManager>().PlayOneShot(_cloudClip);
         _cloudParticle[0].Play();
         col.GetComponent<Player>().IsFast = true;
     }
@@ -23,6 +25,7 @@ public class CloudTrap : PoolableMono, IObstacle, IBrokenObject
 
     public void ExitEvent(Collider2D col)
     {
+        GameManager.Instance.GetManager<AudioManager>().PlayOneShot(_cloudClip);
         _cloudParticle[1].Play();
     }
 

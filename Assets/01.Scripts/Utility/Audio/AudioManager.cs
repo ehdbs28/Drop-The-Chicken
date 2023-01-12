@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UniRx;
 
 public class AudioManager : MonoBehaviour, IManager
 {
     [SerializeField] private AudioMixer _masterMixer;
 
+    public AudioClip _standbyBGM;
+    public AudioClip _ingameBGM;
+
     private AudioSource _bgmSource;
     private AudioSource _sfxSource;
+
+    private Subject<GameState> _stateStream = new Subject<GameState>();
 
     public bool IsMuteBGM {
         get{
@@ -28,17 +34,21 @@ public class AudioManager : MonoBehaviour, IManager
     {
         switch(state){
             case GameState.INIT:
-                //Init();
+                _stateStream.Subscribe(StateEvent);
+                Init();
                 break;
         }
+
+        _stateStream.OnNext(state);
     }
 
     public void PlayBGM(AudioClip clip){
-
+        _bgmSource.clip = clip;
+        _bgmSource.Play();
     }
 
     public void PlayOneShot(AudioClip clip){
-        
+        _sfxSource.PlayOneShot(clip);
     }
 
     private void Init(){
@@ -53,6 +63,17 @@ public class AudioManager : MonoBehaviour, IManager
                 break;
             case AudioType.SFX:
                 _masterMixer.SetFloat("SFX", mute ? -40 : 0);
+                break;
+        }
+    }
+
+    private void StateEvent(GameState state){
+        switch(state){
+            case GameState.STANDBY:
+                PlayBGM(_standbyBGM);
+                break;
+            case GameState.INGAME:
+                PlayBGM(_ingameBGM);
                 break;
         }
     }
