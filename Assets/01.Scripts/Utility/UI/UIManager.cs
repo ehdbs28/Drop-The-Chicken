@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour, IManager
     private RectTransform screenTransition;
     
     public void Init(){
+        uIScreens.Add(GameObject.Find("Canvas/SkinSelect Panel").GetComponent<UIScreen>());
         uIScreens.Add(GameObject.Find("Canvas/Standby Screen").GetComponent<UIScreen>());
         uIScreens.Add(GameObject.Find("Canvas/InGame Screen").GetComponent<UIScreen>());
         uIScreens.Add(GameObject.Find("Canvas/Result Screen").GetComponent<UIScreen>());
@@ -69,5 +70,15 @@ public class UIManager : MonoBehaviour, IManager
         sq.OnComplete(() => {
             sq.Kill();
         });
+    }
+
+    public T GetScreen<T>() where T : UIScreen{
+        T value = default(T);
+
+        foreach(var screen in uIScreens.OfType<T>()){
+            value = screen;
+        }
+
+        return value;
     }
 }

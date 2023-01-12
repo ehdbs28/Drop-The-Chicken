@@ -8,7 +8,7 @@ public class StandbyScreen : UIScreen
 {
     [SerializeField] private Button tapToStart;
     [SerializeField] private Button tapToSetting;
-    [SerializeField] private Button tapToExit;
+    [SerializeField] private Button tapToSkinSelect;
 
     [SerializeField] private CanvasGroup[] fadeObjects;
     [SerializeField] private RectTransform[] moveObjects;
@@ -39,9 +39,9 @@ public class StandbyScreen : UIScreen
             GameManager.Instance.GetManager<ESCManager>().IsOpenSetting = true;
         });
 
-        tapToExit.onClick.AddListener(() => {
+        tapToSkinSelect.onClick.AddListener(() => {
             ButtonClickSound();
-            Application.Quit();
+            GameManager.Instance.GetManager<UIManager>().GetScreen<SkinSelectScreen>().UpdateScreenState(true);
         });
 
         base.Init();

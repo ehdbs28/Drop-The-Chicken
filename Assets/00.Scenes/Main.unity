@@ -292,9 +292,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'first
+  m_text: 'Achive score
 
-    character'
+    300'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0696ffdc2d3c0244fa4e860a6be4ad7f, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: d852e992d829d9c4d96974d384abb4d5, type: 2}
@@ -1788,6 +1788,7 @@ GameObject:
   - component: {fileID: 170992350}
   - component: {fileID: 170992352}
   - component: {fileID: 170992351}
+  - component: {fileID: 170992353}
   m_Layer: 5
   m_Name: KingSkin
   m_TagString: Untagged
@@ -1854,6 +1855,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170992349}
   m_CullTransparentMesh: 1
+--- !u!114 &170992353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170992349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a90d0864b7d2474cbfcbea2bd525e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 1
+  achive: 0
+  skinImg:
+  - {fileID: 21300000, guid: fc3d95b7fa82f214ab2583fb95d30cbe, type: 3}
+  - {fileID: -6109577652713015682, guid: a46bd099e7dff704a86c8422b01ff247, type: 3}
+  skinName:
+  - ???
+  - King
+  skinInfo: 'Achive score
+
+    300'
 --- !u!1 &172254153
 GameObject:
   m_ObjectHideFlags: 0
@@ -7014,7 +7038,7 @@ GameObject:
   - component: {fileID: 188879318}
   - component: {fileID: 188879317}
   m_Layer: 5
-  m_Name: ExitGameBTN
+  m_Name: SkinSelectBTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7342,6 +7366,7 @@ GameObject:
   - component: {fileID: 322809053}
   - component: {fileID: 322809055}
   - component: {fileID: 322809054}
+  - component: {fileID: 322809056}
   m_Layer: 5
   m_Name: RobotSkin
   m_TagString: Untagged
@@ -7408,6 +7433,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322809052}
   m_CullTransparentMesh: 1
+--- !u!114 &322809056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322809052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a90d0864b7d2474cbfcbea2bd525e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 2
+  achive: 0
+  skinImg:
+  - {fileID: 21300000, guid: fc3d95b7fa82f214ab2583fb95d30cbe, type: 3}
+  - {fileID: 9078893918334032515, guid: 94f9417effb10ae43995356e5450a43c, type: 3}
+  skinName:
+  - ???
+  - ROBOT
+  skinInfo: 'achive score
+
+    500'
 --- !u!1 &336486800
 GameObject:
   m_ObjectHideFlags: 0
@@ -8521,8 +8569,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 511492450}
-  - component: {fileID: 511492452}
   - component: {fileID: 511492451}
+  - component: {fileID: 511492452}
   m_Layer: 5
   m_Name: SkinSelect Panel
   m_TagString: Untagged
@@ -8549,7 +8597,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1920}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &511492451
@@ -8573,32 +8621,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 511492449}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f121e61aacb20a749813f8922653aaa9, type: 3}
+  m_Script: {fileID: 11500000, guid: a0033f228f9b75f48921baa5fc8f4136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
   canvasGroup: {fileID: 511492451}
+  skins:
+  - {fileID: 1207123098}
+  - {fileID: 170992353}
+  - {fileID: 322809056}
   tapToBack: {fileID: 920556879}
-  tapToSoundPanel: {fileID: 734380080}
-  tapToCreditPanel: {fileID: 912301101}
-  bgmIcon: {fileID: 0}
-  sfxIcon: {fileID: 0}
-  bgmBtnImg: {fileID: 0}
-  sfxBtnImg: {fileID: 0}
-  bgmIconSprites:
-  - {fileID: -259334917920696806, guid: 3fca2f4ec4c343e48abd339bf6cbc846, type: 3}
-  - {fileID: 6291652314931231057, guid: 3fca2f4ec4c343e48abd339bf6cbc846, type: 3}
-  sfxIconSprites:
-  - {fileID: 8265345815632140988, guid: 3fca2f4ec4c343e48abd339bf6cbc846, type: 3}
-  - {fileID: 6829704361626571737, guid: 3fca2f4ec4c343e48abd339bf6cbc846, type: 3}
-  buttonSprites:
-  - {fileID: 1172276362363203891, guid: 3fca2f4ec4c343e48abd339bf6cbc846, type: 3}
-  - {fileID: -4143004130500039107, guid: 3fca2f4ec4c343e48abd339bf6cbc846, type: 3}
-  muteBGM: {fileID: 0}
-  muteSFX: {fileID: 0}
-  audioSettingPanel: {fileID: 1606977397}
-  creditPanel: {fileID: 0}
-  settingTitle: {fileID: 700631011}
+  backIndex: {fileID: 734380080}
+  frontIndex: {fileID: 912301101}
   screenPanel: {fileID: 511492450}
 --- !u!1001 &512995471
 PrefabInstance:
@@ -8719,9 +8753,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'first
+  m_text: 'achive score
 
-    character'
+    500'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0696ffdc2d3c0244fa4e860a6be4ad7f, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: d852e992d829d9c4d96974d384abb4d5, type: 2}
@@ -9424,9 +9458,10 @@ GameObject:
   - component: {fileID: 687881387}
   - component: {fileID: 687881386}
   - component: {fileID: 687881385}
-  - component: {fileID: 687881384}
   - component: {fileID: 687881383}
   - component: {fileID: 687881389}
+  - component: {fileID: 687881390}
+  - component: {fileID: 687881384}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9508,7 +9543,6 @@ MonoBehaviour:
   _feverSpeed: 10
   _paintWhite: {fileID: 2100000, guid: 273432fcd670ade468b79eefa594ec65, type: 2}
   _defaultMat: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  _fallPos: {fileID: 621387194}
   _feverParticles:
   - {fileID: 1628185516}
   - {fileID: 1306397165}
@@ -9596,6 +9630,23 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687881382}
   m_Enabled: 1
+--- !u!114 &687881390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687881382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e75402ef605f2df4a80b3b5eb8c8e6d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animatorContorlloers:
+  - {fileID: 9100000, guid: 8c5f98c85b20133468299ccfa9df1d8b, type: 2}
+  - {fileID: 22100000, guid: 64c02d02ae7db21488ff8906fd75fb77, type: 2}
+  - {fileID: 22100000, guid: 3fcc44488e6ae1544b7f3ba9fb804eb9, type: 2}
+  _playerAnimator: {fileID: 687881384}
 --- !u!1 &700631009
 GameObject:
   m_ObjectHideFlags: 0
@@ -10597,7 +10648,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 884938314}
   tapToStart: {fileID: 935870439}
   tapToSetting: {fileID: 820455760}
-  tapToExit: {fileID: 188879317}
+  tapToSkinSelect: {fileID: 188879317}
   fadeObjects:
   - {fileID: 1665661208}
   - {fileID: 414321641}
@@ -11691,7 +11742,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EXIT
+  m_text: SKIN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0696ffdc2d3c0244fa4e860a6be4ad7f, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 24c3348a75358bf4c89a39fc5890949c, type: 2}
@@ -12465,6 +12516,7 @@ GameObject:
   - component: {fileID: 1207123095}
   - component: {fileID: 1207123097}
   - component: {fileID: 1207123096}
+  - component: {fileID: 1207123098}
   m_Layer: 5
   m_Name: NormalSkin
   m_TagString: Untagged
@@ -12531,6 +12583,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207123094}
   m_CullTransparentMesh: 1
+--- !u!114 &1207123098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207123094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a90d0864b7d2474cbfcbea2bd525e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
+  achive: 0
+  skinImg:
+  - {fileID: 21300000, guid: fc3d95b7fa82f214ab2583fb95d30cbe, type: 3}
+  - {fileID: 4518225611054890064, guid: e47b90f8a924dfa42903494022b1b0cf, type: 3}
+  skinName:
+  - ???
+  - normal
+  skinInfo: 'first
+
+    character'
 --- !u!1 &1217770677
 GameObject:
   m_ObjectHideFlags: 0

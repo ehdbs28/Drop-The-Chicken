@@ -10,7 +10,6 @@ public class PlayerSkin : MonoBehaviour
 
     public void SkinSet(int idx)
     {
-
         _playerAnimator.runtimeAnimatorController = _animatorContorlloers[idx];
     }
 }

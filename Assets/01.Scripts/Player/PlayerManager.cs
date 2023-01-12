@@ -9,6 +9,7 @@ using DG.Tweening;
 public class PlayerManager : IManager
 {
     private Player _player;
+    private PlayerSkin _playerSkin;
     private IObservable<Vector3> playerPosStream;
     private IObservable<List<bool>> playerFeverStream;
 
@@ -47,6 +48,7 @@ public class PlayerManager : IManager
 
     public void Init(){
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        _playerSkin = _player.GetComponent<PlayerSkin>();
 
         playerFeverStream = Observable.EveryUpdate().Where(condition => GameManager.Instance.State == GameState.INGAME).Select(list => _player.Fevers);
         playerPosStream = Observable.EveryUpdate().Where(condition => GameManager.Instance.State == GameState.INGAME && !_player.IsDie && _player.IsPlay).Select(position => _player.transform.position);
@@ -55,6 +57,10 @@ public class PlayerManager : IManager
         _player.Fevers = Enumerable.Repeat(false, 5).ToList();
 
         components.Add(new PlayerColliderComponent(_player));
+    }
+
+    public void SkinChange(int index){
+        _playerSkin.SkinSet(index);
     }
 
 
