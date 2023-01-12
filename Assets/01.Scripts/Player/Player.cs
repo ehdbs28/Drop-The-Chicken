@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using static UnityEditor.Experimental.GraphView.GraphView;
+//using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour, IDamageable
 {
@@ -89,19 +89,21 @@ public class Player : MonoBehaviour, IDamageable
         };
 
         PlayerFall();
-        PlayerMove();
         FeverStart();
     }
 
-    private void PlayerMove(){
-        float input = Input.GetAxisRaw("Horizontal");
-
-        if(input == 1)
+    public void PlayerMove(bool isRight){
+        Debug.Log(1);
+        if(isRight)
             _spriteRenderer.flipX = true;
-        else if(input == -1)
+        else
             _spriteRenderer.flipX = false;
-
-        _rigid.velocity = new Vector2(input * _moveSpeed, _rigid.velocity.y);
+        float dirX = ((isRight) ? 1 : -1);
+        _rigid.velocity = new Vector2(dirX * _moveSpeed, _rigid.velocity.y);
+    }
+    public void StopMove()
+    {
+        _rigid.velocity = new Vector2(0, _rigid.velocity.y);
     }
 
     private void PlayerFall(){
@@ -171,7 +173,7 @@ public class Player : MonoBehaviour, IDamageable
         }
 
         foreach(var particle in _feverParticles)
-            particle.Play();
+            particle.Stop();
     }
 
     IEnumerator DoFever()
