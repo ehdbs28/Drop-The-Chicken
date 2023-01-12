@@ -171,7 +171,7 @@ public class Player : MonoBehaviour, IDamageable
         }
 
         foreach(var particle in _feverParticles)
-            particle.Play();
+            particle.Stop();
     }
 
     IEnumerator DoFever()

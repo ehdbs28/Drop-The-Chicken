@@ -39,6 +39,7 @@ public class Dragon : PoolableMono, IBrokenObject
     {
         for (int i = 0; i < _dragonBodys.Length; i++)
         {
+            _dragonBodys[i].gameObject.SetActive(true);
             _dragonBodys[i].SetBody(i, transform.position);
             _dragonBodys[i].ShakeBody();
         }

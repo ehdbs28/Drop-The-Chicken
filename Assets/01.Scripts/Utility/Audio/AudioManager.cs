@@ -28,7 +28,7 @@ public class AudioManager : MonoBehaviour, IManager
     {
         switch(state){
             case GameState.INIT:
-                Init();
+                //Init();
                 break;
         }
     }
