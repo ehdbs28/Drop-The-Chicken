@@ -25,7 +25,7 @@ public class DataManager : IManager
     }
 
     private void Init(){
-        SAVE_PATH = Application.dataPath + "/Save";
+        SAVE_PATH = Application.persistentDataPath + "/Save";
 
         if(!Directory.Exists(SAVE_PATH))
             Directory.CreateDirectory(SAVE_PATH);
