@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - DamageAbleObj
+  - Platform
   layers:
   - Default
   - TransparentFX
