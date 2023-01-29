@@ -57,29 +57,28 @@ public class RandomMap : MonoBehaviour
     {
         if(thirdMap)
         {
-            int maxX = 2;
-            int minX = -2;
-            int X = Random.Range(minX, maxX);
+            float maxX = 2;
+            float minX = -2;
+            float X = Random.Range(minX, maxX);
 
-            int maxY = 5;
-            int minY = -5;
+            int maxY = 4;
+            int minY = -3;
             int Y = 0;
             while (true)
             {
                 if (yThereIsObj.Count > 10) break;
 
-                Y = Random.Range(minY, maxY);
+                Y = Random.Range(minY, maxY) + (int)transform.position.y;
                 if (!yThereIsObj.Contains((int)Y)) break;
             }
             for (int i = 0; i < _player.Fevers.Count; i++)
             {
-                if (!_player.Fevers[i])
-                {
-                    PoolableMono fever = PoolManager.Instance.Pop(feverObjs[i].name);
-                    fever.transform.position = transform.position + new Vector3(X, Y, 0);
-                    mapObj.Add(fever);
-                    break;
-                }
+                if (_player.Fevers[i]) continue;
+
+                PoolableMono fever = PoolManager.Instance.Pop(feverObjs[i].name);
+                fever.transform.position = new Vector3(X, Y, 0);
+                mapObj.Add(fever);
+                break;
             }
         }
     } // FeverObj생성
