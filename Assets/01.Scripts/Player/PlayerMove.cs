@@ -34,6 +34,7 @@ public class PlayerMove : MonoBehaviour
             if(x != 0) GameManager.Instance.GetManager<PlayerManager>().State = PlayerState.FALLING;
         }
         else{
+            Debug.Log(1);
             if(x != 0)
             {
                 player.PlayerMove(x > 0);
