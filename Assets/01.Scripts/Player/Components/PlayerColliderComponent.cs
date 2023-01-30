@@ -42,7 +42,7 @@ public class PlayerColliderComponent : IPlayerComponent
                 }
             }
             else if(col.CompareTag("Platform")){ //플랫폼
-                
+                GameManager.Instance.GetManager<PlayerManager>().State = PlayerState.LANDING;
             }
         });
 

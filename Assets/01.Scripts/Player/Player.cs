@@ -89,7 +89,7 @@ public class Player : MonoBehaviour, IDamageable
     private void FixedUpdate() {
         if(!IsPlay) return;
 
-        if (IsDie){
+        if (GameManager.Instance.GetManager<PlayerManager>().State == PlayerState.LANDING || IsDie){
             _rigid.velocity = Vector3.zero;
             return;
         };

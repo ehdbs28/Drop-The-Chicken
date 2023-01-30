@@ -8642,6 +8642,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1776516172}
     m_Modifications:
+    - target: {fileID: 8437501577586435341, guid: 5456251f6b878dc4b84de8f82ffbc173, type: 3}
+      propertyPath: _platform
+      value: 
+      objectReference: {fileID: 4067705781735667649, guid: 5203f1354b27f3b438691bda0d180009, type: 3}
     - target: {fileID: 8437501577586435342, guid: 5456251f6b878dc4b84de8f82ffbc173, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -18642,6 +18646,10 @@ PrefabInstance:
       propertyPath: thirdMap
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8437501577586435341, guid: 5456251f6b878dc4b84de8f82ffbc173, type: 3}
+      propertyPath: _platform
+      value: 
+      objectReference: {fileID: 4067705781735667649, guid: 5203f1354b27f3b438691bda0d180009, type: 3}
     - target: {fileID: 8437501577586435341, guid: 5456251f6b878dc4b84de8f82ffbc173, type: 3}
       propertyPath: seeds.Array.data[1].CountRandomRange
       value: 1
