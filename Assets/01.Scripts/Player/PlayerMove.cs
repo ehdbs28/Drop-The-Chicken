@@ -23,24 +23,29 @@ public class PlayerMove : MonoBehaviour
     {
         if (!player.IsPlay) return;
 
+        PC_Move();
+        Moblie_Move();
+    }
+
+    private void PC_Move(){
         float x = Input.GetAxisRaw("Horizontal");
-        if(x != 0)
-        {
-            if(x > 0)
+
+        if(GameManager.Instance.GetManager<PlayerManager>().State == PlayerState.LANDING){
+            if(x != 0) GameManager.Instance.GetManager<PlayerManager>().State = PlayerState.FALLING;
+        }
+        else{
+            if(x != 0)
             {
-                player.PlayerMove(true);
+                player.PlayerMove(x > 0);
             }
             else
             {
-                player.PlayerMove(false);
+                player.StopMove();
             }
         }
-        else
-        {
-            player.StopMove();
-        }
-        
+    }
 
+    private void Moblie_Move(){
         if(Input.touchCount > 0)
         {
             touch = Input.GetTouch(0);
