@@ -13,10 +13,7 @@ public class SummonObj
 public class RandomMap : MonoBehaviour
 {
     [SerializeField]
-    private bool thirdMap;
-
-    [SerializeField]
-    private MapPlatform[] _platform;
+    private GameObject _platform;
 
     private int _platformMaxPosX = 2;
     private int _platformMinPosX = -2;
@@ -24,6 +21,9 @@ public class RandomMap : MonoBehaviour
     [SerializeField]
     private FeverObj[] feverObjs;
     private Player _player;
+
+    [SerializeField]
+    private bool thirdMap;
 
     private List<int> yThereIsObj = new List<int>(); // 이 y값에 오브젝트가 있는가
 
@@ -95,11 +95,7 @@ public class RandomMap : MonoBehaviour
     private void SetMap() // 맵을 생성한다.
     {
         // 플랫폼 위치를 좌우에서 옮겨준다.
-        foreach(MapPlatform obj in _platform)
-        {
-            obj.SetRandomPos();
-            yThereIsObj.Add((int)obj.transform.position.y);
-        }
+
         // 플랫폼과 플랫폼이 다시 생성되는 틈 사이를 2~3개에 오브젝트로 채워준다.
         int objCount = Random.Range(2, 4);
 
