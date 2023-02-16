@@ -14,7 +14,7 @@ public class Player : MonoBehaviour, IDamageable
     }
     [SerializeField] private float _fastSpeed;
 
-    [SerializeField] private float _movePower = 8f;
+    [SerializeField] private float _moveSpeed = 4.5f;
     [SerializeField] private float _feverSpeed = 10f;
 
     [SerializeField] private Material _paintWhite;
@@ -79,26 +79,11 @@ public class Player : MonoBehaviour, IDamageable
     private ParticleSystem[] _fastParticle;
 
     private void Awake() {
+        _animator = GetComponent<Animator>();
         _rigid = GetComponent<Rigidbody2D>();
-        _spriteRenderer = transform.Find("SpriteRenderer").GetComponent<SpriteRenderer>();
-        _animator = _spriteRenderer.GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         _fastParticle = transform.Find("FastParticle").GetComponentsInChildren<ParticleSystem>();
-    }
-
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.RightArrow)){
-            if (GameManager.Instance.GetManager<PlayerManager>().State == PlayerState.LANDING){
-                GameManager.Instance.GetManager<PlayerManager>().State = PlayerState.FALLING;
-            }
-            PlayerMove(1);
-        }
-        else if(Input.GetKeyDown(KeyCode.LeftArrow)){
-            if (GameManager.Instance.GetManager<PlayerManager>().State == PlayerState.LANDING){
-                GameManager.Instance.GetManager<PlayerManager>().State = PlayerState.FALLING;
-            }
-            PlayerMove(-1);
-        }
     }
 
     private void FixedUpdate() {
@@ -113,14 +98,14 @@ public class Player : MonoBehaviour, IDamageable
         FeverStart();
     }
 
-    public void PlayerMove(float dir){
-        _animator.SetTrigger("Jump");
-        _rigid.velocity = new Vector2(dir * _movePower, _rigid.velocity.y);
-
-        StopCoroutine("JumpCool");
-        StartCoroutine("JumpCool");
+    public void PlayerMove(bool isRight){
+        if(isRight)
+            _spriteRenderer.flipX = true;
+        else
+            _spriteRenderer.flipX = false;
+        float dirX = ((isRight) ? 1 : -1);
+        _rigid.velocity = new Vector2(dirX * _moveSpeed, _rigid.velocity.y);
     }
-
     public void StopMove()
     {
         _rigid.velocity = new Vector2(0, _rigid.velocity.y);
@@ -128,11 +113,6 @@ public class Player : MonoBehaviour, IDamageable
 
     private void PlayerFall(){
         _rigid.velocity = new Vector2(_rigid.velocity.x, -((_isFast) ? _fastSpeed: _fallingSpeed));
-    }
-
-    private IEnumerator JumpCool(){
-        yield return new WaitForSeconds(0.1f);
-        _rigid.velocity = new Vector2(0, _rigid.velocity.y);
     }
 
     private IEnumerator SlowDown(){
