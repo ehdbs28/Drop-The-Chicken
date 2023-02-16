@@ -8,7 +8,7 @@ using DG.Tweening;
 
 public class PlayerManager : IManager
 {
-    public PlayerState State = PlayerState.FALLING;
+    public PlayerState State;
 
     private Player _player;
     private PlayerSkin _playerSkin;
