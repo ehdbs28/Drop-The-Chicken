@@ -8,11 +8,8 @@ using DG.Tweening;
 
 public class PlayerManager : IManager
 {
-    public PlayerState State;
-
     private Player _player;
     private PlayerSkin _playerSkin;
-
     private IObservable<Vector3> playerPosStream;
     private IObservable<List<bool>> playerFeverStream;
 

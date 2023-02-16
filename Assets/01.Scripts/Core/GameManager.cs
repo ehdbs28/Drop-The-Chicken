@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour
 
     public void UpdateState(GameState state){
         foreach(var manager in _managers){
-            Debug.Log(manager);
             manager.UpdateState(state);
         }
 
