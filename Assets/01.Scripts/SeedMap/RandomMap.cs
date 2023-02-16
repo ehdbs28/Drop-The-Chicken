@@ -8,15 +8,17 @@ public class SummonObj
     public PoolableMono summonObj;
     public Transform minPos;
     public Transform maxPos;
+    public int SummonCount;
+    public int CountRandomRange;
 }
 
 public class RandomMap : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _platform;
+    private float _stormZonePer = 0.1f; // 10�ۼ�Ʈ
 
-    private int _platformMaxPosX = 2;
-    private int _platformMinPosX = -2;
+    [SerializeField]
+    private StormZone storm;
+    private bool onStorm;
 
     [SerializeField]
     private FeverObj[] feverObjs;
@@ -25,11 +27,11 @@ public class RandomMap : MonoBehaviour
     [SerializeField]
     private bool thirdMap;
 
-    private List<int> yThereIsObj = new List<int>(); // 이 y값에 오브젝트가 있는가
-
     [SerializeField]
-    private SummonObj[] objs;
-    private List<PoolableMono> mapObj = new List<PoolableMono>(); // 생성된 오브젝트들
+    private SummonObj[] seeds;
+    private List<int> yThereIsObj = new List<int>();
+
+    private List<PoolableMono> mapObj = new List<PoolableMono>();
 
     private int _resetWorldMoveY = -30;
 
@@ -38,20 +40,23 @@ public class RandomMap : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
-    public void ClearMap(){
-        ResetObject();
-    } // 맵 지우기
     public void ResetMap()
     {
+        ResetDifficult();
         ResetObject();
-        SetMap();
-    } // 맵 지우고 다시 생성
+        ResetSeeds();
+    }
+
+    public void ClearMap(){
+        ResetObject();
+    }
+    
     private void AddMap()
     {
         transform.position = transform.position + new Vector3(0, _resetWorldMoveY, 0);
-        ResetMap();
+        ResetSeeds();
         AddFever();
-    } // 맵 위치 옮기고 지우고 다시 생성
+    }
 
     private void AddFever()
     {
@@ -82,31 +87,50 @@ public class RandomMap : MonoBehaviour
                 }
             }
         }
-    } // FeverObj생성
+    }
 
-    private void ResetObject() // 전에 생성된 오브젝트를 지워준다.
+    private void ResetSeeds()
+    {
+        yThereIsObj.Clear();
+        
+        for (int i = 0; i < seeds.Length; i++)
+        {
+            if (seeds[i].CountRandomRange <= 0) continue;
+
+            seeds[i].SummonCount = Random.Range(0, seeds[i].CountRandomRange + 1);
+        }
+        SetStormZone();
+        SettingMap();
+    }
+
+
+    private void SetStormZone()
+    {
+        onStorm = (Random.Range(0.0f, 1.0f) <= _stormZonePer);
+        storm.gameObject.SetActive(onStorm);
+        storm.SetDirection((Random.Range(0.0f, 1.0f) <= 0.5f));
+
+    }
+    // seed��� ���� �����մϴ�.
+    private void SettingMap()
+    {
+        for (int i = 0; i < seeds.Length; i++)
+        {
+            if (seeds[i].SummonCount <= 0) continue;
+            for (int j = 0; j < seeds[i].SummonCount; j++)
+            {
+                SummonObject(seeds[i]);
+            }
+        }
+    }
+    private void ResetObject()
     {
         for(int i = 0; i < mapObj.Count; i++)
         {
             PoolManager.Instance.Push(mapObj[i]);
         }
         mapObj.Clear();
-        yThereIsObj.Clear();
     }
-    private void SetMap() // 맵을 생성한다.
-    {
-        // 플랫폼 위치를 좌우에서 옮겨준다.
-
-        // 플랫폼과 플랫폼이 다시 생성되는 틈 사이를 2~3개에 오브젝트로 채워준다.
-        int objCount = Random.Range(2, 4);
-
-        for(int i=0; i<objCount; i++)
-        {
-            int randomIndex = Random.Range(0, objs.Length);
-            SummonObject(objs[randomIndex]);
-        }
-    }
-
     private void SummonObject(SummonObj obj)
     {
         Vector2 summonPos = Vector2.zero;
@@ -121,8 +145,9 @@ public class RandomMap : MonoBehaviour
                 break;
             }
 
-            summonPos.y = Random.Range((int)obj.minPos.position.y, (int)obj.maxPos.position.y+1);
+            summonPos.y = Random.Range((int)obj.minPos.position.y, (int)obj.maxPos.position.y);
             if (!yThereIsObj.Contains((int)summonPos.y)) break;
+
         }
         yThereIsObj.Add((int)summonPos.y);
 
@@ -130,6 +155,27 @@ public class RandomMap : MonoBehaviour
         summonObject.transform.position = summonPos;
 
         mapObj.Add(summonObject);
+    }
+    private void ResetDifficult()
+    {
+        seeds[0].CountRandomRange = 0;
+        seeds[0].SummonCount = 0;
+        seeds[1].CountRandomRange = 1;
+        seeds[4].CountRandomRange = 2;
+    }
+    public void DifficultUp(int score)
+    {
+        if (score >= 100)
+        {
+            seeds[0].CountRandomRange = 1;
+        }
+        if (score >= 200)
+        {
+            seeds[1].CountRandomRange = 2;
+            seeds[4].CountRandomRange = 3;
+        }
+      
+
     }
     
     private void OnTriggerExit2D(Collider2D obj)

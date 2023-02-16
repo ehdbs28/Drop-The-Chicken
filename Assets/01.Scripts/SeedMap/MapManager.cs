@@ -26,6 +26,7 @@ public class MapManager : IManager
                 break;
             case GameState.INGAME:
                 ResetMap();
+                GameManager.Instance.GetManager<ScoreManager>().ScoreSubscribe(ScoreDifficult);
                 break;
         }
     }
@@ -52,6 +53,14 @@ public class MapManager : IManager
     private void ClearMap(){
         foreach(RandomMap map in maps){
             map.ClearMap();
+        }
+    }
+
+    private void ScoreDifficult(int score)
+    {
+        foreach (RandomMap map in maps)
+        {
+            map.DifficultUp(score);
         }
     }
 }
