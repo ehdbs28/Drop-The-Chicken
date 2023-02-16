@@ -89,14 +89,12 @@ public class Player : MonoBehaviour, IDamageable
     private void Update() {
         if(Input.GetKeyDown(KeyCode.RightArrow)){
             if (GameManager.Instance.GetManager<PlayerManager>().State == PlayerState.LANDING){
-                LandingCool(3f);
                 GameManager.Instance.GetManager<PlayerManager>().State = PlayerState.FALLING;
             }
             PlayerMove(1);
         }
         else if(Input.GetKeyDown(KeyCode.LeftArrow)){
             if (GameManager.Instance.GetManager<PlayerManager>().State == PlayerState.LANDING){
-                LandingCool(3f);
                 GameManager.Instance.GetManager<PlayerManager>().State = PlayerState.FALLING;
             }
             PlayerMove(-1);
@@ -233,16 +231,6 @@ public class Player : MonoBehaviour, IDamageable
         _animator.SetBool("Fever", false);
         _fallingSpeed = saveSpd;
         ResetFever();
-    }
-
-    public void LandingCool(float cool){
-        StopCoroutine("LandingCoolDown");
-        StartCoroutine("LandingCoolDown", cool);
-    }
-
-    public IEnumerator LandingCoolDown(float cool){
-        yield return new WaitForSeconds(cool);
-        GameManager.Instance.UpdateState(GameState.RESULT);
     }
 
     IEnumerator Die()
