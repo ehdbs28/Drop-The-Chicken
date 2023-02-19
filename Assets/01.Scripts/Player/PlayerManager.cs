@@ -70,7 +70,12 @@ public class PlayerManager : IManager
 
     public Vector2 GetDefaultPlayerPos => _player.DefaultPlayerPos;
     private void PlayerMoveLimit(float camSize){
-        _player.transform.position = new Vector3(Mathf.Clamp(_player.transform.position.x, -camSize + .2f, camSize - .2f), _player.transform.position.y);
+        if(_player.transform.position.x < -camSize){
+            _player.transform.position = new Vector3(camSize - .2f, _player.transform.position.y);
+        }
+        else if(_player.transform.position.x > camSize){
+            _player.transform.position = new Vector3(-camSize + .2f, _player.transform.position.y);
+        }
     }
 
     public void PlayerFeverSubscribe(Action<List<bool>> action){
