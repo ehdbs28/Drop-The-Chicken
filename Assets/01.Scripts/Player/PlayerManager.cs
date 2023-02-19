@@ -71,10 +71,10 @@ public class PlayerManager : IManager
     public Vector2 GetDefaultPlayerPos => _player.DefaultPlayerPos;
     private void PlayerMoveLimit(float camSize){
         if(_player.transform.position.x < -camSize){
-            _player.transform.position = new Vector3(camSize - .2f, _player.transform.position.y);
+            _player.transform.position = new Vector3(camSize, _player.transform.position.y);
         }
         else if(_player.transform.position.x > camSize){
-            _player.transform.position = new Vector3(-camSize + .2f, _player.transform.position.y);
+            _player.transform.position = new Vector3(-camSize, _player.transform.position.y);
         }
     }
 
