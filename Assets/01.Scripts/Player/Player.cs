@@ -15,6 +15,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private float _fastSpeed;
 
     [SerializeField] private float _moveSpeed = 4.5f;
+    public float MoveSpeed{ get => _moveSpeed; set => _moveSpeed = value; }
     [SerializeField] private float _feverSpeed = 10f;
 
     [SerializeField] private Material _paintWhite;

@@ -13,8 +13,12 @@ public class PlayerManager : IManager
     private IObservable<Vector3> playerPosStream;
     private IObservable<List<bool>> playerFeverStream;
 
-    float _minSpeed = 2f;
-    float _maxSpeed = 7f;
+    float _minFallSpeed = 2f;
+    float _maxFallSpeed = 7f;
+
+    float _minMoveSpeed = 4.5f;
+    float _maxMoveSpeed = 12.5f;
+
     float _maxSpeedScore = 500;
 
     private readonly List<IPlayerComponent> components = new List<IPlayerComponent>();
@@ -79,11 +83,13 @@ public class PlayerManager : IManager
 
         if (score == 0)
         {
-            _player.FallingSpeed = _minSpeed;
+            _player.FallingSpeed = _minFallSpeed;
+            _player.MoveSpeed = _minFallSpeed;
             return;
         }
     
-        _player.FallingSpeed = Mathf.Lerp(_minSpeed, _maxSpeed, score / _maxSpeedScore);
+        _player.FallingSpeed = Mathf.Lerp(_minFallSpeed, _maxFallSpeed, score / _maxSpeedScore);
+        _player.MoveSpeed = Mathf.Lerp(_minMoveSpeed, _maxMoveSpeed, score/_maxSpeedScore);
     }
 
     public void PlayerPosSubscribe(Action<Vector3> action){
