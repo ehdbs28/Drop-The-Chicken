@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MapManager : IManager
 {
-    private RandomMap[] maps;
+    private MapSystem map;
     private Transform _maxScorePos;
     public Transform MaxScorePos
     {
@@ -25,14 +25,14 @@ public class MapManager : IManager
                 ClearMap();
                 break;
             case GameState.INGAME:
+                GameManager.Instance.GetManager<ScoreManager>().ScoreSubscribe(MapUpdate);
                 ResetMap();
-                GameManager.Instance.GetManager<ScoreManager>().ScoreSubscribe(ScoreDifficult);
                 break;
         }
     }
     public void Init()
     {
-        maps = GameObject.Find("MapManager").GetComponentsInChildren<RandomMap>();
+        map = GameObject.Find("MapManager").GetComponent<MapSystem>();
         _maxScorePos = GameObject.Find("MaxScorePos").transform;
     }
     
@@ -42,25 +42,19 @@ public class MapManager : IManager
             _maxScorePos.position = GameManager.Instance.GetManager<PlayerManager>().GetDefaultPlayerPos +
                 (GameManager.Instance.GetManager<ScoreManager>().BestScore * Vector2.down);
 
-        for(int i = 0; i < maps.Length; i++)
-        {
-            maps[i].transform.position = new Vector2(0, -5f + (i * -10));
-            maps[i].ResetMap();
-        }
-        
+        map.ResetMap();
     }
 
     private void ClearMap(){
-        foreach(RandomMap map in maps){
-            map.ClearMap();
+        map.ResetGame();
+    }
+
+    private void MapUpdate(int score)
+    {
+        if(map.ObjSummonCheck(score))
+        {
+            map.AddMap();
         }
     }
 
-    private void ScoreDifficult(int score)
-    {
-        foreach (RandomMap map in maps)
-        {
-            map.DifficultUp(score);
-        }
-    }
 }
