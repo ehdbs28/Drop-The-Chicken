@@ -161,7 +161,7 @@ public class Player : MonoBehaviour, IDamageable
         {
             Fevers[2] = true;
         }
-        else if(txt == FeverTxt.E && !Fevers[3])
+        else if(txt == FeverTxt.E2 && !Fevers[3])
         {
             Fevers[3] = true;
         }

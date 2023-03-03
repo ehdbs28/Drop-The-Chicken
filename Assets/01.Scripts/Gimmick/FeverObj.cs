@@ -7,6 +7,7 @@ public enum FeverTxt
     F,
     E,
     V,
+    E2,
     R,
 }
 
@@ -15,6 +16,7 @@ public class FeverObj : PoolableMono, IObstacle
     [SerializeField] private FeverTxt _feverTxt;
     [SerializeField] private AudioClip _getObject;
     private bool _isDelete;
+    private int _plusScorePoint = 10;
     private Canvas _canvas;
     private ParticleSystem _eatEffect;
 
@@ -26,11 +28,15 @@ public class FeverObj : PoolableMono, IObstacle
 
     public void EnterEvent(Collider2D col)
     {
-        GameManager.Instance.GetManager<AudioManager>().PlayOneShot(_getObject);
         Player player = col.GetComponent<Player>();
 
-        player.GetFeverObj(_feverTxt);
-        StartCoroutine("DeleteObj");
+        if(player != null)
+        {
+            GameManager.Instance.GetManager<AudioManager>().PlayOneShot(_getObject);
+
+            player.GetFeverObj(_feverTxt);
+            StartCoroutine("DeleteObj");
+        }
     }
 
     public void StayEvent(Collider2D col)
@@ -47,6 +53,7 @@ public class FeverObj : PoolableMono, IObstacle
     {
         if (!_isDelete)
         {
+            GameManager.Instance.GetManager<ScoreManager>().PlusScore(_plusScorePoint);
             _isDelete = true;
             _eatEffect.Play();
             _canvas.gameObject.SetActive(false);

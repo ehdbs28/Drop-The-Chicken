@@ -43,7 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e849746d7f11f84588d36e8d40f9626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _feverObjs: []
+  _feverObjs:
+  - {fileID: 6340823245214835180, guid: b1ac5e53d5a9d624c86e2396967a4c79, type: 3}
+  - {fileID: 2877731395017043301, guid: 3b4203df18b7ab84f8394804fccf1e60, type: 3}
+  - {fileID: 4401399754166258164, guid: a04bbf8dd40773a42b7ccb07854c4f40, type: 3}
+  - {fileID: 4794425671314607494, guid: 03dddf932961f7548b7032660e4a246a, type: 3}
+  - {fileID: 4955467220591733872, guid: 5ecd927c1d5033847991d6990a22c2af, type: 3}
   _objs:
   - summonObj: {fileID: 874271085, guid: aec8f73c9a5e7204c919b9a5d527ed5b, type: 3}
     minXPos: -2
@@ -51,3 +56,5 @@ MonoBehaviour:
   - summonObj: {fileID: 6214379567289416611, guid: 7de8bcc31f60b1841895a56627bcef50, type: 3}
     minXPos: -1
     maxXPos: 1
+  _mapObj: []
+  _lastMapObj: []

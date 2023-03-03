@@ -25,7 +25,7 @@ public class MapManager : IManager
                 ClearMap();
                 break;
             case GameState.INGAME:
-                GameManager.Instance.GetManager<ScoreManager>().ScoreSubscribe(MapUpdate);
+                GameManager.Instance.GetManager<PlayerManager>().PlayerPosSubscribe(MapUpdate);
                 ResetMap();
                 break;
         }
@@ -49,9 +49,9 @@ public class MapManager : IManager
         map.ResetGame();
     }
 
-    private void MapUpdate(int score)
+    private void MapUpdate(Vector3 pos)
     {
-        if(map.ObjSummonCheck(score))
+        if(map.ObjSummonCheck(pos))
         {
             map.AddMap();
         }

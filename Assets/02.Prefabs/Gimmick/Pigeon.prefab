@@ -133,6 +133,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSpeed: 1
-  maxSpeed: 5
+  maxSpeed: 4
   maxX: 4
   minX: -4

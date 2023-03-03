@@ -6,26 +6,44 @@ using UnityEngine;
 public class SummonObj
 {
     public PoolableMono summonObj;
-    public int minXPos = -2;
-    public int maxXPos = 2;
+    public float minXPos = -2;
+    public float maxXPos = 2;
 }
 
 public class MapSystem : MonoBehaviour
 {
+    private List<PoolableMono> _mapObj = new List<PoolableMono>();
+    private List<PoolableMono> _lastMapObj = new List<PoolableMono>();
+
+    private Player _player;
+    private int _summonY = 0;
+
+    #region 맵 오브젝트
+
     [SerializeField]
     private FeverObj[] _feverObjs;
-    private Player _player;
+    private float _feverSpawnPer = 0.2f; // 20퍼
 
     [SerializeField]
     private SummonObj[] _objs;
 
-    private List<PoolableMono> _mapObj = new List<PoolableMono>();
-    private List<PoolableMono> _lastMapObj = new List<PoolableMono>();
-
-    private int _summonY = -2;
-
     private int _objMinSpace = 2;
     private int _objMaxSpace = 4;
+
+    private int _summonSpace = 50;
+    #endregion
+
+    #region 용, 바람
+    // 바람은 맵 생성 형식
+    // 용은 순간 생성 형식
+
+    private int _dragonSpace = 0;
+    private int _windSpace = 0;
+
+    private int _gimmickMinSpace = 80;
+    private int _gimmickMaxSpace = 150;
+
+    #endregion
 
     private void Awake()
     {
@@ -40,7 +58,35 @@ public class MapSystem : MonoBehaviour
 
     private void AddFever()
     {
-        // Fever 생성
+        //모든 fever오브젝트가 true일 경우 생성 안되도록하기
+        if (_player.IsFever) return;
+
+        //소환 확률 체크
+        float spawnPer = Random.Range(0f, 1f);
+        if (spawnPer > _feverSpawnPer) return;
+
+        float minX = -2;
+        float maxX = 2;
+
+        int randomIndex = Random.Range(0, _feverObjs.Length);
+        // Fever 겹치지 않게 체크
+        while(FeverObjCheck(_player.Fevers, randomIndex))
+        {
+            randomIndex = Random.Range(0, _feverObjs.Length);
+        }
+        // Fever 중에 채워지지 않은 워드 하나 생성
+        Vector2 summonPos = new Vector2(Random.Range(minX, maxX), _summonY);
+        PoolableMono summonFeverObject = PoolManager.Instance.Pop(_feverObjs[randomIndex].name);
+
+        summonFeverObject.transform.position = summonPos;
+        _mapObj.Add(summonFeverObject);
+
+        _summonY -= _objMinSpace;
+    }
+
+    private bool FeverObjCheck(List<bool> fevers, int index)
+    {
+        return fevers[index];
     }
 
     public void AddMap()
@@ -51,12 +97,14 @@ public class MapSystem : MonoBehaviour
 
     private void AddObj()
     {
-        int endSummonY = _summonY - 40;
+        int endSummonY = _summonY - _summonSpace;
 
         AddLastMapObjs();
 
         while (_summonY > endSummonY)
         {
+            AddFever();
+
             int summonObjIndex = Random.Range(0, _objs.Length);
             SummonObject(_objs[summonObjIndex]);
 
@@ -76,9 +124,9 @@ public class MapSystem : MonoBehaviour
         _mapObj.Clear();
     }
 
-    public bool ObjSummonCheck(int score)
+    public bool ObjSummonCheck(Vector3 pos)
     {
-        return (-score <= _summonY + 5);
+        return (pos.y <= _summonY + 10);
     }
 
     private void ResetObject()
@@ -95,7 +143,7 @@ public class MapSystem : MonoBehaviour
         ResetObject();
         AddLastMapObjs();
         ResetObject();
-        _summonY = -5;
+        _summonY = 0;
     }
 
     private void SummonObject(SummonObj obj)

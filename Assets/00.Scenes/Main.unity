@@ -9432,7 +9432,7 @@ MonoBehaviour:
   PlayerObjectBrokenClip: {fileID: 8300000, guid: 0cad53116bc168e408f4f66d1134bb35, type: 3}
   PlayerFeverWind: {fileID: 8300000, guid: a109bd00aa45c4f42ac6a3589b593dce, type: 3}
   FeverBgm: {fileID: 8300000, guid: 64890d7a6d5ce274dbc87b2330c85630, type: 3}
-  Fevers: 
+  Fevers: 0000000000
 --- !u!212 &687881387
 SpriteRenderer:
   m_ObjectHideFlags: 0
