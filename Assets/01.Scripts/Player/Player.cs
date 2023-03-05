@@ -136,8 +136,6 @@ public class Player : MonoBehaviour, IDamageable
 
         if(!GameManager.Instance.IsRevibe) ResetFever();
         else FeverStart();
-
-        GameManager.Instance.IsRevibe = false;
     }
 
     private void FeverStart()

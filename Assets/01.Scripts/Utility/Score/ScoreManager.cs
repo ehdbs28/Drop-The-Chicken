@@ -29,7 +29,8 @@ public class ScoreManager : IManager
                 Init();
                 break;
             case GameState.INGAME:
-                _plusScore = 0;
+                if(!GameManager.Instance.IsRevibe) _plusScore = 0;
+                Debug.Log(_plusScore);
                 break;
         }
     }

@@ -76,7 +76,6 @@ public class MapSystem : MonoBehaviour
 
     public void GimmickSpawn(Vector3 playerPos)
     {
-        Debug.Log("실행중");
         // 용이랑 바람 스폰
         if(playerPos.y <= _dragonNextSummonY)
         {

@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour
         if(State == GameState.INIT){
             UpdateState(GameState.STANDBY);
         }
+
+        if(IsRevibe) IsRevibe = false;
     }
 
     public T GetManager<T>() where T : class, IManager{
