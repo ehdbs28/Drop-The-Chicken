@@ -50,9 +50,10 @@ public class Dragon : PoolableMono, IBrokenObject
         _dangerParticle.Play();
         SetDragonBody();
         _move = false;
+        yield return new WaitForEndOfFrame();
+        _move = true;
         yield return new WaitForSeconds(_delay);
         _dangerParticle.Stop();
-        _move = true;
     }
     
 

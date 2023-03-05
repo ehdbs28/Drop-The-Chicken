@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UniRx.Triggers;
 using UnityEngine;
 
 [System.Serializable]
@@ -18,6 +19,25 @@ public class MapSystem : MonoBehaviour
     private Player _player;
     private int _summonY = 0;
 
+    #region 용, 바람
+    // 바람은 맵 생성 형식
+    // 용은 순간 생성 형식
+    [SerializeField]
+    private PoolableMono _dragon;
+    [SerializeField]
+    private PoolableMono _wind;
+
+    private PoolableMono _lastSpawnDragon = null;
+    private PoolableMono _lastSpawnWind = null;
+
+    private float _dragonNextSummonY = 0;
+    private float _windNextSummonY = 0;
+
+    private int _gimmickMinSpace = 80;
+    private int _gimmickMaxSpace = 150;
+
+    #endregion
+
     #region 맵 오브젝트
 
     [SerializeField]
@@ -33,18 +53,6 @@ public class MapSystem : MonoBehaviour
     private int _summonSpace = 50;
     #endregion
 
-    #region 용, 바람
-    // 바람은 맵 생성 형식
-    // 용은 순간 생성 형식
-
-    private int _dragonSpace = 0;
-    private int _windSpace = 0;
-
-    private int _gimmickMinSpace = 80;
-    private int _gimmickMaxSpace = 150;
-
-    #endregion
-
     private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -54,6 +62,58 @@ public class MapSystem : MonoBehaviour
     {
         ResetGame();
         AddObj();
+    }
+
+    public void ResetGimmick()
+    {
+        if (_lastSpawnDragon != null)
+            PoolManager.Instance.Push(_lastSpawnDragon);
+        if(_lastSpawnWind != null)
+            PoolManager.Instance.Push(_lastSpawnWind);
+
+        _dragonNextSummonY = -Random.Range(_gimmickMinSpace, _gimmickMaxSpace);
+    }
+
+    public void GimmickSpawn(Vector3 playerPos)
+    {
+        Debug.Log("실행중");
+        // 용이랑 바람 스폰
+        if(playerPos.y <= _dragonNextSummonY)
+        {
+            Debug.Log("용소환");
+            //전에 소환된 오브젝트 삭제
+            if (_lastSpawnDragon != null)
+                PoolManager.Instance.Push(_lastSpawnDragon);
+
+            //용 소환
+            PoolableMono dragonObj = PoolManager.Instance.Pop(_dragon.name);
+            _lastSpawnDragon = dragonObj;
+
+            float x = Random.Range(-2f, 2f);
+            dragonObj.transform.position = new Vector2(x, _dragonNextSummonY - 100);
+
+            int dragonSpace = Random.Range(_gimmickMinSpace, _gimmickMaxSpace);
+            _dragonNextSummonY = playerPos.y - dragonSpace;
+        }
+        
+        if(playerPos.y <= _windNextSummonY - 10)
+        {
+            Debug.Log("바람 소환");
+
+            //전에 소환된 오브젝트 삭제
+            if (_lastSpawnWind != null)
+                PoolManager.Instance.Push(_lastSpawnWind);
+
+            int windSpace = Random.Range(_gimmickMinSpace, _gimmickMaxSpace);
+            _windNextSummonY = playerPos.y - windSpace;
+
+            //바람 소환
+            PoolableMono windObj = PoolManager.Instance.Pop(_wind.name);
+            _lastSpawnWind = windObj;
+            windObj.transform.position = new Vector2(0, _windNextSummonY);
+
+        }
+
     }
 
     private void AddFever()
@@ -140,6 +200,8 @@ public class MapSystem : MonoBehaviour
 
     public void ResetGame()
     {
+        ResetGimmick();
+
         ResetObject();
         AddLastMapObjs();
         ResetObject();

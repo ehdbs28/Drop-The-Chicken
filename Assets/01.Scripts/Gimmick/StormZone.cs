@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StormZone : MonoBehaviour, IObstacle
+public class StormZone : PoolableMono, IObstacle
 {
     [SerializeField] private float _stormForce;
     private float _force;
@@ -35,7 +35,7 @@ public class StormZone : MonoBehaviour, IObstacle
         _playerRigid = null;
     }
 
-    public void SetDirection(bool isRight)
+    private void SetDirection(bool isRight)
     {
         _isRight = isRight;
         transform.localScale = isRight ? new Vector3(14, -6, 1) : new Vector3(14, 6, 1);
@@ -44,5 +44,11 @@ public class StormZone : MonoBehaviour, IObstacle
         {
             particle.Play();
         }
+    }
+
+    public override void Reset()
+    {
+        SetDirection(Random.value > 0.5f);
+        //
     }
 }

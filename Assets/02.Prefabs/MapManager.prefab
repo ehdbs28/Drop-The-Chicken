@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e849746d7f11f84588d36e8d40f9626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dragon: {fileID: 5091987352142802465, guid: 2ec93560c93eaaa4586fb26abe42ab25, type: 3}
+  _wind: {fileID: 3913846060254470343, guid: 8a830c146635d944184982dc06c701ce, type: 3}
   _feverObjs:
   - {fileID: 6340823245214835180, guid: b1ac5e53d5a9d624c86e2396967a4c79, type: 3}
   - {fileID: 2877731395017043301, guid: 3b4203df18b7ab84f8394804fccf1e60, type: 3}
@@ -56,5 +58,3 @@ MonoBehaviour:
   - summonObj: {fileID: 6214379567289416611, guid: 7de8bcc31f60b1841895a56627bcef50, type: 3}
     minXPos: -1
     maxXPos: 1
-  _mapObj: []
-  _lastMapObj: []
