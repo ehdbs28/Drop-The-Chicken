@@ -8934,7 +8934,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374b55466349a12488b5a405dbf41a59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Stop: 0
   _poolingList:
   - {fileID: 6340823245214835180, guid: b1ac5e53d5a9d624c86e2396967a4c79, type: 3}
   - {fileID: 2877731395017043301, guid: 3b4203df18b7ab84f8394804fccf1e60, type: 3}
@@ -8949,7 +8948,6 @@ MonoBehaviour:
   - {fileID: 1906976145168107325, guid: 0f293a8deeccef54e9e21099b6d09508, type: 3}
   - {fileID: 2499843450925198016, guid: 9f708845b5586014382910bcbfd567ef, type: 3}
   - {fileID: 646145584562338319, guid: 9a329e4a744c77645a3d9a059cce90c6, type: 3}
-  - {fileID: 0}
 --- !u!114 &588208376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34114,6 +34112,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 1694686476}
   tapToRestart: {fileID: 1546110163}
   tapToMainmenu: {fileID: 151419824}
+  tapToADReward: {fileID: 2120383972}
   currentScore: {fileID: 81538175}
   bestScore: {fileID: 1223273000}
   screenPanel: {fileID: 1694686474}

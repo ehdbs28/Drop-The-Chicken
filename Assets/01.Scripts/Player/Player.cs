@@ -130,7 +130,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void ResetPlayer()
     {
-        transform.position = (!GameManager.Instance.IsRevibe) ? _defaultPlayerPos : _lastPosition + Vector2.up;
+        transform.position = (!GameManager.Instance.IsRevibe) ? _defaultPlayerPos : _lastPosition;
         IsFast = false;
         StopCoroutine("Die");
 
