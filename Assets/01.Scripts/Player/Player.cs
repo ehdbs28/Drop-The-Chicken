@@ -79,6 +79,8 @@ public class Player : MonoBehaviour, IDamageable
 
     private ParticleSystem[] _fastParticle;
 
+    private Vector2 _lastPosition;
+
     private void Awake() {
         _animator = GetComponent<Animator>();
         _rigid = GetComponent<Rigidbody2D>();
@@ -128,17 +130,21 @@ public class Player : MonoBehaviour, IDamageable
 
     public void ResetPlayer()
     {
-        transform.position = _defaultPlayerPos;
+        transform.position = (!GameManager.Instance.IsRevibe) ? _defaultPlayerPos : _lastPosition + Vector2.up;
         IsFast = false;
         StopCoroutine("Die");
-        ResetFever();
+
+        if(!GameManager.Instance.IsRevibe) ResetFever();
+        else FeverStart();
+
+        GameManager.Instance.IsRevibe = false;
     }
 
     private void FeverStart()
     {
         bool fever = (from value in Fevers where value == false select value).Count() == 0; 
 
-        if(!_isFever && fever)
+        if(!_isFever && (fever || GameManager.Instance.IsRevibe))
         {
             StartCoroutine("DoFever");
             return;
@@ -188,6 +194,7 @@ public class Player : MonoBehaviour, IDamageable
     IEnumerator DoFever()
     {
         _isFever = true;
+        _isUnbeatable = true;
         GameManager.Instance.GetManager<AudioManager>().PlayOneShot(PlayerFeverStartClip);
         _animator.SetBool("Fever", true);
         yield return new WaitForSeconds(0.7f);
@@ -199,7 +206,6 @@ public class Player : MonoBehaviour, IDamageable
             particle.Play();
 
         IsFast = false;
-        _isUnbeatable = true;
         float saveSpd = _fallingSpeed;
         _fallingSpeed = _feverSpeed;
         yield return new WaitForSeconds(5f);
@@ -216,6 +222,7 @@ public class Player : MonoBehaviour, IDamageable
 
     IEnumerator Die()
     {
+        _lastPosition = transform.position;
         GameManager.Instance.GetManager<AudioManager>().PlayOneShot(PlayerDieClip);
         IsFast = false;
         IsDie = true;
