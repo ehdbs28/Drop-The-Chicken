@@ -2513,6 +2513,9 @@ TextureImporter:
   - first:
       213: 8218472685717716739
     second: Modern_UI_Style_1_48x48_836
+  - first:
+      213: -8885051632934289553
+    second: Modern_UI_Style_1_48x48_837
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -20080,10 +20083,10 @@ TextureImporter:
       name: Modern_UI_Style_1_48x48_831
       rect:
         serializedVersion: 2
-        x: 1633
-        y: 1297
-        width: 46
-        height: 46
+        x: 1644
+        y: 1308
+        width: 24
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -20198,6 +20201,27 @@ TextureImporter:
       bones: []
       spriteID: 30f74744d51ed0270800000000000000
       internalID: 8218472685717716739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_UI_Style_1_48x48_837
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 1540
+        width: 70
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 9, y: 9, z: 9, w: 14}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6f72f76d94f1b480800000000000000
+      internalID: -8885051632934289553
       vertices: []
       indices: 
       edges: []
