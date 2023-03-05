@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = null;
 
-    public bool Stop = false;
+    public bool Stop {get; set;} = false;
+    public bool IsRevibe {get; set;} = false;
 
     [SerializeField] private List<PoolableMono> _poolingList;
 
