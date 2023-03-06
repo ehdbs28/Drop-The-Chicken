@@ -40,7 +40,7 @@ public class ResultScreen : UIScreen
             ButtonClickSound();
             screenPanel.DOAnchorPosY(1980f, 1f).SetEase(Ease.OutBack).SetUpdate(true)
             .OnComplete(() => {
-                GameManager.Instance.UpdateState(GameState.INGAME);
+                GameManager.Instance.GetManager<UIManager>().Transition(() => GameManager.Instance.UpdateState(GameState.INGAME));
                 screenPanel.DOKill();
             });
         });
