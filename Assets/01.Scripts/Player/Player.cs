@@ -134,8 +134,12 @@ public class Player : MonoBehaviour, IDamageable
         IsFast = false;
         StopCoroutine("Die");
 
-        if(!GameManager.Instance.IsRevibe) ResetFever();
-        else FeverStart();
+        if(!GameManager.Instance.IsRevibe){
+            ResetFever();
+        }
+        else {
+            FeverStart();
+        }
     }
 
     private void FeverStart()

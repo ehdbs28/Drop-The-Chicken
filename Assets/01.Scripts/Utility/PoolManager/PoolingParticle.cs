@@ -21,7 +21,7 @@ public class PoolingParticle : PoolableMono
     IEnumerator PlayCoroutine(){
         _particle.Play();
 
-        yield return new WaitForSecondsRealtime(.5f);
+        yield return new WaitUntil(() => !_particle.isPlaying);
 
         Reset();
         PoolManager.Instance.Push(this);

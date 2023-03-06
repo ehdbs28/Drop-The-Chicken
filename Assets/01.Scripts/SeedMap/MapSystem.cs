@@ -19,9 +19,9 @@ public class MapSystem : MonoBehaviour
     private Player _player;
     private int _summonY = 0;
 
-    #region ¿ë, ¹Ù¶÷
-    // ¹Ù¶÷Àº ¸Ê »ý¼º Çü½Ä
-    // ¿ëÀº ¼ø°£ »ý¼º Çü½Ä
+    #region ï¿½ï¿½, ï¿½Ù¶ï¿½
+    // ï¿½Ù¶ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     [SerializeField]
     private PoolableMono _dragon;
     [SerializeField]
@@ -38,11 +38,11 @@ public class MapSystem : MonoBehaviour
 
     #endregion
 
-    #region ¸Ê ¿ÀºêÁ§Æ®
+    #region ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 
     [SerializeField]
     private FeverObj[] _feverObjs;
-    private float _feverSpawnPer = 0.2f; // 20ÆÛ
+    private float _feverSpawnPer = 0.2f; // 20ï¿½ï¿½
 
     [SerializeField]
     private SummonObj[] _objs;
@@ -76,15 +76,15 @@ public class MapSystem : MonoBehaviour
 
     public void GimmickSpawn(Vector3 playerPos)
     {
-        // ¿ëÀÌ¶û ¹Ù¶÷ ½ºÆù
+        // ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½Ù¶ï¿½ ï¿½ï¿½ï¿½ï¿½
         if(playerPos.y <= _dragonNextSummonY)
         {
-            Debug.Log("¿ë¼ÒÈ¯");
-            //Àü¿¡ ¼ÒÈ¯µÈ ¿ÀºêÁ§Æ® »èÁ¦
+            Debug.Log("ï¿½ï¿½ï¿½È¯");
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
             if (_lastSpawnDragon != null)
                 PoolManager.Instance.Push(_lastSpawnDragon);
 
-            //¿ë ¼ÒÈ¯
+            //ï¿½ï¿½ ï¿½ï¿½È¯
             PoolableMono dragonObj = PoolManager.Instance.Pop(_dragon.name);
             _lastSpawnDragon = dragonObj;
 
@@ -97,16 +97,16 @@ public class MapSystem : MonoBehaviour
         
         if(playerPos.y <= _windNextSummonY - 10)
         {
-            Debug.Log("¹Ù¶÷ ¼ÒÈ¯");
+            Debug.Log("ï¿½Ù¶ï¿½ ï¿½ï¿½È¯");
 
-            //Àü¿¡ ¼ÒÈ¯µÈ ¿ÀºêÁ§Æ® »èÁ¦
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
             if (_lastSpawnWind != null)
                 PoolManager.Instance.Push(_lastSpawnWind);
 
             int windSpace = Random.Range(_gimmickMinSpace, _gimmickMaxSpace);
             _windNextSummonY = playerPos.y - windSpace;
 
-            //¹Ù¶÷ ¼ÒÈ¯
+            //ï¿½Ù¶ï¿½ ï¿½ï¿½È¯
             PoolableMono windObj = PoolManager.Instance.Pop(_wind.name);
             _lastSpawnWind = windObj;
             windObj.transform.position = new Vector2(0, _windNextSummonY);
@@ -117,10 +117,10 @@ public class MapSystem : MonoBehaviour
 
     private void AddFever()
     {
-        //¸ðµç fever¿ÀºêÁ§Æ®°¡ trueÀÏ °æ¿ì »ý¼º ¾ÈµÇµµ·ÏÇÏ±â
+        //ï¿½ï¿½ï¿½ feverï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ trueï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ÈµÇµï¿½ï¿½ï¿½ï¿½Ï±ï¿½
         if (_player.IsFever) return;
 
-        //¼ÒÈ¯ È®·ü Ã¼Å©
+        //ï¿½ï¿½È¯ È®ï¿½ï¿½ Ã¼Å©
         float spawnPer = Random.Range(0f, 1f);
         if (spawnPer > _feverSpawnPer) return;
 
@@ -128,17 +128,31 @@ public class MapSystem : MonoBehaviour
         float maxX = 2;
 
         int randomIndex = Random.Range(0, _feverObjs.Length);
-        // Fever °ãÄ¡Áö ¾Ê°Ô Ã¼Å©
+        // Fever ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ê°ï¿½ Ã¼Å©
         while(FeverObjCheck(_player.Fevers, randomIndex))
         {
             randomIndex = Random.Range(0, _feverObjs.Length);
         }
-        // Fever Áß¿¡ Ã¤¿öÁöÁö ¾ÊÀº ¿öµå ÇÏ³ª »ý¼º
+        // Fever ï¿½ß¿ï¿½ Ã¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ ï¿½ï¿½ï¿½ï¿½
         Vector2 summonPos = new Vector2(Random.Range(minX, maxX), _summonY);
         PoolableMono summonFeverObject = PoolManager.Instance.Pop(_feverObjs[randomIndex].name);
 
         summonFeverObject.transform.position = summonPos;
         _mapObj.Add(summonFeverObject);
+
+        _summonY -= _objMinSpace;
+    }
+
+    private void AddEffect(){
+        Vector2 summonPos = new Vector2(0, _summonY);
+        PoolableMono skyBG = PoolManager.Instance.Pop("CloudBackGround");
+        PoolingParticle lightParticle = PoolManager.Instance.Pop("LightParticle") as PoolingParticle;
+
+        skyBG.transform.position = summonPos;
+        lightParticle.SetPosition(summonPos);
+        lightParticle.Play();
+
+        _mapObj.Add(skyBG);
 
         _summonY -= _objMinSpace;
     }
@@ -163,6 +177,7 @@ public class MapSystem : MonoBehaviour
         while (_summonY > endSummonY)
         {
             AddFever();
+            AddEffect();
 
             int summonObjIndex = Random.Range(0, _objs.Length);
             SummonObject(_objs[summonObjIndex]);
