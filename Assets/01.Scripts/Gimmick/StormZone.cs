@@ -5,7 +5,11 @@ using UnityEngine;
 public class StormZone : PoolableMono, IObstacle
 {
     [SerializeField] private float _stormForce;
+    private float _stormForceMin = 75f;
+    private float _stormForceMax = 225f;
+    
     private float _force;
+    
     private ParticleSystem[] _stormParticles;
 
     private Rigidbody2D _playerRigid;
@@ -19,6 +23,7 @@ public class StormZone : PoolableMono, IObstacle
     
     public void EnterEvent(Collider2D col)
     {
+        GameManager.Instance.GetManager<ScoreManager>().ScoreSubscribe(ScoreToSpeed);
         Player player = col.GetComponent<Player>();
         _playerRigid ??= player.GetComponent<Rigidbody2D>();
     }
@@ -39,10 +44,20 @@ public class StormZone : PoolableMono, IObstacle
     {
         _isRight = isRight;
         transform.localScale = isRight ? new Vector3(14, -6, 1) : new Vector3(14, 6, 1);
+
         _force = isRight ? -_stormForce : _stormForce;
         foreach (var particle in _stormParticles)
         {
             particle.Play();
+        }
+    }
+
+    private void ScoreToSpeed(int score){
+        if(_isRight){
+            _force = Mathf.Lerp(-_stormForceMin, -_stormForceMax, score / _stormForceMax);
+        }
+        else{
+            _force = Mathf.Lerp(_stormForceMin, _stormForceMax, score / _stormForceMax);
         }
     }
 
