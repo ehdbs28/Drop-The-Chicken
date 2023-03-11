@@ -10,6 +10,7 @@ public class SummonObj
     public float minXPos = -2;
     public float maxXPos = 2;
     //확률 제작하기
+    public int itemCount = 0;
 }
 
 public class MapSystem : MonoBehaviour
@@ -40,6 +41,8 @@ public class MapSystem : MonoBehaviour
     #endregion
 
     #region mapObjs
+
+    List<SummonObj> _mapSeed = new List<SummonObj>();
 
     [SerializeField]
     private FeverObj[] _feverObjs;
@@ -174,9 +177,7 @@ public class MapSystem : MonoBehaviour
             AddFever();
             AddEffect();
 
-            int summonObjIndex = Random.Range(0, _objs.Length);
-            SummonObject(_objs[summonObjIndex]);
-
+            SummonObject(MapObjsPop());
             _summonY -= Random.Range(_objMinSpace, _objMaxSpace);
         }
 
@@ -228,5 +229,36 @@ public class MapSystem : MonoBehaviour
         summonObject.transform.position = summonPos;
 
         _mapObj.Add(summonObject);
+    }
+
+    private SummonObj MapObjsPop()
+    {
+        if (_mapSeed.Count == 0) MapObjsSetting();
+
+        SummonObj summonObj = _mapSeed[0];
+        _mapSeed.RemoveAt(0);
+        return summonObj;
+    }
+
+    private void MapObjsSetting()
+    {
+        _mapSeed.Clear();
+
+        foreach(SummonObj obj in _objs)
+        {
+            for(int i = 0; i < obj.itemCount; i++)
+            {
+                _mapSeed.Add(obj);
+            }
+        }
+
+        //Shuffle
+        for(int i = 0; i < _mapSeed.Count; i++) {
+            int randomIndex = Random.Range(i, this._mapSeed.Count);
+
+            SummonObj temp = _mapSeed[i];
+            _mapSeed[i] = _mapSeed[randomIndex];
+            _mapSeed[randomIndex] = temp;
+        }
     }
 }
