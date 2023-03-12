@@ -9,6 +9,8 @@ public class SummonObj
     public PoolableMono summonObj;
     public float minXPos = -2;
     public float maxXPos = 2;
+    //확률 제작하기
+    public int itemCount = 0;
 }
 
 public class MapSystem : MonoBehaviour
@@ -19,7 +21,7 @@ public class MapSystem : MonoBehaviour
     private Player _player;
     private int _summonY = 0;
 
-    #region ��, �ٶ�
+    #region gimmicks
     // �ٶ��� �� ���� ����
     // ���� ���� ���� ����
     [SerializeField]
@@ -38,7 +40,9 @@ public class MapSystem : MonoBehaviour
 
     #endregion
 
-    #region �� ������Ʈ
+    #region mapObjs
+
+    List<SummonObj> _mapSeed = new List<SummonObj>();
 
     [SerializeField]
     private FeverObj[] _feverObjs;
@@ -76,15 +80,12 @@ public class MapSystem : MonoBehaviour
 
     public void GimmickSpawn(Vector3 playerPos)
     {
-        // ���̶� �ٶ� ����
         if(playerPos.y <= _dragonNextSummonY)
         {
-            Debug.Log("���ȯ");
-            //���� ��ȯ�� ������Ʈ ����
+            //delete lastSpawnDragon
             if (_lastSpawnDragon != null)
                 PoolManager.Instance.Push(_lastSpawnDragon);
 
-            //�� ��ȯ
             PoolableMono dragonObj = PoolManager.Instance.Pop(_dragon.name);
             _lastSpawnDragon = dragonObj;
 
@@ -97,16 +98,13 @@ public class MapSystem : MonoBehaviour
         
         if(playerPos.y <= _windNextSummonY - 10)
         {
-            Debug.Log("�ٶ� ��ȯ");
-
-            //���� ��ȯ�� ������Ʈ ����
+            //delete lastSpawnWind
             if (_lastSpawnWind != null)
                 PoolManager.Instance.Push(_lastSpawnWind);
 
             int windSpace = Random.Range(_gimmickMinSpace, _gimmickMaxSpace);
             _windNextSummonY = playerPos.y - windSpace;
 
-            //�ٶ� ��ȯ
             PoolableMono windObj = PoolManager.Instance.Pop(_wind.name);
             _lastSpawnWind = windObj;
             windObj.transform.position = new Vector2(0, _windNextSummonY);
@@ -117,10 +115,10 @@ public class MapSystem : MonoBehaviour
 
     private void AddFever()
     {
-        //��� fever������Ʈ�� true�� ��� ���� �ȵǵ����ϱ�
+        //player isFever check
         if (_player.IsFever) return;
 
-        //��ȯ Ȯ�� üũ
+        //spawnPer check
         float spawnPer = Random.Range(0f, 1f);
         if (spawnPer > _feverSpawnPer) return;
 
@@ -128,12 +126,12 @@ public class MapSystem : MonoBehaviour
         float maxX = 2;
 
         int randomIndex = Random.Range(0, _feverObjs.Length);
-        // Fever ��ġ�� �ʰ� üũ
+        // FeverObj true, false check
         while(FeverObjCheck(_player.Fevers, randomIndex))
         {
             randomIndex = Random.Range(0, _feverObjs.Length);
         }
-        // Fever �߿� ä������ ���� ���� �ϳ� ����
+        // Fever Spawn
         Vector2 summonPos = new Vector2(Random.Range(minX, maxX), _summonY);
         PoolableMono summonFeverObject = PoolManager.Instance.Pop(_feverObjs[randomIndex].name);
 
@@ -179,9 +177,7 @@ public class MapSystem : MonoBehaviour
             AddFever();
             AddEffect();
 
-            int summonObjIndex = Random.Range(0, _objs.Length);
-            SummonObject(_objs[summonObjIndex]);
-
+            SummonObject(MapObjsPop());
             _summonY -= Random.Range(_objMinSpace, _objMaxSpace);
         }
 
@@ -233,5 +229,36 @@ public class MapSystem : MonoBehaviour
         summonObject.transform.position = summonPos;
 
         _mapObj.Add(summonObject);
+    }
+
+    private SummonObj MapObjsPop()
+    {
+        if (_mapSeed.Count == 0) MapObjsSetting();
+
+        SummonObj summonObj = _mapSeed[0];
+        _mapSeed.RemoveAt(0);
+        return summonObj;
+    }
+
+    private void MapObjsSetting()
+    {
+        _mapSeed.Clear();
+
+        foreach(SummonObj obj in _objs)
+        {
+            for(int i = 0; i < obj.itemCount; i++)
+            {
+                _mapSeed.Add(obj);
+            }
+        }
+
+        //Shuffle
+        for(int i = 0; i < _mapSeed.Count; i++) {
+            int randomIndex = Random.Range(i, this._mapSeed.Count);
+
+            SummonObj temp = _mapSeed[i];
+            _mapSeed[i] = _mapSeed[randomIndex];
+            _mapSeed[randomIndex] = temp;
+        }
     }
 }
