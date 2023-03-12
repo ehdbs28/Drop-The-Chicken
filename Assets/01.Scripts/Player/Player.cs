@@ -60,6 +60,15 @@ public class Player : MonoBehaviour, IDamageable
             fastStack = 0;
         }
     }}
+    private bool _isMirror;
+    public bool IsMirror { get => _isMirror; set{
+        _isMirror = value;
+
+        if(_isMirror){
+            StopCoroutine("MirrorActiveFalse");
+            StartCoroutine("MirrorActiveFalse");
+        }
+    }}
 
     #region Fever
     private bool _isFever = false;
@@ -121,6 +130,11 @@ public class Player : MonoBehaviour, IDamageable
     private IEnumerator SlowDown(){
         yield return new WaitForSeconds(3f);
         IsFast = false;
+    }
+
+    private IEnumerator MirrorActiveFalse(){
+        yield return new WaitForSeconds(3f);
+        IsMirror = false;
     }
 
     public void OnDamage()

@@ -1,0 +1,46 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DarkCloudTrap : PoolableMono, IObstacle, IBrokenObject
+{
+    [SerializeField] private AudioClip _cloudClip;
+    private ParticleSystem[] _cloudParticle;
+
+    private void Awake() {
+        _cloudParticle = GetComponentsInChildren<ParticleSystem>();
+    }
+    
+    public void EnterEvent(Collider2D col)
+    {
+        GameManager.Instance.GetManager<AudioManager>().PlayOneShot(_cloudClip);
+        _cloudParticle[0].Play();
+        col.GetComponent<Player>().IsMirror = true;
+    }
+
+    public void StayEvent(Collider2D col)
+    {
+        
+    }
+
+    public void ExitEvent(Collider2D col)
+    {
+        GameManager.Instance.GetManager<AudioManager>().PlayOneShot(_cloudClip);
+        _cloudParticle[1].Play();
+    }
+
+    public override void Reset()
+    {
+
+    }
+
+    public void BrokenEvent()
+    {
+        PoolingParticle brokenParticle = PoolManager.Instance.Pop("BrokenParticleDarkCloud") as PoolingParticle;
+
+        brokenParticle.SetPosition(transform.position);
+        brokenParticle.Play();
+
+        PoolManager.Instance.Push(this);
+    }
+}

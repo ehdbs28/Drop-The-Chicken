@@ -24,6 +24,7 @@ public class PlayerMove : MonoBehaviour
         if (!player.IsPlay) return;
 
         float x = Input.GetAxisRaw("Horizontal");
+        x *= (player.IsMirror) ? -1 : 1;
         if(x != 0)
         {
             if(x > 0)
