@@ -17,7 +17,7 @@ public class PlayerManager : IManager
     float _maxFallSpeed = 7f;
 
     float _minMoveSpeed = 4.5f;
-    float _maxMoveSpeed = 12.5f;
+    float _maxMoveSpeed = 9.5f;
 
     float _maxSpeedScore = 500;
 

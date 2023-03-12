@@ -9494,7 +9494,7 @@ MonoBehaviour:
   _fallingSpeed: 1
   _fastSpeed: 0
   _moveSpeed: 3
-  _feverSpeed: 10
+  _feverSpeed: 13
   _paintWhite: {fileID: 2100000, guid: 273432fcd670ade468b79eefa594ec65, type: 2}
   _defaultMat: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   _feverParticles:
