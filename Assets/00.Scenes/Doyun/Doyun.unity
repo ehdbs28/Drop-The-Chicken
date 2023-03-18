@@ -2282,7 +2282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &399259093
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25555,7 +25555,7 @@ Animator:
   m_GameObject: {fileID: 1262760254}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8c5f98c85b20133468299ccfa9df1d8b, type: 2}
+  m_Controller: {fileID: 22100000, guid: edba850f15b62f841bd629c7685ae9da, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -25580,6 +25580,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 8c5f98c85b20133468299ccfa9df1d8b, type: 2}
   - {fileID: 22100000, guid: 64c02d02ae7db21488ff8906fd75fb77, type: 2}
   - {fileID: 22100000, guid: 3fcc44488e6ae1544b7f3ba9fb804eb9, type: 2}
+  - {fileID: 22100000, guid: edba850f15b62f841bd629c7685ae9da, type: 2}
   _playerAnimator: {fileID: 1262760256}
 --- !u!81 &1262760258
 AudioListener:
@@ -29720,6 +29721,7 @@ MonoBehaviour:
   - {fileID: 1607258968}
   - {fileID: 293541244}
   - {fileID: 845587719}
+  - {fileID: 794698566}
   tapToBack: {fileID: 1291049697}
   backIndex: {fileID: 1484686637}
   frontIndex: {fileID: 163350340}
