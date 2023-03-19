@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.Linq;
 using DG.Tweening;
 
 public class InGameScreen : UIScreen
@@ -13,6 +14,9 @@ public class InGameScreen : UIScreen
     [SerializeField] private TextMeshProUGUI newText;
 
     [SerializeField] private List<TextMeshProUGUI> feverTexts = new List<TextMeshProUGUI>();
+    [SerializeField] private Image feverImage;
+
+    private float _feverRunTime = 0f;
 
     public override void Init()
     {
@@ -20,6 +24,7 @@ public class InGameScreen : UIScreen
 
         GameManager.Instance.GetManager<ScoreManager>().ScoreSubscribe(UpScoreEvent);
         GameManager.Instance.GetManager<PlayerManager>().PlayerFeverSubscribe(FeverTextEvent);
+        GameManager.Instance.GetManager<PlayerManager>().PlayerFeverSubscribe(FeverImageEvent);
 
         tapToSetting.onClick.AddListener(() => {
             ButtonClickSound();
@@ -49,13 +54,29 @@ public class InGameScreen : UIScreen
     }
 
     private void FeverTextEvent(List<bool> feverList){
+        bool fever = (from value in feverList where value == false select value).Count() == 0;
+
         for(int index = 0; index < feverList.Count; index++){
             feverTexts[index].color = new Color(
                 feverTexts[index].color.r,
                 feverTexts[index].color.g,
                 feverTexts[index].color.b,
-                (feverList[index] ? 1f : 0.3f )
+                ((feverList[index] && !fever) ? 1f : 0.3f )
             );
+        }
+    }
+
+    private void FeverImageEvent(List<bool> feverList){
+        bool fever = (from value in feverList where value == false select value).Count() == 0;
+
+        feverImage.enabled = fever;
+        if(fever){
+            _feverRunTime += Time.deltaTime;
+            feverImage.fillAmount = Mathf.Lerp(1f, 0f, _feverRunTime / 5.7f);
+        }
+        else{
+            _feverRunTime = 0;
+            feverImage.fillAmount = 1;
         }
     }
 }
