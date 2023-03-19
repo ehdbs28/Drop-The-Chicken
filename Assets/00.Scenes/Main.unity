@@ -748,7 +748,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3209a03b33fa34740b4fa035a5eb16cd, type: 3}
-  m_Color: {r: 1, g: 0.98457783, b: 0.7773585, a: 0.39215687}
+  m_Color: {r: 1, g: 0.9843137, b: 0.7764706, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -8914,14 +8914,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e2c303ba975604eb951109c1f607ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0.02
-  _waitTime: 5
-  _colorPallete:
-    queue:
-    - {r: 0.34509805, g: 0.69803923, b: 1, a: 1}
-    - {r: 0.13725491, g: 0.21960784, b: 0.3137255, a: 1}
-    - {r: 0.7176471, g: 0.29411766, b: 0.4862745, a: 1}
-    - {r: 0.99607843, g: 1, b: 0.7137255, a: 1}
+  _gradientCam:
+    type: 0
+    gradientObj: {fileID: 500995829}
+    speed: 0.02
+    waitTime: 5
+    _colorPallete:
+      queue:
+      - {r: 0.34509805, g: 0.69803923, b: 1, a: 1}
+      - {r: 0.13725491, g: 0.21960784, b: 0.3137255, a: 1}
+      - {r: 0.7176471, g: 0.29411766, b: 0.4862745, a: 1}
+      - {r: 0.99607843, g: 1, b: 0.7137255, a: 1}
+  _gradientSkyLight:
+    type: 1
+    gradientObj: {fileID: 59205401}
+    speed: 0.02
+    waitTime: 5
+    _colorPallete:
+      queue:
+      - {r: 1, g: 0.9843137, b: 0.7764706, a: 0.39215687}
+      - {r: 0.7764706, g: 0.8509804, b: 1, a: 0.39215687}
+      - {r: 1, g: 0.07450981, b: 0.003921569, a: 0.39215687}
+      - {r: 1, g: 0.69411767, b: 0, a: 0.39215687}
 --- !u!114 &588208375
 MonoBehaviour:
   m_ObjectHideFlags: 0

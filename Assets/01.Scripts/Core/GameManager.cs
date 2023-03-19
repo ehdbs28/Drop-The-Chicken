@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         _managers.Add(new CameraManager());
 
         _managers.Add(GetComponent<AudioManager>());
-        _managers.Add(GetComponent<GradientBackGroundColor>());
+        _managers.Add(GetComponent<BackGroundManager>());
 
         UpdateState(GameState.INIT);
     }
