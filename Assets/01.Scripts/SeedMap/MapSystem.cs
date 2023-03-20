@@ -179,7 +179,6 @@ public class MapSystem : MonoBehaviour
 
         while (_summonY > endSummonY)
         {
-            Debug.Log(_summonY);
             AddFever();
             AddEffect();
 
