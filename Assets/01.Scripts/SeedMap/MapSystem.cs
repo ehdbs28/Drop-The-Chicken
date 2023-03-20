@@ -56,6 +56,9 @@ public class MapSystem : MonoBehaviour
     private int _objMaxSpace = 4;
 
     private int _summonSpace = 50;
+
+    private int _backgroundSpace = 10;
+    private int _backgroundSummonY = 0;
     #endregion
 
     private void Awake()
@@ -143,7 +146,8 @@ public class MapSystem : MonoBehaviour
     }
 
     private void AddEffect(){
-        Vector2 summonPos = new Vector2(0, _summonY);
+        if (_summonY >= _backgroundSummonY) return;
+        Vector2 summonPos = new Vector2(0, _summonY-3);
         PoolableMono skyBG = PoolManager.Instance.Pop("CloudBackGround");
         PoolingParticle lightParticle = PoolManager.Instance.Pop("LightParticle") as PoolingParticle;
 
@@ -153,7 +157,7 @@ public class MapSystem : MonoBehaviour
 
         _mapObj.Add(skyBG);
 
-        _summonY -= _objMinSpace;
+        _backgroundSummonY = _summonY - _backgroundSpace;
     }
 
     private bool FeverObjCheck(List<bool> fevers, int index)
@@ -175,6 +179,7 @@ public class MapSystem : MonoBehaviour
 
         while (_summonY > endSummonY)
         {
+            Debug.Log(_summonY);
             AddFever();
             AddEffect();
 
