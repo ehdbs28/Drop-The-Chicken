@@ -147,6 +147,7 @@ public class MapSystem : MonoBehaviour
         PoolingParticle lightParticle = PoolManager.Instance.Pop("LightParticle") as PoolingParticle;
 
         skyBG.transform.position = summonPos;
+        skyBG.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, Random.Range(0.1f, 0.2f));
         lightParticle.SetPosition(summonPos);
         lightParticle.Play();
 
