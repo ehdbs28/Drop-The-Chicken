@@ -16,6 +16,7 @@ public class SummonObj
 public class MapSystem : MonoBehaviour
 {
     private List<PoolableMono> _mapObj = new List<PoolableMono>();
+    private List<PoolableMono> _beforeMapObj = new List<PoolableMono>();
     private List<PoolableMono> _lastMapObj = new List<PoolableMono>();
 
     private Player _player;
@@ -186,10 +187,14 @@ public class MapSystem : MonoBehaviour
 
     private void AddLastMapObjs()
     {
-        if (_mapObj.Count == 0) return;
+        for(int i = 0; i < _beforeMapObj.Count; i++)
+        {
+            _lastMapObj.Add(_beforeMapObj[i]);
+        }
+        _beforeMapObj.Clear();
         for(int i = 0; i < _mapObj.Count; i++)
         {
-            _lastMapObj.Add(_mapObj[i]);
+            _beforeMapObj.Add(_mapObj[i]);
         }
         _mapObj.Clear();
     }

@@ -56,7 +56,23 @@ MonoBehaviour:
     minXPos: -2
     maxXPos: 2
     itemCount: 10
+  - summonObj: {fileID: 8213936274891341361, guid: 3c9516d72709b2b45a71f4135d76e16b, type: 3}
+    minXPos: -2
+    maxXPos: 2
+    itemCount: 4
   - summonObj: {fileID: 6214379567289416611, guid: 7de8bcc31f60b1841895a56627bcef50, type: 3}
     minXPos: -1
     maxXPos: 1
     itemCount: 8
+  - summonObj: {fileID: 8692827517329796119, guid: de1afc7fdc5864849870a5d50c49d147, type: 3}
+    minXPos: -1
+    maxXPos: 1
+    itemCount: 2
+  - summonObj: {fileID: 8692827517329796119, guid: 432595417fff86544adb701c67942f74, type: 3}
+    minXPos: -1
+    maxXPos: 1
+    itemCount: 2
+  - summonObj: {fileID: 8692827517329796119, guid: 94edd5f395df71445b788aafcad971b9, type: 3}
+    minXPos: -1
+    maxXPos: 1
+    itemCount: 2
