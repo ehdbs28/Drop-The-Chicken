@@ -22,6 +22,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private Material _defaultMat;
 
     [SerializeField] private ParticleSystem[] _feverParticles;
+    [SerializeField] private ParticleSystem _darkClourParticle;
     private Vector2 _fallPos = Vector2.zero;
 
     [Header("Audio Clip")]
@@ -133,7 +134,10 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     private IEnumerator MirrorActiveFalse(){
+        if(_darkClourParticle.isPlaying) _darkClourParticle.Stop();
+        _darkClourParticle.Play();
         yield return new WaitForSeconds(3f);
+        _darkClourParticle.Stop();
         IsMirror = false;
     }
 
