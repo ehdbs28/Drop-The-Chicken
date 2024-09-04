@@ -40,7 +40,7 @@ android {
 // Android Resolver Exclusions End
 android {
     compileSdkVersion **APIVERSION**
-    buildToolsVersion '**BUILDTOOLS**'
+    buildToolsVersion '33.0.2'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
