@@ -13,6 +13,14 @@ public class SummonObj
     public int itemCount = 0;
 }
 
+[System.Serializable]
+public class GimmickInfo
+{
+    //public EGimmickType Type;
+    public PoolableMono LastSpawnObj;
+    public float NextSummonY { get; set; }  
+}
+
 public class MapSystem : MonoBehaviour
 {
     private List<PoolableMono> _mapObj = new List<PoolableMono>();
@@ -24,6 +32,11 @@ public class MapSystem : MonoBehaviour
     #region gimmicks
     // �ٶ��� �� ���� ����
     // ���� ���� ���� ����
+
+    [SerializeField]
+    private SpawnGimmickListSO _gimmickListSO;
+    private Dictionary<EGimmickType, GimmickInfo> _spawnGimmickDictionary;
+    
     [SerializeField]
     private PoolableMono _dragon;
     [SerializeField]
@@ -62,6 +75,26 @@ public class MapSystem : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
+    private void Start()
+    {
+        FillSpawnDictionary();
+    }
+
+    private void FillSpawnDictionary()
+    {
+        _spawnGimmickDictionary = new Dictionary<EGimmickType, GimmickInfo>();
+        _gimmickListSO.GimmickList.ForEach((gimmick) =>
+        {
+            GimmickInfo info = new GimmickInfo
+            {
+                LastSpawnObj = null,
+                NextSummonY = 0
+            };
+
+            _spawnGimmickDictionary.Add(gimmick.GimmickType, info);
+        });
+    }
+
     public void ResetMap()
     {
         ResetGame();
@@ -70,6 +103,16 @@ public class MapSystem : MonoBehaviour
 
     public void ResetGimmick()
     {
+        
+        foreach(var gimmickInfo in _spawnGimmickDictionary.Values)
+        {
+            if(gimmickInfo.LastSpawnObj != null)
+            {
+                PoolManager.Instance.Push(gimmickInfo.LastSpawnObj);
+                
+            }
+        }
+        
         if (_lastSpawnDragon != null)
             PoolManager.Instance.Push(_lastSpawnDragon);
         if(_lastSpawnWind != null)
