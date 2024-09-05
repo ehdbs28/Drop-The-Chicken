@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
         _managers.Add(new MapManager());
         _managers.Add(new PlayerManager());
         _managers.Add(new ScoreManager());
+        _managers.Add(new CashManager());
         _managers.Add(GetComponent<UIManager>());
         _managers.Add(new ESCManager());
         _managers.Add(new CameraManager());
@@ -53,8 +54,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void UpdateState(GameState state){
-        foreach(var manager in _managers){
-            manager.UpdateState(state);
+        for(int i = 0; i < _managers.Count; ++i)
+        {
+            _managers[i].UpdateState(state);
         }
 
         State = state;

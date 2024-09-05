@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - DamageAbleObj
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -51,6 +52,9 @@ TagManager:
     locked: 0
   - name: Gimmick
     uniqueID: 512757841
+    locked: 0
+  - name: Item
+    uniqueID: 2613168963
     locked: 0
   - name: Effect
     uniqueID: 2682672973

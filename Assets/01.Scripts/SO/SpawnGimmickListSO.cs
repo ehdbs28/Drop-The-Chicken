@@ -9,13 +9,13 @@ public class SpawnGimmickListSO : ScriptableObject
 
     private Dictionary<EGimmickType, Gimmick> GimmickDictionary;
 
-    private void Awake()
+    private void OnEnable()
     {
-        if(GimmickDictionary == null)
+        if(GimmickDictionary == null) 
         {
             GimmickDictionary = new Dictionary<EGimmickType, Gimmick>();
-                
-            if(GimmickList != null)
+               
+            if(GimmickList.Count > 0)
             {
                 GimmickList.ForEach((gimmick) =>
                 {
@@ -28,6 +28,7 @@ public class SpawnGimmickListSO : ScriptableObject
     public string GetGimmickObjectName(in EGimmickType type)
     {
         Gimmick obj = null;
+        Debug.Log(GimmickDictionary);
         if(GimmickDictionary.TryGetValue(type, out obj))
         {
             return obj.name;

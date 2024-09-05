@@ -139,7 +139,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void OnDamage()
     {
-        StartCoroutine("Die");
+        //StartCoroutine("Die");
     }
 
     public void ResetPlayer()

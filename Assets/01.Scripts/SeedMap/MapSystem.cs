@@ -104,7 +104,6 @@ public class MapSystem : MonoBehaviour
 
     public void ResetGimmick()
     {
-        
         foreach(var gimmickInfo in _spawnGimmickInfoList)
         {
             if(gimmickInfo.LastSpawnObj != null)
@@ -113,13 +112,6 @@ public class MapSystem : MonoBehaviour
                 gimmickInfo.NextSummonY = -Random.Range(_gimmickMinSpace, _gimmickMaxSpace);
             }
         }
-        
-        //if (_lastSpawnDragon != null)
-        //    PoolManager.Instance.Push(_lastSpawnDragon);
-        //if(_lastSpawnWind != null)
-        //    PoolManager.Instance.Push(_lastSpawnWind);
-
-        //_dragonNextSummonY = -Random.Range(_gimmickMinSpace, _gimmickMaxSpace);
     }
 
     public void GimmickSpawn(Vector3 playerPos)
@@ -146,47 +138,8 @@ public class MapSystem : MonoBehaviour
                 {
                     Debug.LogWarning($"{gimmickInfo.Type}가 SO에 들어있지 않습니다.");
                 }
-
             }
-                
-            //if (gimmickInfo.LastSpawnObj != null)
-            //{
-            //    PoolManager.Instance.Push(gimmickInfo.LastSpawnObj);
-            //    gimmickInfo.NextSummonY = -Random.Range(_gimmickMinSpace, _gimmickMaxSpace);
-            //}
         }
-
-        if (playerPos.y <= _dragonNextSummonY)
-        {
-            //delete lastSpawnDragon
-            if (_lastSpawnDragon != null)
-                PoolManager.Instance.Push(_lastSpawnDragon);
-
-            PoolableMono dragonObj = PoolManager.Instance.Pop(_dragon.name);
-            _lastSpawnDragon = dragonObj;
-
-            float x = Random.Range(-2f, 2f);
-            dragonObj.transform.position = new Vector2(x, _dragonNextSummonY - 100);
-
-            int dragonSpace = Random.Range(_gimmickMinSpace, _gimmickMaxSpace);
-            _dragonNextSummonY = playerPos.y - dragonSpace;
-        }
-        
-        if(playerPos.y <= _windNextSummonY - 10)
-        {
-            //delete lastSpawnWind
-            if (_lastSpawnWind != null)
-                PoolManager.Instance.Push(_lastSpawnWind);
-
-            int windSpace = Random.Range(_gimmickMinSpace, _gimmickMaxSpace);
-            _windNextSummonY = playerPos.y - windSpace;
-
-            PoolableMono windObj = PoolManager.Instance.Pop(_wind.name);
-            _lastSpawnWind = windObj;
-            windObj.transform.position = new Vector2(0, _windNextSummonY);
-
-        }
-
     }
 
     private void AddFever()
@@ -288,7 +241,6 @@ public class MapSystem : MonoBehaviour
     {
         ResetGimmick();
 
-        ResetObject();
         AddLastMapObjs();
         ResetObject();
         _summonY = 0;

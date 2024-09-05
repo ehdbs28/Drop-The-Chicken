@@ -26,7 +26,9 @@ public class PlayerColliderComponent : IPlayerComponent
         player.OnTriggerEnter2DAsObservable()
         .Where(condition => GameManager.Instance.State == GameState.INGAME && !GameManager.Instance.Stop && !player.IsDie)
         .Subscribe(col => {
-            if(!col.CompareTag("Obstacle")) return;
+            bool isObstacle = col.CompareTag("Obstacle");
+            bool isItem = col.CompareTag("Item");
+            if (!isObstacle && !isItem) return;
 
             if(player.IsUnbeatable){
                 IBrokenObject brokenObject = col.GetComponent<IBrokenObject>();
@@ -37,9 +39,15 @@ public class PlayerColliderComponent : IPlayerComponent
                     GameManager.Instance.GetManager<ScoreManager>().PlusScore(plusScore);
                 }
             }
-            else{
+            else if(isObstacle)
+            {
                 IObstacle obstacle = col.GetComponent<IObstacle>();
                 obstacle?.EnterEvent(playerCol);
+            }
+            else // Item
+            {
+                IItem item = col.GetComponent<IItem>();
+                item?.EnterEvent(player);
             }
         });
 

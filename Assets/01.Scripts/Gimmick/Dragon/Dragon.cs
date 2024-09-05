@@ -18,7 +18,6 @@ public class Dragon : Gimmick, IBrokenObject
     private void Awake()
     {
         _dragonBodys = _dragonBodyParent.GetComponentsInChildren<DragonBody>();
-
         SetDragonBody();
     }
 
