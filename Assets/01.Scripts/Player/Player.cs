@@ -144,11 +144,11 @@ public class Player : MonoBehaviour, IDamageable
 
     public void ResetPlayer()
     {
-        transform.position = (!GameManager.Instance.IsRevibe) ? _defaultPlayerPos : _lastPosition;
+        transform.position = (!GameManager.Instance.IsRevive) ? _defaultPlayerPos : _lastPosition;
         IsFast = false;
         StopCoroutine("Die");
 
-        if(!GameManager.Instance.IsRevibe){
+        if(!GameManager.Instance.IsRevive){
             ResetFever();
         }
         else {
@@ -160,7 +160,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         bool fever = (from value in Fevers where value == false select value).Count() == 0; 
 
-        if(!_isFever && (fever || GameManager.Instance.IsRevibe))
+        if(!_isFever && (fever || GameManager.Instance.IsRevive))
         {
             StartCoroutine("DoFever");
             return;

@@ -38,7 +38,7 @@ public class MapManager : IManager
     
     private void ResetMap()
     {
-        if(!GameManager.Instance.IsRevibe){
+        if(!GameManager.Instance.IsRevive){
             if(GameManager.Instance.GetManager<ScoreManager>().BestScore != 0)
                 _maxScorePos.position = GameManager.Instance.GetManager<PlayerManager>().GetDefaultPlayerPos +
                     (GameManager.Instance.GetManager<ScoreManager>().BestScore * Vector2.down);

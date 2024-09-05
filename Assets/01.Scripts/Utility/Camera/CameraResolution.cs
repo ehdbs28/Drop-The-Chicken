@@ -9,8 +9,8 @@ public class CameraResolution : MonoBehaviour
 
 
     #region Pola
-    private int ScreenSizeX = 1080;
-    private int ScreenSizeY = 1920;
+    private int ScreenSizeX = 0;
+    private int ScreenSizeY = 0;
     #endregion
 
     #region metody
@@ -18,42 +18,43 @@ public class CameraResolution : MonoBehaviour
     #region rescale camera
     private void RescaleCamera()
     {
-
-        if (Screen.width == ScreenSizeX && Screen.height == ScreenSizeY) return;
-
-        float targetaspect = 9.0f / 16.0f;
-        float windowaspect = (float)Screen.width / (float)Screen.height;
-        float scaleheight = windowaspect / targetaspect;
+        // 카메라가 존재하는지 확인
         Camera camera = Camera.main;
-
-        if (scaleheight < 1.0f)
+        if (camera == null)
         {
-            Rect rect = camera.rect;
-
-            rect.width = 1.0f;
-            rect.height = scaleheight;
-            rect.x = 0;
-            rect.y = (1.0f - scaleheight) / 2.0f;
-
-            camera.rect = rect;
-        }
-        else // add pillarbox
-        {
-            float scalewidth = 1.0f / scaleheight;
-
-            Rect rect = camera.rect;
-
-            rect.width = scalewidth;
-            rect.height = 1.0f;
-            rect.x = (1.0f - scalewidth) / 2.0f;
-            rect.y = 0;
-
-            camera.rect = rect;
+            Debug.LogError("Main camera is not found.");
+            return; // 카메라가 없으면 리턴
         }
 
+        // 9:16 비율
+        float targetAspect = 9.0f / 16.0f;
+        float windowAspect = (float)Screen.width / (float)Screen.height;
+        float scaleHeight = windowAspect / targetAspect;
+
+        // 카메라가 Orthographic인 경우 처리
+        if (camera.orthographic)
+        {
+            // 기본 Orthographic Size 설정 (필요에 따라 수정 가능)
+            float defaultOrthoSize = 5.0f;
+
+            if (scaleHeight < 1.0f)
+            {
+                // 화면 높이에 맞춰 조정
+                camera.orthographicSize = defaultOrthoSize / scaleHeight;
+            }
+            else
+            {
+                // 화면 폭에 맞춰 조정 (레터박스가 좌우에 생성됨)
+                camera.orthographicSize = defaultOrthoSize;
+            }
+        }
+
+        // 현재 화면 크기 저장
         ScreenSizeX = Screen.width;
         ScreenSizeY = Screen.height;
     }
+
+
     #endregion
 
     #endregion
@@ -87,8 +88,14 @@ public class CameraResolution : MonoBehaviour
     }
 
     // Use this for initialization
-    void Awake()
+    void Start()
     {
+        RescaleCamera();
+    }
+
+    void Update()
+    {
+        // 해상도 변화 감지
         RescaleCamera();
     }
 

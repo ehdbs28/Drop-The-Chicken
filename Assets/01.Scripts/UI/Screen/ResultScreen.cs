@@ -28,6 +28,19 @@ public class ResultScreen : UIScreen
                 screenPanel.DOKill();
                 isOpen = true;
             });
+
+            if (GameManager.Instance.OneRevive)
+            {
+                tapToADReward.gameObject.SetActive(false);
+                GameManager.Instance.OneRevive = false;
+            }
+            else
+            {
+                tapToADReward.gameObject.SetActive(true);
+            }
+            
+
+
         }
     }
 
@@ -63,8 +76,11 @@ public class ResultScreen : UIScreen
 
         tapToADReward.onClick.AddListener(() => {
             //광고재생
-            if(!isOpen) return;
+            AdManager.Instance.ShowRewardedAd();
 
+            if (!isOpen) return;
+
+            GameManager.Instance.OneRevive = true;
             isOpen = false;
             ButtonClickSound();
             Sequence sq = DOTween.Sequence().SetUpdate(true);
@@ -72,7 +88,7 @@ public class ResultScreen : UIScreen
             sq.Append(screenPanel.DOAnchorPosY(1980f, 1f).SetEase(Ease.InOutBack));
 
             sq.InsertCallback(0.5f, () => {
-                GameManager.Instance.IsRevibe = true;
+                GameManager.Instance.IsRevive = true;
                 GameManager.Instance.UpdateState(GameState.INGAME);
             });
 
