@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance = null;
 
     public bool Stop {get; set;} = false;
-    public bool IsRevibe {get; set;} = false;
+    public bool IsRevive {get; set;} = false;
+
+    public bool OneRevive = false;
 
     [SerializeField] private List<PoolableMono> _poolingList;
 
@@ -61,7 +63,7 @@ public class GameManager : MonoBehaviour
             UpdateState(GameState.STANDBY);
         }
 
-        if(IsRevibe) IsRevibe = false;
+        if(IsRevive) IsRevive = false;
     }
 
     public T GetManager<T>() where T : class, IManager{
