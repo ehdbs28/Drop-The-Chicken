@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dragon : PoolableMono, IBrokenObject
+public class Dragon : Gimmick, IBrokenObject
 {
     [SerializeField] private ParticleSystem _dangerParticle;
 
@@ -61,6 +61,12 @@ public class Dragon : PoolableMono, IBrokenObject
     {
         //
         StartCoroutine("DragonSetting");
+    }
+
+    public override void Spawn(float nextSummonY)
+    {
+        float x = UnityEngine.Random.Range(-2f, 2f);
+        transform.position = new Vector2(x, nextSummonY - 100); //밑에서 부터 올라오는 친구이기에 생성을 밑에 해줌.
     }
 
     public void BrokenEvent()

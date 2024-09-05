@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
-public class StormZone : PoolableMono, IObstacle
+public class StormZone : Gimmick, IObstacle
 {
     [SerializeField] private float _stormForce;
     private float _stormForceMin = 75f;
@@ -65,5 +66,10 @@ public class StormZone : PoolableMono, IObstacle
     {
         SetDirection(Random.value > 0.5f);
         //
+    }
+
+    public override void Spawn(float nextSummonY)
+    {
+        transform.position = new Vector2(0, nextSummonY - 10);
     }
 }

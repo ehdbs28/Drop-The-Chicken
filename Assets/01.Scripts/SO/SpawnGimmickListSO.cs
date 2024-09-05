@@ -25,12 +25,12 @@ public class SpawnGimmickListSO : ScriptableObject
         }
     }
 
-    public Gimmick GetGimmickObject(in EGimmickType type)
+    public string GetGimmickObjectName(in EGimmickType type)
     {
         Gimmick obj = null;
         if(GimmickDictionary.TryGetValue(type, out obj))
         {
-            return obj;
+            return obj.name;
         }
         return null;
     }

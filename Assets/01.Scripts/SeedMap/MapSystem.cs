@@ -16,7 +16,7 @@ public class SummonObj
 [System.Serializable]
 public class GimmickInfo
 {
-    //public EGimmickType Type;
+    public EGimmickType Type;
     public PoolableMono LastSpawnObj;
     public float NextSummonY { get; set; }  
 }
@@ -35,7 +35,7 @@ public class MapSystem : MonoBehaviour
 
     [SerializeField]
     private SpawnGimmickListSO _gimmickListSO;
-    private Dictionary<EGimmickType, GimmickInfo> _spawnGimmickDictionary;
+    private List<GimmickInfo> _spawnGimmickInfoList;
     
     [SerializeField]
     private PoolableMono _dragon;
@@ -82,16 +82,17 @@ public class MapSystem : MonoBehaviour
 
     private void FillSpawnDictionary()
     {
-        _spawnGimmickDictionary = new Dictionary<EGimmickType, GimmickInfo>();
+        _spawnGimmickInfoList = new List<GimmickInfo>();
         _gimmickListSO.GimmickList.ForEach((gimmick) =>
         {
             GimmickInfo info = new GimmickInfo
             {
+                Type = gimmick.GimmickType,
                 LastSpawnObj = null,
                 NextSummonY = 0
             };
 
-            _spawnGimmickDictionary.Add(gimmick.GimmickType, info);
+            _spawnGimmickInfoList.Add(info);
         });
     }
 
@@ -104,26 +105,58 @@ public class MapSystem : MonoBehaviour
     public void ResetGimmick()
     {
         
-        foreach(var gimmickInfo in _spawnGimmickDictionary.Values)
+        foreach(var gimmickInfo in _spawnGimmickInfoList)
         {
             if(gimmickInfo.LastSpawnObj != null)
             {
                 PoolManager.Instance.Push(gimmickInfo.LastSpawnObj);
-                
+                gimmickInfo.NextSummonY = -Random.Range(_gimmickMinSpace, _gimmickMaxSpace);
             }
         }
         
-        if (_lastSpawnDragon != null)
-            PoolManager.Instance.Push(_lastSpawnDragon);
-        if(_lastSpawnWind != null)
-            PoolManager.Instance.Push(_lastSpawnWind);
+        //if (_lastSpawnDragon != null)
+        //    PoolManager.Instance.Push(_lastSpawnDragon);
+        //if(_lastSpawnWind != null)
+        //    PoolManager.Instance.Push(_lastSpawnWind);
 
-        _dragonNextSummonY = -Random.Range(_gimmickMinSpace, _gimmickMaxSpace);
+        //_dragonNextSummonY = -Random.Range(_gimmickMinSpace, _gimmickMaxSpace);
     }
 
     public void GimmickSpawn(Vector3 playerPos)
     {
-        if(playerPos.y <= _dragonNextSummonY)
+        foreach (var gimmickInfo in _spawnGimmickInfoList)
+        {
+            if(playerPos.y <= gimmickInfo.NextSummonY)
+            {
+                if (gimmickInfo.LastSpawnObj != null)
+                    PoolManager.Instance.Push(gimmickInfo.LastSpawnObj);
+
+                string gimmickName = _gimmickListSO.GetGimmickObjectName(gimmickInfo.Type);
+                if(gimmickName != null)
+                {
+                    Gimmick gimmick = PoolManager.Instance.Pop(gimmickName) as Gimmick;
+                    gimmickInfo.LastSpawnObj = gimmick;
+                    gimmick.Spawn(gimmickInfo.NextSummonY); // 스폰해줌.
+                    
+                    int gimmickSpace = Random.Range(_gimmickMinSpace, _gimmickMaxSpace);
+                    float NextSummonY = playerPos.y - gimmickSpace;
+                    gimmickInfo.NextSummonY = NextSummonY; // 다음 생성 위치 재설정
+                }
+                else
+                {
+                    Debug.LogWarning($"{gimmickInfo.Type}가 SO에 들어있지 않습니다.");
+                }
+
+            }
+                
+            //if (gimmickInfo.LastSpawnObj != null)
+            //{
+            //    PoolManager.Instance.Push(gimmickInfo.LastSpawnObj);
+            //    gimmickInfo.NextSummonY = -Random.Range(_gimmickMinSpace, _gimmickMaxSpace);
+            //}
+        }
+
+        if (playerPos.y <= _dragonNextSummonY)
         {
             //delete lastSpawnDragon
             if (_lastSpawnDragon != null)
