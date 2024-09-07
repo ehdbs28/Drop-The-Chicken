@@ -26,6 +26,11 @@ public class MapSystem : MonoBehaviour
     private List<PoolableMono> _mapObj = new List<PoolableMono>();
     private List<PoolableMono> _lastMapObj = new List<PoolableMono>();
 
+    private List<List<PoolableMono>> _mapObjs = new List<List<PoolableMono>>();
+    private List<List<PoolableMono>> _lastMapObjs = new List<List<PoolableMono>>();
+
+    private int currentMapNum = 0;
+
     private Player _player;
     private int _summonY = 0;
 
@@ -189,9 +194,10 @@ public class MapSystem : MonoBehaviour
         return fevers[index];
     }
 
-    public void AddMap()
+    public void AddMap(Vector3 pos)
     {
-        ResetObject();
+        Debug.Log("Gang");
+        //ResetObject();
         AddObj();
     }
 
@@ -210,7 +216,6 @@ public class MapSystem : MonoBehaviour
             _summonY -= Random.Range(_objMinSpace, _objMaxSpace);
         }
 
-        
     }
 
     private void AddLastMapObjs()

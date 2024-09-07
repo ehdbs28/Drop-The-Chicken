@@ -55,7 +55,7 @@ public class MapManager : IManager
     {
         if(map.ObjSummonCheck(pos))
         {
-            map.AddMap();
+            map.AddMap(pos);
         }
         map.GimmickSpawn(pos);
     }
