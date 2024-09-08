@@ -335,8 +335,11 @@ public class Player : MonoBehaviour, IDamageable
         foreach(var particle in _feverParticles)
             particle.Stop();
 
+        Vector2 pos = transform.position;
+        pos.x = 0f;
+        pos.y -= 15f;
         LayerMask layer = LayerMask.GetMask("Breakable");
-        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, 30f, layer);
+        Collider2D[] cols = Physics2D.OverlapBoxAll(pos, new Vector2(10f, 30f), 0f, layer);
         if(cols.Length > 0)
         {
 
