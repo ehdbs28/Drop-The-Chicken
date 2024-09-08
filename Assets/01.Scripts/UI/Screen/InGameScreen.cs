@@ -37,6 +37,9 @@ public class InGameScreen : UIScreen
     }
 
     private void UpScoreEvent(int score){
+
+        if (score < 0)
+            score = 0;
         scoreText.text = score.ToString("D5");
 
         BestScoreCheck();

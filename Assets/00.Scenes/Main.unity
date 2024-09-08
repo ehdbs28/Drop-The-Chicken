@@ -34196,19 +34196,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4710374470412922776, guid: 5b0be54bb4598344aa9a643cb3faa56f, type: 3}
       propertyPath: _objs.Array.data[2].maxXPos
-      value: 2.18
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4710374470412922776, guid: 5b0be54bb4598344aa9a643cb3faa56f, type: 3}
       propertyPath: _objs.Array.data[2].minXPos
-      value: 2.18
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4710374470412922776, guid: 5b0be54bb4598344aa9a643cb3faa56f, type: 3}
       propertyPath: _objs.Array.data[3].maxXPos
-      value: -2.18
+      value: -1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4710374470412922776, guid: 5b0be54bb4598344aa9a643cb3faa56f, type: 3}
       propertyPath: _objs.Array.data[3].minXPos
-      value: -2.18
+      value: -1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4710374470412922776, guid: 5b0be54bb4598344aa9a643cb3faa56f, type: 3}
       propertyPath: _objs.Array.data[4].maxXPos
@@ -34276,7 +34276,7 @@ PrefabInstance:
       objectReference: {fileID: 2938680481082187375, guid: b817bfa07196ab64fb81603d90577886, type: 3}
     - target: {fileID: 4710374470412922776, guid: 5b0be54bb4598344aa9a643cb3faa56f, type: 3}
       propertyPath: _objs.Array.data[5].itemCount
-      value: 1000
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4710374470412922776, guid: 5b0be54bb4598344aa9a643cb3faa56f, type: 3}
       propertyPath: _objs.Array.data[5].summonObj
@@ -34284,7 +34284,7 @@ PrefabInstance:
       objectReference: {fileID: 480727462186544198, guid: 85d489df87bcc2b45a78ba8ac0746f62, type: 3}
     - target: {fileID: 4710374470412922776, guid: 5b0be54bb4598344aa9a643cb3faa56f, type: 3}
       propertyPath: _objs.Array.data[6].itemCount
-      value: 1000
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4710374470412922776, guid: 5b0be54bb4598344aa9a643cb3faa56f, type: 3}
       propertyPath: _objs.Array.data[6].summonObj
