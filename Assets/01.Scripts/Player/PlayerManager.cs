@@ -88,13 +88,17 @@ public class PlayerManager : IManager
 
         if (score == 0)
         {
-            _player.FallingSpeed = _minFallSpeed;
+            _player.BaseFallingSpeed = _minFallSpeed;
             _player.MoveSpeed = _minFallSpeed;
             return;
         }
-    
-        _player.FallingSpeed = Mathf.Lerp(_minFallSpeed, _maxFallSpeed, score / _maxSpeedScore);
-        _player.MoveSpeed = Mathf.Lerp(_minMoveSpeed, _maxMoveSpeed, score/_maxSpeedScore);
+
+        float tCondition = score / _maxSpeedScore;
+        float FallingSpeedT = Mathf.Clamp(tCondition, 0, 1);
+        float MoveSpeedT = Mathf.Clamp(tCondition, 0, 1);
+
+        _player.BaseFallingSpeed = Mathf.Lerp(_minFallSpeed, _maxFallSpeed, FallingSpeedT);
+        _player.MoveSpeed = Mathf.Lerp(_minMoveSpeed, _maxMoveSpeed, MoveSpeedT);
     }
 
     public void PlayerPosSubscribe(Action<Vector3> action){

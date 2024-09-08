@@ -18,18 +18,15 @@ public class GimmickInfo
 {
     public EGimmickType Type;
     public PoolableMono LastSpawnObj;
-    public float NextSummonY { get; set; }  
+    public float NextSummonY { get; set; }
+    public float GimmickMinSpace;
+    public float GimmickMaxSpace;
 }
 
 public class MapSystem : MonoBehaviour
 {
     private List<PoolableMono> _mapObj = new List<PoolableMono>();
     private List<PoolableMono> _lastMapObj = new List<PoolableMono>();
-
-    private List<List<PoolableMono>> _mapObjs = new List<List<PoolableMono>>();
-    private List<List<PoolableMono>> _lastMapObjs = new List<List<PoolableMono>>();
-
-    private int currentMapNum = 0;
 
     private Player _player;
     private int _summonY = 0;
@@ -40,18 +37,8 @@ public class MapSystem : MonoBehaviour
 
     [SerializeField]
     private SpawnGimmickListSO _gimmickListSO;
+    [SerializeField]
     private List<GimmickInfo> _spawnGimmickInfoList;
-    
-    [SerializeField]
-    private PoolableMono _dragon;
-    [SerializeField]
-    private PoolableMono _wind;
-
-    private PoolableMono _lastSpawnDragon = null;
-    private PoolableMono _lastSpawnWind = null;
-
-    private float _dragonNextSummonY = 0;
-    private float _windNextSummonY = 0;
 
     private int _gimmickMinSpace = 80;
     private int _gimmickMaxSpace = 150;

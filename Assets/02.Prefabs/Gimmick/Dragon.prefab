@@ -291,6 +291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f8812ef0b3f7674489b85d4807a8857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GimmickType: 0
+  GimmickMinSpace: 80
+  GimmickMaxSpace: 150
   _dangerParticle: {fileID: 7073757922752162323}
   _dragonBodyParent: {fileID: 5091987352372852293}
 --- !u!1 &5091987352372852292

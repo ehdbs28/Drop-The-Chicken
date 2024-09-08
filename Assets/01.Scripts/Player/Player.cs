@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using UnityEngine.Rendering;
+using DG.Tweening;
 //using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] private float _fallingSpeed = 1f;
-    public float FallingSpeed
+    public float BaseFallingSpeed
     {
         get { return _fallingSpeed; }
         set { _fallingSpeed = value; }
     }
+    private float risingSpeed;
     [SerializeField] private float _fastSpeed;
 
     [SerializeField] private float _moveSpeed = 4.5f;
@@ -45,7 +49,7 @@ public class Player : MonoBehaviour, IDamageable
 
         if(_isFast){
             fastStack++;
-            _fastSpeed = _fallingSpeed + (1f * fastStack);
+            //_fastSpeed = _fallingSpeed + (1f * fastStack);
 
             foreach(ParticleSystem particle in _fastParticle)
                 particle.Play();
@@ -90,6 +94,16 @@ public class Player : MonoBehaviour, IDamageable
 
     private Vector2 _lastPosition;
 
+    private bool isEffectedByObstacle = false; //장애물에게 영향을 받고 있으면 Etc : PunchTrap
+
+    Coroutine addForceCoroutine;
+
+
+    [Header("Rising")]
+    [SerializeField] AnimationCurve risingCurve;
+
+    Tween riseTween;
+
     private void Awake() {
         _animator = GetComponent<Animator>();
         _rigid = GetComponent<Rigidbody2D>();
@@ -120,11 +134,60 @@ public class Player : MonoBehaviour, IDamageable
     }
     public void StopMove()
     {
-        _rigid.velocity = new Vector2(0, _rigid.velocity.y);
+        if(isEffectedByObstacle == false)
+        {
+            _rigid.velocity = new Vector2(0, _rigid.velocity.y);
+        }
     }
 
     private void PlayerFall(){
-        _rigid.velocity = new Vector2(_rigid.velocity.x, -((_isFast) ? _fastSpeed: _fallingSpeed));
+        
+        
+        float curFallingSpeed = -(BaseFallingSpeed - risingSpeed);
+
+        if (curFallingSpeed < 0) // 하강중
+            curFallingSpeed = curFallingSpeed - (1 * fastStack);
+        else// 상승중
+            curFallingSpeed = curFallingSpeed + (1 * fastStack);
+
+        _rigid.velocity = new Vector2(_rigid.velocity.x, curFallingSpeed);
+    }
+
+    // controlTime = 플레이어 제어를 놓는 시간
+    public void AddForce(Vector2 force, float controlTime)
+    {
+        if(addForceCoroutine != null)
+        {
+            StopCoroutine(addForceCoroutine);
+        }
+        addForceCoroutine = StartCoroutine(AddForceByObstacle(force, controlTime));
+    }
+
+    private IEnumerator AddForceByObstacle(Vector2 force, float controlTime)
+    {
+        //isEffectedByObstacle = true;
+        float t = 0f;
+        while(t < controlTime)
+        {
+            Vector2 lerpForce = Vector2.Lerp(force, Vector2.zero, t);
+            _rigid.AddForce(lerpForce, ForceMode2D.Impulse);
+
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        //isEffectedByObstacle = false;
+    }
+
+    public void Rising(float risingSpeed, float riseTime)
+    {
+        if(riseTween != null)
+        {
+            riseTween.Kill();
+        }
+
+        this.risingSpeed = risingSpeed;
+        riseTween = DOTween.To(() => this.risingSpeed, speed => this.risingSpeed = speed, 0f, riseTime).SetEase(risingCurve);
     }
 
     private IEnumerator SlowDown(){
@@ -139,7 +202,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void OnDamage()
     {
-        //StartCoroutine("Die");
+        StartCoroutine("Die");
     }
 
     public void ResetPlayer()

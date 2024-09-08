@@ -6,6 +6,8 @@ using UnityEngine;
 public class Gimmick : PoolableMono
 {
     public EGimmickType GimmickType;
+    public float GimmickMinSpace;
+    public float GimmickMaxSpace;
     public override void Reset()
     {
         

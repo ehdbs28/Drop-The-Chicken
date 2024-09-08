@@ -24161,6 +24161,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GimmickType: 1
+  GimmickMinSpace: 80
+  GimmickMaxSpace: 150
   _stormForce: 75
 --- !u!82 &1586781796174234941
 AudioSource:
