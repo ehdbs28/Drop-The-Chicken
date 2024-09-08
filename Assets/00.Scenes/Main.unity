@@ -10888,9 +10888,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'MADY BY
+  m_text: 'MADE BY
 
-    EHDBS28 & KSAN09'
+    EHDBS28 & KSAN09 & DANIELNAM0801'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0696ffdc2d3c0244fa4e860a6be4ad7f, type: 2}
   m_sharedMaterial: {fileID: 4779276670444918803, guid: 0696ffdc2d3c0244fa4e860a6be4ad7f, type: 2}
@@ -12375,7 +12375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -63}
+  m_AnchoredPosition: {x: 0, y: -80}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1090588160
@@ -12398,7 +12398,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '@ ehdbs28 / @ ksan09'
+  m_text: '@ ehdbs28 / @ ksan09
+
+    / @ danielnam0801'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0696ffdc2d3c0244fa4e860a6be4ad7f, type: 2}
   m_sharedMaterial: {fileID: 4779276670444918803, guid: 0696ffdc2d3c0244fa4e860a6be4ad7f, type: 2}
@@ -40486,9 +40488,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'MADY BY
+  m_text: 'MADE BY
 
-    EHDBS28 & KSAN09'
+    EHDBS28 & KSAN09 & DANIELNAM0801'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0696ffdc2d3c0244fa4e860a6be4ad7f, type: 2}
   m_sharedMaterial: {fileID: 4779276670444918803, guid: 0696ffdc2d3c0244fa4e860a6be4ad7f, type: 2}
