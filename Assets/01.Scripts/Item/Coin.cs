@@ -8,6 +8,8 @@ public class Coin : BaseItem
     {
         Debug.Log("Coin È¹µæ");
         GameManager.Instance.GetManager<CashManager>().AddCash(1);
+
+        PoolManager.Instance.Push(this);
     }
 
     public override void Reset()

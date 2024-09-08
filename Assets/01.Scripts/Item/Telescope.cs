@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Telescope : BaseItem
 {
+
     public override void EnterEvent(Player player)
     {
 

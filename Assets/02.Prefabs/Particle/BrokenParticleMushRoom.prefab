@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 143815285920650968}
   - component: {fileID: 143815285920650969}
   m_Layer: 0
-  m_Name: BrokenParticleMushRoom
+  m_Name: BrokenParticleMushroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

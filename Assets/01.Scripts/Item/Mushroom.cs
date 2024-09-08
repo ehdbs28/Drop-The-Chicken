@@ -6,7 +6,9 @@ public class Mushroom : BaseItem
 {
     public override void EnterEvent(Player player)
     {
+        player.TakeMushRoom();
 
+        PoolManager.Instance.Push(this);
     }
 
     public override void Reset()

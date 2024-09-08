@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine.Rendering;
 using DG.Tweening;
+using System;
 //using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour, IDamageable
@@ -49,7 +50,6 @@ public class Player : MonoBehaviour, IDamageable
 
         if(_isFast){
             fastStack++;
-            //_fastSpeed = _fallingSpeed + (1f * fastStack);
 
             foreach(ParticleSystem particle in _fastParticle)
                 particle.Play();
@@ -64,6 +64,35 @@ public class Player : MonoBehaviour, IDamageable
             fastStack = 0;
         }
     }}
+
+    private bool _isSlow;
+    public bool IsSlow
+    {
+        get => _isSlow; set
+        {
+            _isSlow = value;
+
+            if (_isSlow)
+            {
+                slowStack++;
+
+                if(_isFast)
+                {
+                    _isFast = false;
+                }
+
+                StopCoroutine("FastDown");
+                StartCoroutine("FastDown");
+            }
+            else
+            {
+                DetachBallon();
+                slowStack = 0;
+            }
+        }
+    }
+
+   
     private bool _isMirror;
     public bool IsMirror { get => _isMirror; set{
         _isMirror = value;
@@ -85,6 +114,7 @@ public class Player : MonoBehaviour, IDamageable
     #endregion
 
     private int fastStack = 0;
+    private int slowStack = 0;
 
     private Animator _animator;
     private Rigidbody2D _rigid;
@@ -103,6 +133,9 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] AnimationCurve risingCurve;
 
     Tween riseTween;
+
+    [Header("Ballon")]
+    [SerializeField] SpriteRenderer ballonRender;
 
     private void Awake() {
         _animator = GetComponent<Animator>();
@@ -146,9 +179,9 @@ public class Player : MonoBehaviour, IDamageable
         float curFallingSpeed = -(BaseFallingSpeed - risingSpeed);
 
         if (curFallingSpeed < 0) // 하강중
-            curFallingSpeed = curFallingSpeed - (1 * fastStack);
+            curFallingSpeed = curFallingSpeed - (1 * fastStack) + (1 * slowStack);
         else// 상승중
-            curFallingSpeed = curFallingSpeed + (1 * fastStack);
+            curFallingSpeed = curFallingSpeed + (1 * fastStack) - (1 * slowStack);
 
         _rigid.velocity = new Vector2(_rigid.velocity.x, curFallingSpeed);
     }
@@ -190,9 +223,17 @@ public class Player : MonoBehaviour, IDamageable
         riseTween = DOTween.To(() => this.risingSpeed, speed => this.risingSpeed = speed, 0f, riseTime).SetEase(risingCurve);
     }
 
+
+    private IEnumerator FastDown()
+    {
+        yield return new WaitForSeconds(3f);
+        IsSlow = false;
+    }
+
     private IEnumerator SlowDown(){
         yield return new WaitForSeconds(3f);
         IsFast = false;
+        //IsSlow = false;
     }
 
     private IEnumerator MirrorActiveFalse(){
@@ -342,4 +383,35 @@ public class Player : MonoBehaviour, IDamageable
     {
         return Quaternion.Euler(0, 0, Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg);
     }
+
+    public void TakeMushRoom()
+    {
+        StopCoroutine("GoSmall");
+        StartCoroutine("GoSmall");
+    }
+
+    IEnumerator GoSmall()
+    {
+        transform.DOScale(0.5f * Vector3.one, 0.5f);
+        yield return new WaitForSeconds(3f);
+
+        transform.DOScale(Vector3.one, 0.5f);
+    }
+
+    public void TakeBallon()
+    {
+        IsSlow = true;
+        AttachBallon();
+    }
+
+    private void AttachBallon()
+    {
+        ballonRender.enabled = true;
+    }
+
+    private void DetachBallon()
+    {
+        ballonRender.enabled = false;
+    }
+
 }
