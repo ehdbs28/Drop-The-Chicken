@@ -17,6 +17,7 @@ public class PunchTrap : PoolableMono, IObstacle, IBrokenObject
         Player player = col.GetComponent<Player>();
         player.AddForce(force, controlTime);
 
+        GameManager.Instance.GetManager<TimeManager>().Stop(0.3f, 0.3f);
         Debug.Log("Punch");
     }
 
