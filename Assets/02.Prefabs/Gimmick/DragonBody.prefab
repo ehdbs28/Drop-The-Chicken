@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 560838040272282835}
   - component: {fileID: 560838040272282834}
   - component: {fileID: 560838040272282833}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DragonBody
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

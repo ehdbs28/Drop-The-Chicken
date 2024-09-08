@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6214379567289416623}
   - component: {fileID: 6214379567289416620}
   - component: {fileID: 6214379567289416611}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pigeon
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

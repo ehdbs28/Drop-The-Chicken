@@ -4835,7 +4835,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1612294323
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -9697,7 +9697,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1612294323
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -9736,7 +9736,7 @@ GameObject:
   - component: {fileID: 3352020163858740790}
   - component: {fileID: 3352020163858740789}
   - component: {fileID: 8213936274891341361}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DarkCloud
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

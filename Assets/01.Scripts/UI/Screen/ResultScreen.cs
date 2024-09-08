@@ -18,7 +18,16 @@ public class ResultScreen : UIScreen
 
     public override void UpdateScreenState(bool open)
     {
-        GameManager.Instance.GetManager<ScoreManager>().ScoreSubscribe(score => currentScore.text = score.ToString("D5"));
+        GameManager.Instance.GetManager<ScoreManager>().ScoreSubscribe(score =>
+        {
+
+            int temp = score;
+            if (temp < 0)
+                temp = 0;
+
+            currentScore.text = temp.ToString("D5");
+
+        });
         bestScore.text = GameManager.Instance.GetManager<DataManager>().User.BestScore.ToString("D5");
 
         base.UpdateScreenState(open);

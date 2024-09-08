@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5953174645686737186}
   - component: {fileID: 5953174645686737185}
   - component: {fileID: 874271085}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cloud
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -4950,7 +4950,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1612294323
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -9812,7 +9812,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1612294323
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0

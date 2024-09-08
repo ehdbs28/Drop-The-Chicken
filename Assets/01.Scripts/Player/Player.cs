@@ -334,7 +334,24 @@ public class Player : MonoBehaviour, IDamageable
 
         foreach(var particle in _feverParticles)
             particle.Stop();
-        
+
+        LayerMask layer = LayerMask.GetMask("Breakable");
+        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, 30f, layer);
+        if(cols.Length > 0)
+        {
+
+            for(int i = 0; i < cols.Length; i++)
+            {
+
+                if(cols[i].TryGetComponent<IBrokenObject>(out IBrokenObject brokenObject))
+                {
+                    brokenObject.BrokenEvent();
+                }
+
+            }
+
+        }
+
         _animator.SetBool("Fever", false);
         _fallingSpeed = saveSpd;
         ResetFever();

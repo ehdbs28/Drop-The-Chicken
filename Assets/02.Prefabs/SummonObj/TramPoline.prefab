@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2938680481082187371}
   - component: {fileID: 2938680481082187375}
   - component: {fileID: 2938680481082187374}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TramPoline
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

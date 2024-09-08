@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7916786324019134274}
   - component: {fileID: 7916786324019134273}
   - component: {fileID: 7916786324019134276}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PunchTrapLeft
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
