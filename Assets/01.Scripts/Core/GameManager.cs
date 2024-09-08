@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
 
     public bool GameStop {
         set {
-            Time.timeScale = value ? 0 : 1;
+            float timeValue = value ? 0 : 1;
+            GetManager<TimeManager>().Stop(timeValue, 0f);
         }
     }
 
@@ -43,12 +44,12 @@ public class GameManager : MonoBehaviour
         _managers.Add(new PlayerManager());
         _managers.Add(new ScoreManager());
         _managers.Add(new CashManager());
+        _managers.Add(GetComponent<TimeManager>());
         _managers.Add(GetComponent<UIManager>());
         _managers.Add(new ESCManager());
         _managers.Add(new CameraManager());
 
         _managers.Add(GetComponent<AudioManager>());
-        _managers.Add(GetComponent<TimeManager>());
         _managers.Add(GetComponent<GradientBackGroundColor>());
 
         UpdateState(GameState.INIT);

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7916786324019134272}
   - component: {fileID: 7916786324019134275}
   - component: {fileID: 7916786324019134274}
-  - component: {fileID: 7916786324019134273}
   - component: {fileID: 7916786324019134276}
+  - component: {fileID: 5720588953675104318}
   m_Layer: 7
   m_Name: PunchTrapLeft
   m_TagString: Obstacle
@@ -104,22 +104,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!58 &7916786324019134273
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7916786324019134277}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.1}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!114 &7916786324019134276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,3 +119,29 @@ MonoBehaviour:
   punchForce: 20
   controlTime: 0.15
   isLeft: 1
+--- !u!61 &5720588953675104318
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7916786324019134277}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.3686036, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.3333334, y: 0.33333334}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.55488324, y: 0.33333334}
+  m_EdgeRadius: 0

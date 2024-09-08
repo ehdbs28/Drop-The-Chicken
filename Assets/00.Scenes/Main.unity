@@ -8877,6 +8877,7 @@ GameObject:
   - component: {fileID: 588208374}
   - component: {fileID: 588208373}
   - component: {fileID: 588208376}
+  - component: {fileID: 588208377}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -8987,6 +8988,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _btnClickClip: {fileID: 8300000, guid: 708afa6ae89f9f540b6b5aaea6a89fa4, type: 3}
+--- !u!114 &588208377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588208371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0baa979be7a5dfa4f99221bd0e160f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &596934955
 GameObject:
   m_ObjectHideFlags: 0
@@ -34252,7 +34265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4710374470412922776, guid: 5b0be54bb4598344aa9a643cb3faa56f, type: 3}
       propertyPath: _objs.Array.data[2].itemCount
-      value: 2
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4710374470412922776, guid: 5b0be54bb4598344aa9a643cb3faa56f, type: 3}
       propertyPath: _objs.Array.data[2].summonObj
