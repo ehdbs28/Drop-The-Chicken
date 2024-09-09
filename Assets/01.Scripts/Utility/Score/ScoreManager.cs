@@ -21,8 +21,8 @@ public class ScoreManager : IManager
 
     public void UpdateState(GameState state)
     {
-        if(_bestScore >= 300) GameManager.Instance.GetManager<DataManager>().User.KingUnlock = true;
-        if(_bestScore >= 500) GameManager.Instance.GetManager<DataManager>().User.RobotUnlock = true;
+        if(_bestScore >= 1500) GameManager.Instance.GetManager<DataManager>().User.KingUnlock = true;
+        if(_bestScore >= 5000) GameManager.Instance.GetManager<DataManager>().User.RobotUnlock = true;
 
         switch(state){
             case GameState.INIT:
