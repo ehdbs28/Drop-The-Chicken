@@ -34329,7 +34329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4710374470412922776, guid: 5b0be54bb4598344aa9a643cb3faa56f, type: 3}
       propertyPath: _objs.Array.data[2].itemCount
-      value: 1000
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4710374470412922776, guid: 5b0be54bb4598344aa9a643cb3faa56f, type: 3}
       propertyPath: _objs.Array.data[2].summonObj
