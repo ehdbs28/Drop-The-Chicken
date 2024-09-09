@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0464fc1571271946ae3e63f93c4ddeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  punchForce: 20
+  punchForce: 15
   controlTime: 0.15
   isLeft: 1
 --- !u!61 &5720588953675104318

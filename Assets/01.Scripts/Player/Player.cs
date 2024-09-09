@@ -23,6 +23,11 @@ public class Player : MonoBehaviour, IDamageable
     public float MoveSpeed{ get => _moveSpeed; set => _moveSpeed = value; }
     [SerializeField] private float _feverSpeed = 10f;
 
+    public HitBlinkFeedback GetHitBlinkFeedback => _hitBlinkFeedback;
+    private HitBlinkFeedback _hitBlinkFeedback;
+    public HitParticlePlayFeedback GetHitParticlePlayFeedback => _playhitParticleFeedback;
+    private HitParticlePlayFeedback _playhitParticleFeedback;
+
     [SerializeField] private Material _paintWhite;
     [SerializeField] private Material _defaultMat;
 
@@ -143,6 +148,8 @@ public class Player : MonoBehaviour, IDamageable
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
         _fastParticle = transform.Find("FastParticle").GetComponentsInChildren<ParticleSystem>();
+        _hitBlinkFeedback = transform.Find("Feedback").GetComponent<HitBlinkFeedback>();
+        _playhitParticleFeedback = transform.Find("Feedback").GetComponent<HitParticlePlayFeedback>();
     }
 
     private void FixedUpdate() {
@@ -367,10 +374,7 @@ public class Player : MonoBehaviour, IDamageable
         IsFast = false;
         IsDie = true;
         _animator.SetBool("Die", true);
-        _spriteRenderer.material = _paintWhite;
-        yield return new WaitForSeconds(0.3f);
-        _spriteRenderer.material = _defaultMat;
-
+        _hitBlinkFeedback.Play(0.3f);
         
         float m_HeightArc = 5;
         Vector3 m_StartPosition = transform.position;

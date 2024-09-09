@@ -16,9 +16,10 @@ public class PunchTrap : PoolableMono, IObstacle, IBrokenObject
 
         Player player = col.GetComponent<Player>();
         player.AddForce(force, controlTime);
+        player.GetHitBlinkFeedback.Play();
+        player.GetHitParticlePlayFeedback.Play(player.transform.position);
 
         GameManager.Instance.GetManager<TimeManager>().Stop(0.05f, 0.25f);
-        Debug.Log("Punch");
     }
 
     public void StayEvent(Collider2D col)
